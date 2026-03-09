@@ -20,16 +20,16 @@
 
     <!-- Start Header -->
         <div class="header">
-            <a href="index.html">
+            <a href="index.php">
                 <img src="images/logo.png" alt=" Logo" class="logo">
             </a>
             <h1>Al Mesbah Al Modie Foundation</h1>
             <div class="nav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="volunteer.html">Volunteer</a>
-                <a href="donate.html">Donate</a>
+                <a href="index.php">Home</a>
+                <a href="about.php">About</a>
+                <a href="services.php">Services</a>
+                <a href="volunteer.php">Volunteer</a>
+                <a href="donate.php">Donate</a>
             </div>
         </div>
     <!-- End Header -->
@@ -42,12 +42,12 @@
     <div class="faq-box">
         <div class="faq-item">
         <h3 class="faq-question">How can I make a donation?</h3>
-        <p class="faq-answer">You can donate through our <a href="donate.html">donation page</a> by choosing a preset amount or entering a custom amount. All donations go directly toward supporting families in need.</p>
+        <p class="faq-answer">You can donate through our <a href="donate.php">donation page</a> by choosing a preset amount or entering a custom amount. All donations go directly toward supporting families in need.</p>
         </div>
 
         <div class="faq-item">
         <h3 class="faq-question">Can I volunteer with the organization?</h3>
-        <p class="faq-answer">Yes! Visit our <a href="volunteer.html">volunteering page</a> and fill out the form. Once submitted, our team will contact you with available opportunities that match your interests.</p>
+        <p class="faq-answer">Yes! Visit our <a href="volunteer.php">volunteering page</a> and fill out the form. Once submitted, our team will contact you with available opportunities that match your interests.</p>
         </div>
 
         <div class="faq-item">
@@ -62,7 +62,7 @@
 
         <div class="faq-item">
         <h3 class="faq-question">Can I donate items instead of money?</h3>
-        <p class="faq-answer">Absolutely. We accept in-kind donations such as clothes, food, and furniture. You can coordinate delivery with one of our branch offices listed on the <a href="branches.html">branches page</a>.</p>
+        <p class="faq-answer">Absolutely. We accept in-kind donations such as clothes, food, and furniture. You can coordinate delivery with one of our branch offices listed on the <a href="branches.php">branches page</a>.</p>
         </div>
     </div>
 </div>
@@ -74,7 +74,7 @@
             <p>Our team will respond to you as soon as possible.</p>
         </div>
         
-        <form id="inquireForm" action="feedback-confirmation.html" method="get" onsubmit="return validateInquireForm();" >
+        <form id="inquireForm" action="feedback-confirmation.php" method="get" onsubmit="return validateInquireForm();" >
             <input type="text" id="inquireName" placeholder="Your Name: " >
             <input type="text" id="inquireEmail" placeholder="Your Email: " >
             <input type="text" id="inquirePhone" placeholder="Your Phone: " >
@@ -92,9 +92,9 @@
     <div class="footer-left">
       <h5>Quick Links</h5>
       <ul class="footer-links">
-        <li><a href="feedback.html">Feedback</a></li>
-        <li><a href="branches.html">Branches</a></li>
-        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="feedback.php">Feedback</a></li>
+        <li><a href="branches.php">Branches</a></li>
+        <li><a href="faqs.php">FAQs</a></li>
       </ul>
     </div>
 

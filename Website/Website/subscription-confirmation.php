@@ -12,7 +12,7 @@
       <h1>Subscription Successful!</h1>
         <p>Thank you for subscribing to our newsletter.</p>
         <p>You have been successfully added to our mailing list, and future newsletters, updates, and announcements will be sent to your email address.</p>
-      <a href="index.html" class="home-btn">Back to Home</a>
+      <a href="index.php" class="home-btn">Back to Home</a>
     </div>
   </div>
 </body>

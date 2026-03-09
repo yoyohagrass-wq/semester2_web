@@ -12,7 +12,7 @@
       <h1>Thank You!</h1>
         <p>Your volunteering form has been received successfully.</p>
         <p>Thank you for joining our mission — your willingness to help makes a real difference in people’s lives.</p>
-      <a href="index.html" class="home-btn">Back to Home</a>
+      <a href="index.php" class="home-btn">Back to Home</a>
     </div>
   </div>
 </body>

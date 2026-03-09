@@ -21,16 +21,16 @@
     <!-- Start Header -->
 
     <div class="header">
-        <a href="index.html">
+        <a href="index.php">
             <img src="images/logo.png" alt=" Logo" class="logo">
         </a>
         <h1>Al Mesbah Al Modie Foundation</h1>
         <div class="nav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="volunteer.html">Volunteer</a>
-            <a href="donate.html">Donate</a>
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="services.php">Services</a>
+            <a href="volunteer.php">Volunteer</a>
+            <a href="donate.php">Donate</a>
         </div>
     </div>
     
@@ -42,7 +42,7 @@
     <div class="donation-container">
         <h1 class="donation-title">Make a Donation</h1>
         <div class="donation-box">
-            <form id="donateForm" class="donation-form" action="donation-confirmation.html" method="get">
+            <form id="donateForm" class="donation-form" action="donation-confirmation.php" method="get">
                 <label for="name">Full Name:</label>
                 <input type="text" id="name" class="donation-input" placeholder="Enter your full name">
 
@@ -75,9 +75,9 @@
     <div class="footer-left">
         <h5>Quick Links</h5>
         <ul class="footer-links">
-        <li><a href="feedback.html">Feedback</a></li>
-        <li><a href="branches.html">Branches</a></li>
-        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="feedback.php">Feedback</a></li>
+        <li><a href="branches.php">Branches</a></li>
+        <li><a href="faqs.php">FAQs</a></li>
         </ul>
     </div>
 

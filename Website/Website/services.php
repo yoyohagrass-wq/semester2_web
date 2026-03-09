@@ -19,16 +19,16 @@
 
     <!-- Start Header -->
     <div class="header">
-        <a href="index.html">
+        <a href="index.php">
             <img src="images/logo.png" alt=" Logo" class="logo">
         </a>
         <h1>Al Mesbah Al Modie Foundation</h1>
         <div class="nav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="volunteer.html">Volunteer</a>
-            <a href="donate.html">Donate</a>
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="services.php">Services</a>
+            <a href="volunteer.php">Volunteer</a>
+            <a href="donate.php">Donate</a>
         </div>
     </div>
 
@@ -45,7 +45,7 @@
 
     <div class="services-grid">
 
-      <a href="project1.html" class="project-link">
+      <a href="project1.php" class="project-link">
         <div class="service-card">
           <img src="images/project1.jpg" alt="Ma’edet El Rahman" class="service-img">
           <h3 class="service-name">Ma’edet El Rahman</h3>
@@ -55,7 +55,7 @@
         </div>
       </a>
 
-      <a href="project2.html" class="project-link">
+      <a href="project2.php" class="project-link">
         <div class="service-card">
           <img src="images/project2.jpg" alt="Orphan’s Day Celebration" class="service-img">
           <h3 class="service-name">Orphan’s Day Celebration</h3>
@@ -63,7 +63,7 @@
         </div>
       </a>
 
-      <a href="project3.html" class="project-link">
+      <a href="project3.php" class="project-link">
         <div class="service-card">
           <img src="images/project3.jpg" alt="Ramadan Food Boxes" class="service-img">
           <h3 class="service-name">Ramadan Food Boxes</h3>
@@ -73,7 +73,7 @@
         </div>
       </a>
 
-      <a href="project4.html" class="project-link">
+      <a href="project4.php" class="project-link">
         <div class="service-card">
           <img src="images/project4.jpg" alt="Mother’s Day Celebration" class="service-img">
           <h3 class="service-name">Mother’s Day Celebration</h3>
@@ -83,7 +83,7 @@
         </div>
       </a>
 
-      <a href="project5.html" class="project-link">
+      <a href="project5.php" class="project-link">
         <div class="service-card">
           <img src="images/project5.jpg" alt="Paying Debts for the Needy" class="service-img">
           <h3 class="service-name">Paying Debts for the Needy</h3>
@@ -93,7 +93,7 @@
         </div>
       </a>
 
-      <a href="project6.html" class="project-link">
+      <a href="project6.php" class="project-link">
         <div class="service-card">
           <img src="images/project6.jpg" alt="Meat Distribution" class="service-img">
           <h3 class="service-name">Meat Distribution</h3>
@@ -103,7 +103,7 @@
         </div>
       </a>
 
-      <a href="project7.html" class="project-link">
+      <a href="project7.php" class="project-link">
         <div class="service-card">
           <img src="images/project7.jpg" alt="Prosthetic Limbs Support" class="service-img">
           <h3 class="service-name">Prosthetic Limbs Support</h3>
@@ -113,7 +113,7 @@
         </div>
       </a>
 
-      <a href="project8.html" class="project-link">
+      <a href="project8.php" class="project-link">
         <div class="service-card">
           <img src="images/project8.jpg" alt="Water Connection Projects" class="service-img">
           <h3 class="service-name">Water Connection Projects</h3>
@@ -123,7 +123,7 @@
         </div>
       </a>
 
-      <a href="project9.html" class="project-link">
+      <a href="project9.php" class="project-link">
         <div class="service-card">
           <img src="images/project9.jpg" alt="Distribution of Blankets" class="service-img">
           <h3 class="service-name">Distribution of Blankets</h3>
@@ -133,7 +133,7 @@
         </div>
       </a>
 
-      <a href="project10.html" class="project-link">
+      <a href="project10.php" class="project-link">
         <div class="service-card">
           <img src="images/project10.jpg" alt="Bride Preparation Support" class="service-img">
           <h3 class="service-name">Bride Preparation Support</h3>
@@ -143,7 +143,7 @@
         </div>
       </a>
 
-      <a href="project11.html" class="project-link">
+      <a href="project11.php" class="project-link">
         <div class="service-card">
           <img src="images/project11.jpg" alt="Home Renovation in Upper Egypt" class="service-img">
           <h3 class="service-name">Home Renovation in Upper Egypt</h3>
@@ -153,7 +153,7 @@
         </div>
       </a>
 
-      <a href="project12.html" class="project-link">
+      <a href="project12.php" class="project-link">
         <div class="service-card">
           <img src="images/project12.jpg" alt="Water Purification Stations" class="service-img">
           <h3 class="service-name">Water Purification Stations</h3>
@@ -163,7 +163,7 @@
         </div>
       </a>
 
-      <a href="project13.html" class="project-link">
+      <a href="project13.php" class="project-link">
         <div class="service-card">
           <img src="images/project13.jpg" alt="Home Renovation in Upper Egypt" class="service-img">
           <h3 class="service-name">Hearing Aid Installation for Children</h3>
@@ -173,7 +173,7 @@
         </div>
       </a>
 
-      <a href="project14.html" class="project-link">
+      <a href="project14.php" class="project-link">
         <div class="service-card">
           <img src="images/project14.jpg" alt="Water Purification Stations" class="service-img">
           <h3 class="service-name">Cancer Patient Care</h3>
@@ -184,7 +184,7 @@
       </a>
 
 
-      <a href="project15.html" class="project-link">
+      <a href="project15.php" class="project-link">
         <div class="service-card">
           <img src="images/project15.jpg" alt="Home Renovation in Upper Egypt" class="service-img">
           <h3 class="service-name">Dialysis Unit Support</h3>
@@ -248,7 +248,7 @@
           <p>Stay updated on our projects and events by subscribing to our newsletter.</p>
       </div>
 
-      <form id="newsletterForm" action="subscription-confirmation.html" method="get" onsubmit="return validateNewsletterForm();">
+      <form id="newsletterForm" action="subscription-confirmation.php" method="get" onsubmit="return validateNewsletterForm();">
           <input type="text" id="newsletterFirstName" placeholder="First Name">
           <input type="text" id="newsletterLastName" placeholder="Last Name">
           <input type="text" id="newsletterEmail" placeholder="Email">
@@ -264,9 +264,9 @@
     <div class="footer-left">
       <h5>Quick Links</h5>
       <ul class="footer-links">
-        <li><a href="feedback.html">Feedback</a></li>
-        <li><a href="branches.html">Branches</a></li>
-        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="feedback.php">Feedback</a></li>
+        <li><a href="branches.php">Branches</a></li>
+        <li><a href="faqs.php">FAQs</a></li>
       </ul>
     </div>
 

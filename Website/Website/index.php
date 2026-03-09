@@ -17,16 +17,16 @@
     <!-- Start Header -->
 
     <div class="header">
-        <a href="index.html">
+        <a href="index.php">
             <img src="images/logo.png" alt=" Logo" class="logo">
         </a>
         <h1>Al Mesbah Al Modie Foundation| Charity & Humanitarian Aid in Egypt</h1>
         <div class="nav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="volunteer.html">Volunteer</a>
-            <a href="donate.html">Donate</a>
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="services.php">Services</a>
+            <a href="volunteer.php">Volunteer</a>
+            <a href="donate.php">Donate</a>
         </div>
     </div>
 
@@ -47,7 +47,7 @@
 
      <div class="our-projects">
         <div class="projects">
-            <a href="project1.html" class="project-link">
+            <a href="project1.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project1.jpg">
                     <div class="card-text">
@@ -57,7 +57,7 @@
                 </div>
             </a>
 
-            <a href="project2.html" class="project-link">
+            <a href="project2.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project2.jpg">
                     <div class="card-text">
@@ -67,7 +67,7 @@
                 </div>
             </a>
 
-            <a href="project3.html" class="project-link">
+            <a href="project3.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project3.jpg">
                     <div class="card-text">
@@ -78,7 +78,7 @@
             </a>
 
 
-            <a href="project4.html" class="project-link">
+            <a href="project4.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project4.jpg">
                     <div class="card-text">
@@ -88,7 +88,7 @@
                 </div>
             </a>
 
-            <a href="project5.html" class="project-link">
+            <a href="project5.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project5.jpg">
                     <div class="card-text">
@@ -99,7 +99,7 @@
             </a>
 
 
-            <a href="project6.html" class="project-link">
+            <a href="project6.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project6.jpg">
                     <div class="card-text">
@@ -111,7 +111,7 @@
 
 
 
-            <a href="project7.html" class="project-link">
+            <a href="project7.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project7.jpg">
                     <div class="card-text">
@@ -123,7 +123,7 @@
 
 
 
-            <a href="project8.html" class="project-link">
+            <a href="project8.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project8.jpg">
                     <div class="card-text">
@@ -133,7 +133,7 @@
                 </div>
             </a>
 
-            <a href="project9.html" class="project-link">
+            <a href="project9.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project9.jpg">
                     <div class="card-text">
@@ -144,7 +144,7 @@
             </a>
 
 
-            <a href="project10.html" class="project-link">
+            <a href="project10.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project10.jpg">
                     <div class="card-text">
@@ -154,7 +154,7 @@
                 </div>
             </a>
 
-            <a href="project11.html" class="project-link">
+            <a href="project11.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project11.jpg">
                     <div class="card-text">
@@ -165,7 +165,7 @@
             </a>
 
 
-            <a href="project12.html" class="project-link">
+            <a href="project12.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project12.jpg">
                     <div class="card-text">
@@ -175,7 +175,7 @@
                 </div>
             </a>
 
-            <a href="project13.html" class="project-link">
+            <a href="project13.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project13.jpg">
                     <div class="card-text">
@@ -187,7 +187,7 @@
 
 
 
-            <a href="project14.html" class="project-link">
+            <a href="project14.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project14.jpg">
                     <div class="card-text">
@@ -199,7 +199,7 @@
 
 
 
-            <a href="project15.html" class="project-link">
+            <a href="project15.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project15.jpg">
                     <div class="card-text">
@@ -210,7 +210,7 @@
             </a>
 
 
-            <a href="project16.html" class="project-link">
+            <a href="project16.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project16.jpg">
                     <div class="card-text">
@@ -235,7 +235,7 @@
             <p>Our team will respond to you as soon as possible.</p>
         </div>
         
-        <form id="inquireForm" action="feedback-confirmation.html" method="get" >
+        <form id="inquireForm" action="feedback-confirmation.php" method="get" >
             <input type="text" id="inquireName" placeholder="Your Name: " >
             <input type="text" id="inquireEmail" placeholder="Your Email: " >
             <input type="text" id="inquirePhone" placeholder="Your Phone: " >
@@ -253,9 +253,9 @@
   <div class="footer-left">
     <h5>Quick Links</h5>
     <ul class="footer-links">
-      <li><a href="feedback.html">Feedback</a></li>
-      <li><a href="branches.html">Branches</a></li> 
-      <li><a href="faqs.html">FAQs</a></li>
+      <li><a href="feedback.php">Feedback</a></li>
+      <li><a href="branches.php">Branches</a></li> 
+      <li><a href="faqs.php">FAQs</a></li>
     </ul>
   </div>
 

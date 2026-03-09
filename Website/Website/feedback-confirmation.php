@@ -12,7 +12,7 @@
       <h1>Thank you for sharing your feedback with us!</h1>
         <p>Your volunteering form has been received successfully.</p>
         <p>Your thoughts help us improve our services and continue to make a positive impact in the community.</p>
-      <a href="index.html" class="home-btn">Back to Home</a>
+      <a href="index.php" class="home-btn">Back to Home</a>
     </div>
   </div>
 </body>

@@ -16,14 +16,14 @@
     <div class="container">
       <div class="sidebar">
         <div class="sidebar-list">
-          <a href="admin-dashboard.html">🏠 Dashboard</a>
-          <a href="manage-services.html" class="active">📦 Services</a>
-          <a href="view-donations.html">💰 Donations</a>
-          <a href="messages.html">📨 Messages</a>
-          <a href="volunteer-requests.html">🤝 Volunteers</a>
-          <a href="service-feedback.html">⭐ Feedback</a>
+          <a href="admin-dashboard.php">🏠 Dashboard</a>
+          <a href="manage-services.php" class="active">📦 Services</a>
+          <a href="view-donations.php">💰 Donations</a>
+          <a href="messages.php">📨 Messages</a>
+          <a href="volunteer-requests.php">🤝 Volunteers</a>
+          <a href="service-feedback.php">⭐ Feedback</a>
           <div class="logout">
-            <a href="admin-login.html">Logout</a>
+            <a href="admin-login.php">Logout</a>
           </div>
         </div>
       </div>
