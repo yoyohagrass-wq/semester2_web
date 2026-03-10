@@ -47,7 +47,7 @@
 
      <div class="our-projects">
         <div class="projects">
-            <a href="project1.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project1.jpg">
                     <div class="card-text">
@@ -57,7 +57,7 @@
                 </div>
             </a>
 
-            <a href="project2.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project2.jpg">
                     <div class="card-text">
@@ -67,7 +67,7 @@
                 </div>
             </a>
 
-            <a href="project3.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project3.jpg">
                     <div class="card-text">
@@ -78,7 +78,7 @@
             </a>
 
 
-            <a href="project4.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project4.jpg">
                     <div class="card-text">
@@ -88,7 +88,7 @@
                 </div>
             </a>
 
-            <a href="project5.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project5.jpg">
                     <div class="card-text">
@@ -99,7 +99,7 @@
             </a>
 
 
-            <a href="project6.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project6.jpg">
                     <div class="card-text">
@@ -111,7 +111,7 @@
 
 
 
-            <a href="project7.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project7.jpg">
                     <div class="card-text">
@@ -123,7 +123,7 @@
 
 
 
-            <a href="project8.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project8.jpg">
                     <div class="card-text">
@@ -133,7 +133,7 @@
                 </div>
             </a>
 
-            <a href="project9.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project9.jpg">
                     <div class="card-text">
@@ -144,7 +144,7 @@
             </a>
 
 
-            <a href="project10.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project10.jpg">
                     <div class="card-text">
@@ -154,7 +154,7 @@
                 </div>
             </a>
 
-            <a href="project11.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project11.jpg">
                     <div class="card-text">
@@ -165,7 +165,7 @@
             </a>
 
 
-            <a href="project12.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project12.jpg">
                     <div class="card-text">
@@ -175,7 +175,7 @@
                 </div>
             </a>
 
-            <a href="project13.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project13.jpg">
                     <div class="card-text">
@@ -187,7 +187,7 @@
 
 
 
-            <a href="project14.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project14.jpg">
                     <div class="card-text">
@@ -199,7 +199,7 @@
 
 
 
-            <a href="project15.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project15.jpg">
                     <div class="card-text">
@@ -210,7 +210,7 @@
             </a>
 
 
-            <a href="project16.php" class="project-link">
+            <a href="donate.php" class="project-link">
                 <div class="project-card">
                     <img src="images/project16.jpg">
                     <div class="card-text">
