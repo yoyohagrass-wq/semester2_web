@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manage Services - Admin Panel</title>
-    <link rel="stylesheet" href="adminstyle.css" />
-    <script src="Admin script.js"></script>
+    <title>Manage Services - Al Mesbah Al Modie Foundation</title>
+    <link rel="stylesheet" href="adminstyle.css?v=20260310e" />
+    <script src="Admin script.js?v=20260310e"></script>
   </head>
 
   <body>
     <header>
-      <h1>Manage Services - Al Mesbah El Modie</h1>
+      <h1>Manage Services - Al Mesbah Al Modie Foundation</h1>
+      <p>Charity and humanitarian aid in Egypt</p>
     </header>
 
     <div class="container">

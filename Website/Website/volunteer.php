@@ -10,8 +10,8 @@
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <meta name="robots" content="index, follow">
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css?v=20260310e">
+    <script src="script.js?v=20260310e"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
@@ -25,7 +25,10 @@
         <a href="index.php">
             <img src="images/logo.png" alt=" Logo" class="logo">
         </a>
-        <h1>Al Mesbah Al Modie Foundation</h1>
+        <div class="header-brand">
+            <h1>Al Mesbah Al Modie Foundation</h1>
+            <p class="header-tagline">Charity and humanitarian aid in Egypt</p>
+        </div>
         <div class="nav">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
@@ -42,6 +45,7 @@
     
     <div class="donation-container">
     <h1 class="donation-title">Become a Volunteer</h1>
+    <p class="page-intro">Volunteer with Al Mesbah Al Modie Foundation and help deliver charity and humanitarian aid in Egypt through food distribution, healthcare support, events, and community outreach.</p>
     <div class="donation-box">
       <form id="volunteerForm" class="donation-form" action="volunteer-confirmation.php" method="get">
             <input type="text" id="name" class="donation-input" placeholder="Full Name" >

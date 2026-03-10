@@ -18,18 +18,48 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.header > a {
+  display: flex;
+  align-items: center;
 }
 
 .header .logo {
   width: 80px;
   height: 80px;
-  padding-left: 20px;
+  padding-left: 0;
+}
+
+.header-brand {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .header h1 {
-  text-align: center;
-  padding-left: 50px;
   font-size: 22px;
+  margin: 0;
+  padding-left: 0;
+}
+
+.header-tagline {
+  margin-top: 6px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav a {
@@ -372,6 +402,7 @@ form button:hover {
   color: #333;
   text-align: justify;
   margin-bottom: 30px;
+  line-height: 1.7;
 }
 
 .about-subtitle {
@@ -433,7 +464,16 @@ form button:hover {
 .services-title {
   color: #09B4B4;
   font-size: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
+}
+
+.page-intro {
+  max-width: 760px;
+  margin: 0 auto 32px;
+  color: #425a5a;
+  font-size: 16px;
+  line-height: 1.7;
+  text-align: center;
 }
 
 .services-grid {
@@ -538,7 +578,7 @@ form button:hover {
 
 .donation-title {
   color: #09B4B4;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   font-size: 32px;
   position: relative;
   top: 5px;   
@@ -620,6 +660,29 @@ form button:hover {
   border-radius: 15px;
   box-shadow: 0 4px 12px gray;
   max-width: 400px;
+}
+
+.success-kicker {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #09B4B4;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.success-brand {
+  margin-bottom: 6px;
+  color: #164847;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.success-tagline {
+  margin-bottom: 20px;
+  color: #5a6f6f;
+  font-size: 14px;
 }
 
 .success-card h1 {
@@ -741,6 +804,7 @@ form button:hover {
   color: #555;
   font-size: 18px;
   margin-bottom: 40px;
+  line-height: 1.6;
 }
 
 .branches-grid {
@@ -913,6 +977,146 @@ form button:hover {
 .newsletter-text p {
     font-size: 16px;
     color: #333;
+    line-height: 1.6;
+}
+
+.auth-body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(9, 180, 180, 0.14), transparent 24%),
+    linear-gradient(180deg, #eef8f8 0%, #f8fcfc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+}
+
+.auth-shell {
+  width: 100%;
+  max-width: 460px;
+}
+
+.auth-card {
+  background-color: white;
+  border-radius: 18px;
+  box-shadow: 0 16px 35px rgba(20, 70, 68, 0.14);
+  padding: 34px 32px;
+}
+
+.auth-brand {
+  color: #0b7777;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.auth-card h1 {
+  color: #123b3b;
+  font-size: 30px;
+  margin: 12px 0 8px;
+}
+
+.auth-tagline {
+  color: #5d7272;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
+}
+
+.auth-copy {
+  color: #334949;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-form label {
+  color: #274545;
+  font-weight: 600;
+  margin-bottom: -6px;
+}
+
+.auth-form input {
+  padding: 12px 14px;
+  border: 1px solid #c9dddd;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #09B4B4;
+  box-shadow: 0 0 0 3px rgba(9, 180, 180, 0.12);
+}
+
+.auth-form button,
+.auth-form input[type="submit"] {
+  margin-top: 6px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #09B4B4;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-form button:hover,
+.auth-form input[type="submit"]:hover {
+  background-color: #078c8c;
+}
+
+.auth-links {
+  margin-top: 20px;
+  color: #4b6262;
+  line-height: 1.7;
+}
+
+.auth-links a {
+  color: #0b7777;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+.status-message {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.status-message.success {
+  background-color: #e8f7f4;
+  color: #156654;
+}
+
+.status-message.error {
+  background-color: #fdeaea;
+  color: #a03c3c;
+}
+
+.session-details {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #e2eded;
+  color: #415757;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .newsletter-box form {

@@ -10,7 +10,7 @@
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <meta name="robots" content="index, follow">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260310e">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
@@ -23,7 +23,10 @@
         <a href="index.php">
             <img src="images/logo.png" alt=" Logo" class="logo">
         </a>
-        <h1>Al Mesbah Al Modie Foundation</h1>
+        <div class="header-brand">
+            <h1>Al Mesbah Al Modie Foundation</h1>
+            <p class="header-tagline">Charity and humanitarian aid in Egypt</p>
+        </div>
         <div class="nav">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
@@ -38,7 +41,7 @@
 
     <div class="branches-container">
         <h1 class="branches-title">Our Branches</h1>
-        <p class="branches-subtitle">Find us across different locations in Cairo</p>
+        <p class="branches-subtitle">Find the Al Mesbah Al Modie Foundation branch network that supports charity and humanitarian aid work in Egypt, including donation coordination, volunteering, and direct family support.</p>
 
         <div class="branches-grid">
             <a href="https://www.google.com/maps?q=Administrative%20Building%2C%20Office%20No.%2014%2C%20Al%20Rehab%20City%2C%20Cairo" class="branch-card" target="_blank" rel="noopener noreferrer">

@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard - Al Mesbah El Modie</title>
-    <link rel="stylesheet" href="adminstyle.css" />
+    <title>Admin Dashboard - Al Mesbah Al Modie Foundation</title>
+    <link rel="stylesheet" href="adminstyle.css?v=20260310e" />
   </head>
 
   <body>
     <header>
-      <h1>Admin Dashboard - Al Mesbah El Modie</h1>
+      <h1>Al Mesbah Al Modie Foundation Admin Dashboard</h1>
+      <p>Charity and humanitarian aid in Egypt</p>
     </header>
 
     <div class="container">

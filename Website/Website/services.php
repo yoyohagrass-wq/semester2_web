@@ -10,8 +10,8 @@
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <meta name="robots" content="index, follow">
 
-   <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+   <link rel="stylesheet" href="style.css?v=20260310e">
+    <script src="script.js?v=20260310e"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
@@ -22,7 +22,10 @@
         <a href="index.php">
             <img src="images/logo.png" alt=" Logo" class="logo">
         </a>
-        <h1>Al Mesbah Al Modie Foundation</h1>
+        <div class="header-brand">
+            <h1>Al Mesbah Al Modie Foundation</h1>
+            <p class="header-tagline">Charity and humanitarian aid in Egypt</p>
+        </div>
         <div class="nav">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
@@ -42,6 +45,7 @@
 
     <div class="services-container">
     <h1 class="services-title">Our Services</h1>
+    <p class="page-intro">Al Mesbah Al Modie Foundation provides charity and humanitarian aid in Egypt through food security, medical support, housing assistance, seasonal campaigns, and direct help for families facing hardship.</p>
 
     <div class="services-grid">
 
@@ -245,7 +249,7 @@
   <div class="newsletter-box">
       <div class="newsletter-text">
           <h2>Sign Up for Our Newsletter</h2>
-          <p>Stay updated on our projects and events by subscribing to our newsletter.</p>
+          <p>Receive updates from Al Mesbah Al Modie Foundation about charity programs and humanitarian aid projects across Egypt.</p>
       </div>
 
       <form id="newsletterForm" action="subscription-confirmation.php" method="get" onsubmit="return validateNewsletterForm();">

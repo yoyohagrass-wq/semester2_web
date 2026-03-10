@@ -18,14 +18,27 @@ body {
 
 /* Start Header */
 
-h1 {
+header {
   background-color: #5989d5;
   color: white;
   padding: 15px 30px;
   text-align: center;
+}
+
+header h1 {
+  color: white;
   font-size: 22px;
   font-weight: bold;
   letter-spacing: 1px;
+  margin: 0;
+}
+
+header p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .container {
@@ -257,6 +270,12 @@ select {
   text-align: center;
   margin: auto;
   margin-top: 10%;
+}
+
+.login-box p {
+  margin: 12px 0 20px;
+  color: #4e5f7e;
+  line-height: 1.6;
 }
 
 .login-box h2 {

@@ -37,7 +37,7 @@ function validateInquireForm() {
         return showError("Please enter a valid phone number.");
     }
 
-    alert("Thank you for your inquiry, " + name + "!");
+    alert("Thank you for your inquiry, " + name + ". Al Mesbah Al Modie Foundation will contact you soon.");
     return true;
 }
 
@@ -67,7 +67,7 @@ function validateFeedbackForm() {
         return showError("Please enter your feedback message.");
     }
 
-    alert("Thank you for your feedback, " + name + "!");
+    alert("Thank you for helping Al Mesbah Al Modie Foundation improve, " + name + "!");
     return true;
 }
 
@@ -84,7 +84,7 @@ function validateNewsletterForm() {
         return showError("Please enter a valid email.");
     }
 
-    alert("Thank you for subscribing, " + firstName + "!");
+    alert("Thank you for subscribing to Al Mesbah Al Modie Foundation, " + firstName + "!");
     return true;
 }
 
@@ -109,7 +109,7 @@ function validateVolunteerForm() {
         return showError("Please enter a valid phone number.");
     }
 
-    alert("Form submitted successfully!");
+    alert("Your volunteer request for Al Mesbah Al Modie Foundation has been submitted successfully.");
     return true;
 }
 
@@ -127,7 +127,7 @@ function updateProgress() {
     }
 
     progressBar.style.width = percent + "%";
-    progressText.textContent = "EGP " + currentAmount + " raised out of " + goal + " (January goal)";
+    progressText.textContent = "EGP " + currentAmount + " raised out of " + goal + " for the current foundation campaign";
 }
 
 function validateDonateForm() {
@@ -170,7 +170,7 @@ function setWelcomeMessage() {
         greeting = "Good afternoon";
     }
 
-    welcomeMessage.textContent = greeting + ". Thank you for supporting families across Egypt.";
+    welcomeMessage.textContent = greeting + ". Al Mesbah Al Modie Foundation provides charity and humanitarian aid across Egypt.";
 }
 
 function setupFeedbackForm() {
@@ -220,7 +220,7 @@ function setupDonateForm() {
         currentAmount += amount;
         updateProgress();
 
-        alert("Thank you for donating EGP " + amount + "!");
+        alert("Thank you for donating EGP " + amount + " to Al Mesbah Al Modie Foundation!");
 
         amountField.value = "";
         const nameField = document.getElementById("name");

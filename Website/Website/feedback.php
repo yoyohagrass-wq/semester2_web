@@ -10,8 +10,8 @@
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <meta name="robots" content="index, follow">
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css?v=20260310e">
+    <script src="script.js?v=20260310e" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
@@ -24,7 +24,10 @@
         <a href="index.php">
             <img src="images/logo.png" alt=" Logo" class="logo">
         </a>
-        <h1>Al Mesbah Al Modie Foundation</h1>
+        <div class="header-brand">
+            <h1>Al Mesbah Al Modie Foundation</h1>
+            <p class="header-tagline">Charity and humanitarian aid in Egypt</p>
+        </div>
         <div class="nav">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
@@ -41,6 +44,7 @@
     
 <div class="donation-container">
   <h1 class="donation-title">Submit Your Feedback</h1>
+  <p class="page-intro">Your comments help Al Mesbah Al Modie Foundation improve how it delivers charity and humanitarian aid in Egypt through responsive services, better communication, and stronger community support.</p>
 
   <div class="donation-box">
     <form id="feedbackForm" class="donation-form" action="feedback-confirmation.php" method="get">

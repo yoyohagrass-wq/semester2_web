@@ -10,7 +10,7 @@
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <meta name="robots" content="index, follow">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260310e">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
@@ -23,7 +23,10 @@
             <a href="index.php">
                 <img src="images/logo.png" alt=" Logo" class="logo">
             </a>
-            <h1>Al Mesbah Al Modie Foundation</h1>
+            <div class="header-brand">
+                <h1>Al Mesbah Al Modie Foundation</h1>
+                <p class="header-tagline">Charity and humanitarian aid in Egypt</p>
+            </div>
             <div class="nav">
                 <a href="index.php">Home</a>
                 <a href="about.php">About</a>
@@ -38,6 +41,7 @@
 
 <div class="faq-container">
     <h1 class="faq-title">Frequently Asked Questions</h1>
+    <p class="page-intro">Learn how Al Mesbah Al Modie Foundation provides charity and humanitarian aid in Egypt, from donations and volunteering to branch services and in-kind support.</p>
 
     <div class="faq-box">
         <div class="faq-item">
@@ -71,7 +75,7 @@
       <div class="contact-box">
         <div class="contact-text">
             <h2>Inquire</h2>
-            <p>Our team will respond to you as soon as possible.</p>
+            <p>Our team will respond as soon as possible with help related to foundation services, donations, or humanitarian aid programs in Egypt.</p>
         </div>
         
         <form id="inquireForm" action="feedback-confirmation.php" method="get" onsubmit="return validateInquireForm();" >

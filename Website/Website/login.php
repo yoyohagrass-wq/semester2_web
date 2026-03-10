@@ -4,6 +4,7 @@ session_start();
 $name = "";
 $email = "";
 $message = "";
+$messageClass = "";
 $filename = "users.txt";
 $filepath = __DIR__ . DIRECTORY_SEPARATOR . $filename;
 
@@ -35,7 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["userid"] = $userid;
                             $_SESSION["username"] = $username;
                             $_SESSION["useremail"] = $useremail;
-                            $message = "Login successful.";
+                            $message = "Login successful. Welcome back to Al Mesbah Al Modie Foundation.";
+                            $messageClass = "success";
                             $found = true;
                             break;
                         }
@@ -47,10 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if (!$found) {
-            $message = "User not found.";
+            $message = "User not found. Register to support Al Mesbah Al Modie Foundation.";
+            $messageClass = "error";
         }
     } else {
-        $message = "Please enter name and email.";
+        $message = "Please enter your name and email.";
+        $messageClass = "error";
     }
 }
 ?>
@@ -59,30 +63,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login User</title>
+    <title>Login - Al Mesbah Al Modie Foundation</title>
+    <meta name="description" content="Log in to Al Mesbah Al Modie Foundation to stay connected with charity and humanitarian aid activities in Egypt.">
+    <meta name="author" content="Al Mesbah Al Modie Foundation">
+    <link rel="stylesheet" href="style.css?v=20260310e">
 </head>
-<body>
-    <form action="login.php" method="post">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($name); ?>">
-        <br>
-        <label for="email">Email:</label>
-        <input type="text" name="email" id="email" value="<?php echo htmlspecialchars($email); ?>">
-        <br>
-        <input type="submit" value="Login">
-    </form>
+<body class="auth-body">
+    <main class="auth-shell">
+        <section class="auth-card">
+            <div class="auth-brand">Al Mesbah Al Modie Foundation</div>
+            <h1>Member Login</h1>
+            <p class="auth-tagline">Charity and humanitarian aid in Egypt</p>
+            <p class="auth-copy">Sign in to access your foundation account and stay connected with donations, volunteering, and community support programs across Egypt.</p>
 
-    <p><a href="register.php">Go to Register</a></p>
+            <form action="login.php" method="post" class="auth-form">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($name); ?>" placeholder="Enter your name">
 
-    <?php
-    if ($message != "") {
-        echo "<p>" . $message . "</p>";
-    }
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" value="<?php echo htmlspecialchars($email); ?>" placeholder="Enter your email">
 
-    if (isset($_SESSION["userid"])) {
-        echo "<p>Session User: " . $_SESSION["userid"] . " - " . $_SESSION["username"] . " - " . $_SESSION["useremail"] . "</p>";
-        echo "<a href='login.php?logout=1'>Logout</a>";
-    }
-    ?>
+                <input type="submit" value="Login">
+            </form>
+
+            <div class="auth-links">
+                <p><a href="register.php">Create an account</a> to support the foundation.</p>
+                <p><a href="index.php">Back to home</a></p>
+            </div>
+
+            <?php if ($message != ""): ?>
+                <div class="status-message <?php echo $messageClass; ?>"><?php echo htmlspecialchars($message); ?></div>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION["userid"])): ?>
+                <div class="session-details">
+                    <p>Session User: <?php echo htmlspecialchars($_SESSION["userid"] . " - " . $_SESSION["username"] . " - " . $_SESSION["useremail"]); ?></p>
+                    <p><a href="login.php?logout=1">Logout</a></p>
+                </div>
+            <?php endif; ?>
+        </section>
+    </main>
 </body>
 </html>

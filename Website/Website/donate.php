@@ -10,8 +10,8 @@
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <meta name="robots" content="index, follow">
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css?v=20260310e">
+    <script src="script.js?v=20260310e"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
@@ -24,7 +24,10 @@
         <a href="index.php">
             <img src="images/logo.png" alt=" Logo" class="logo">
         </a>
-        <h1>Al Mesbah Al Modie Foundation</h1>
+        <div class="header-brand">
+            <h1>Al Mesbah Al Modie Foundation</h1>
+            <p class="header-tagline">Charity and humanitarian aid in Egypt</p>
+        </div>
         <div class="nav">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
@@ -41,6 +44,7 @@
     
     <div class="donation-container">
         <h1 class="donation-title">Make a Donation</h1>
+        <p class="page-intro">Support Al Mesbah Al Modie Foundation, a charity and humanitarian aid organization in Egypt, by funding food assistance, medical care, emergency relief, and community support for families in need.</p>
         <div class="donation-box">
             <form id="donateForm" class="donation-form" action="donation-confirmation.php" method="get">
                 <label for="name">Full Name:</label>
@@ -51,7 +55,6 @@
 
                 <label for="amount">Donation Amount:</label>
                 <input type="text" id="donation-amount" name="Donation-Amount" placeholder="EGP">
-                </select>
 
                 <label for="message">Message (Optional):</label>
                 <textarea id="donorMessage" class="donation-textarea" rows="4" placeholder="Add a message..."></textarea>

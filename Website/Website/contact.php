@@ -10,8 +10,8 @@
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <meta name="robots" content="index, follow">
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css?v=20260310e">
+    <script src="script.js?v=20260310e"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
@@ -23,7 +23,10 @@
         <a href="index.php">
             <img src="images/logo.png" alt=" Logo" class="logo">
         </a>
-        <h1>Al Mesbah Al Modie Foundation</h1>
+        <div class="header-brand">
+            <h1>Al Mesbah Al Modie Foundation</h1>
+            <p class="header-tagline">Charity and humanitarian aid in Egypt</p>
+        </div>
         <div class="nav">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
@@ -37,11 +40,11 @@
 
 
     <div class="about-container">
-        <h1 class="about-title">Contact Us</h1>
+        <h1 class="about-title">Contact Al Mesbah Al Modie Foundation</h1>
         <p class="about-text">
-            Reach out to Al Mesbah Al Modie Foundation for general inquiries, partnership opportunities,
-            volunteering information, or donation support. Our team is available to help and will respond
-            as soon as possible.
+            Reach out to Al Mesbah Al Modie Foundation for donation support, volunteering, branch details,
+            or partnership opportunities. As a charity and humanitarian aid organization in Egypt, we help
+            donors, volunteers, and families connect with the right team quickly.
         </p>
 
         <table class="about-table">
@@ -72,7 +75,7 @@
     <div class="contact-box">
         <div class="contact-text">
             <h2>Send an Inquiry</h2>
-            <p>Use the form to contact our team about donations, volunteering, or general questions.</p>
+            <p>Use the form to contact our team about charity programs, humanitarian aid, donations, or volunteering in Egypt.</p>
         </div>
 
         <form id="inquireForm" action="feedback-confirmation.php" method="get" onsubmit="return validateInquireForm();">
