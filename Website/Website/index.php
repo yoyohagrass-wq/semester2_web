@@ -1,309 +1,319 @@
+<?php
+$impactStats = [
+    ["value" => "16", "label" => "Active programs"],
+    ["value" => "3", "label" => "Cairo branches"],
+    ["value" => "100K+", "label" => "EGP monthly goal"],
+];
+
+$supportPillars = [
+    [
+        "icon" => "fa-solid fa-bowl-food",
+        "title" => "Food Security",
+        "text" => "Hot meals, Ramadan tables, and grocery support that help families manage daily needs.",
+    ],
+    [
+        "icon" => "fa-solid fa-heart-pulse",
+        "title" => "Medical Support",
+        "text" => "Dialysis, cancer care, hearing aids, and prosthetic support for vulnerable patients.",
+    ],
+    [
+        "icon" => "fa-solid fa-hand-holding-heart",
+        "title" => "Emergency Relief",
+        "text" => "Winter blankets, relief bags, debt support, and home renovation for families under pressure.",
+    ],
+];
+
+$featuredPrograms = [
+    [
+        "image" => "images/project1.jpg",
+        "title" => "Maedet El Rahman",
+        "tag" => "Seasonal relief",
+        "description" => "Public iftar tables during Ramadan that provide dependable daily meals for families in need.",
+    ],
+    [
+        "image" => "images/project3.jpg",
+        "title" => "Ramadan Food Boxes",
+        "tag" => "Family support",
+        "description" => "Essential food boxes that help households prepare meals at home with dignity and stability.",
+    ],
+    [
+        "image" => "images/project7.jpg",
+        "title" => "Prosthetic Limbs Support",
+        "tag" => "Healthcare",
+        "description" => "Artificial limbs and practical support that help amputees regain movement and independence.",
+    ],
+    [
+        "image" => "images/project8.jpg",
+        "title" => "Water Connection Projects",
+        "tag" => "Infrastructure",
+        "description" => "Clean water access for rural families through direct connection and improvement projects.",
+    ],
+    [
+        "image" => "images/project11.jpg",
+        "title" => "Home Renovation in Upper Egypt",
+        "tag" => "Housing",
+        "description" => "Repairing and rebuilding homes for families living in unsafe or unstable conditions.",
+    ],
+    [
+        "image" => "images/project14.jpg",
+        "title" => "Cancer Patient Care",
+        "tag" => "Medical care",
+        "description" => "Treatment assistance and regular checkups that reduce pressure on patients and caregivers.",
+    ],
+    [
+        "image" => "images/project15.jpg",
+        "title" => "Dialysis Unit Support",
+        "tag" => "Hospital support",
+        "description" => "Funding equipment and treatment capacity so kidney patients receive care safely and consistently.",
+    ],
+    [
+        "image" => "images/project16.jpg",
+        "title" => "Relief Bag Distribution",
+        "tag" => "Rapid response",
+        "description" => "Large-scale campaigns delivering basic essentials to families during difficult periods.",
+    ],
+];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Al Mesbah Al Modie Foundation</title>
-    <meta name="description" content="Al Mesbah Al Modie Foundation is a nonprofit charity in Egypt supporting needy families through humanitarian, social, and community projects.">
-    <meta name="keywords" content="charity Egypt, nonprofit foundation, humanitarian aid, community support">
-    <meta name="author" content="Al Mesbah Al Modie Foundation">
-    <meta name="robots" content="index, follow">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> 
+    <meta name="description" content="Al Mesbah Al Modie Foundation is a nonprofit charity in Egypt supporting needy families through humanitarian, social, and community projects." />
+    <meta name="keywords" content="charity Egypt, nonprofit foundation, humanitarian aid, community support" />
+    <meta name="author" content="Al Mesbah Al Modie Foundation" />
+    <meta name="robots" content="index, follow" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=20260310d">
+    <link rel="stylesheet" href="home.css?v=20260310d">
 </head>
-<body>
-
-    <!-- Start Header -->
-
-    <div class="header">
-        <a href="index.php">
-            <img src="images/logo.png" alt=" Logo" class="logo">
-        </a>
-        <h1>Al Mesbah Al Modie Foundation| Charity & Humanitarian Aid in Egypt</h1>
-        <div class="nav">
-            <a href="index.php">Home</a>
-            <a href="about.php">About</a>
-            <a href="services.php">Services</a>
-            <a href="volunteer.php">Volunteer</a>
-            <a href="donate.php">Donate</a>
+<body class="home-page">
+    <nav class="navbar navbar-expand-lg navbar-dark home-navbar sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="index.php">
+                <img src="images/logo.png" alt="Al Mesbah Al Modie Foundation logo" class="home-logo" width="84" height="84">
+                <span class="brand-copy">
+                    <span class="brand-name">Al Mesbah Al Modie Foundation</span>
+                    <span class="brand-subtitle">Charity and humanitarian aid in Egypt</span>
+                </span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#homeNavbar" aria-controls="homeNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="homeNavbar">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="volunteer.php">Volunteer</a></li>
+                    <li class="nav-item"><a class="btn btn-warning ms-lg-3 px-4 fw-semibold" href="donate.php">Donate</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- End Header -->
-
-
-<!-- Start Content -->
-
-    <div id="welcomeMessage"></div>
-
-    <div class="content-text">
-        <h2>Your participation makes a difference</h2>
-        <p>Welcome to Al Mesbah Al Modie Foundation — A nonprofit organization in Egypt dedicated to spreading kindness.</p>
-    </div>
-
-
-    <!-- Start Our Projects -->
-
-     <div class="our-projects">
-        <div class="projects">
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project1.jpg">
-                    <div class="card-text">
-                        <h3>Maedet El Rahman</h3>
-                        <p>Our organization arranges Ma’edet El Rahman, public iftar tables during Ramadan that serve free meals to families in need.</p>
+    <main>
+        <section class="hero-section">
+            <div class="hero-orb hero-orb-one"></div>
+            <div class="hero-orb hero-orb-two"></div>
+            <div class="hero-orb hero-orb-three"></div>
+            <div class="container py-5">
+                <div id="welcomeMessage" class="home-welcome fade-in">Supporting families across Egypt.</div>
+                <div class="row align-items-center g-5 py-lg-4">
+                    <div class="col-lg-6 fade-in">
+                        <span class="hero-kicker">Direct help. Real outcomes.</span>
+                        <h1 class="display-4 fw-bold text-white mt-3">Supporting families with food, healthcare, and emergency relief.</h1>
+                        <p class="hero-lead mt-4">
+                            Al Mesbah Al Modie Foundation works across Egypt to deliver practical support through trusted community programs, branch coordination, and donor-backed campaigns.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3 mt-4">
+                            <a href="donate.php" class="btn btn-warning btn-lg px-4 fw-semibold">Donate now</a>
+                            <a href="volunteer.php" class="btn btn-outline-light btn-lg px-4">Join as a volunteer</a>
+                        </div>
+                        <div class="row row-cols-1 row-cols-sm-3 g-3 mt-4">
+                            <?php foreach ($impactStats as $index => $stat): ?>
+                                <div class="col">
+                                    <div class="impact-stat-card fade-in delay-<?= $index + 1 ?>">
+                                        <strong><?= htmlspecialchars($stat["value"]) ?></strong>
+                                        <span><?= htmlspecialchars($stat["label"]) ?></span>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 fade-in delay-2">
+                        <div class="hero-showcase">
+                            <div class="hero-main-panel float-card">
+                                <img src="images/project11.jpg" alt="Volunteers renovating a home" class="img-fluid">
+                                <div class="hero-main-caption">
+                                    <span>Current focus</span>
+                                    <h2>Fast support for families facing housing and medical pressure.</h2>
+                                </div>
+                            </div>
+                            <div class="hero-side-stack">
+                                <div class="hero-mini-panel float-card delay-float">
+                                    <img src="images/project1.jpg" alt="Food relief initiative" class="img-fluid">
+                                </div>
+                                <div class="hero-mini-panel hero-note float-card">
+                                    <p class="mb-1 text-uppercase small fw-semibold">What donations fund</p>
+                                    <strong>Meals, treatment, winter aid, and safer homes.</strong>
+                                    <p class="mb-0 mt-2">Every contribution is routed into practical community support.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </a>
+            </div>
+        </section>
 
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project2.jpg">
-                    <div class="card-text">
-                        <h3>Orphan’s Day Celebration</h3>
-                        <p>We organize special events for orphans filled with joy, games, and gifts to bring happiness and a sense of belonging.</p>
+        <section class="support-section py-5">
+            <div class="container">
+                <div class="row justify-content-center mb-5">
+                    <div class="col-lg-8 text-center fade-in">
+                        <span class="section-tag section-tag-dark">Core support</span>
+                        <h2 class="section-title mt-3">Three ways the foundation shows up fast.</h2>
+                        <p class="section-copy mb-0">Food, treatment, and urgent relief programs are designed to turn donations into direct support without delay.</p>
                     </div>
                 </div>
-            </a>
+                <div class="row g-4">
+                    <?php foreach ($supportPillars as $index => $pillar): ?>
+                        <div class="col-md-4">
+                            <div class="pillar-card h-100 fade-in delay-<?= $index + 1 ?>">
+                                <div class="pillar-icon">
+                                    <i class="<?= htmlspecialchars($pillar["icon"]) ?>"></i>
+                                </div>
+                                <h2><?= htmlspecialchars($pillar["title"]) ?></h2>
+                                <p><?= htmlspecialchars($pillar["text"]) ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
 
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project3.jpg">
-                    <div class="card-text">
-                        <h3>Ramadan Food Boxes</h3>
-                        <p>During Ramadan, we distribute essential food boxes to families, helping them prepare their daily meals with ease.</p>
+        <section class="featured-section py-5">
+            <div class="container">
+                <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4 fade-in">
+                    <div>
+                        <span class="section-tag">Featured programs</span>
+                        <h2 class="section-title mt-2">Where support turns into direct community impact.</h2>
+                        <p class="section-copy mb-0">A selection of the programs donors and volunteers help sustain across the year.</p>
+                    </div>
+                    <a href="services.php" class="btn btn-outline-dark px-4">View all services</a>
+                </div>
+                <div class="row g-4">
+                    <?php foreach ($featuredPrograms as $index => $program): ?>
+                        <div class="col-md-6 col-xl-3">
+                            <a href="donate.php" class="program-link fade-in delay-<?= ($index % 4) + 1 ?>">
+                                <article class="card border-0 h-100 program-card">
+                                    <img src="<?= htmlspecialchars($program["image"]) ?>" alt="<?= htmlspecialchars($program["title"]) ?>" class="card-img-top program-image">
+                                    <div class="card-body d-flex flex-column p-4">
+                                        <span class="program-tag"><?= htmlspecialchars($program["tag"]) ?></span>
+                                        <h3 class="program-title mt-3"><?= htmlspecialchars($program["title"]) ?></h3>
+                                        <p class="program-description"><?= htmlspecialchars($program["description"]) ?></p>
+                                        <span class="program-cta mt-auto">Support this program <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                                    </div>
+                                </article>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+
+        <section class="inquiry-section py-5">
+            <div class="container">
+                <div class="row g-4 align-items-stretch">
+                    <div class="col-lg-5">
+                        <div class="inquiry-panel h-100 fade-in">
+                            <span class="section-tag">Reach out</span>
+                            <h2 class="section-title mt-2">Ask a question or connect with the team.</h2>
+                            <p class="section-copy">We respond to inquiries about donations, volunteering, branch support, and ongoing programs.</p>
+                            <div class="contact-stack mt-4">
+                                <div class="contact-chip">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <span>16093</span>
+                                </div>
+                                <div class="contact-chip">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>info@almesbah-almode.com</span>
+                                </div>
+                                <div class="contact-chip align-items-start">
+                                    <i class="fa-solid fa-location-dot mt-1"></i>
+                                    <span>6 Atlas Buildings, Ahmed Fakhry St., Sixth District, Nasr City, Cairo</span>
+                                </div>
+                            </div>
+                            <div class="quick-links-box mt-4">
+                                <a href="feedback.php">Feedback</a>
+                                <a href="branches.php">Branches</a>
+                                <a href="faqs.php">FAQs</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="form-panel h-100 fade-in delay-2">
+                            <form id="inquireForm" action="feedback-confirmation.php" method="get" onsubmit="return validateInquireForm();">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="inquireName" name="inquireName" placeholder="Your Name" required>
+                                            <label for="inquireName">Your Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="inquireEmail" name="inquireEmail" placeholder="Your Email" required>
+                                            <label for="inquireEmail">Your Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="inquirePhone" name="inquirePhone" placeholder="Your Phone" required>
+                                            <label for="inquirePhone">Your Phone</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control inquiry-textarea" id="inquireMessage" name="inquireMessage" placeholder="Your Message" required></textarea>
+                                            <label for="inquireMessage">Your Message</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 pt-2">
+                                        <p class="small text-muted mb-0">Our team will respond as soon as possible.</p>
+                                        <button type="submit" class="btn btn-dark px-4">Send inquiry</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </a>
+            </div>
+        </section>
+    </main>
 
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project4.jpg">
-                    <div class="card-text">
-                        <h3>Mother’s Day Celebration</h3>
-                        <p>We honor mothers with gifts and gatherings to appreciate their efforts and spread love and gratitude in the community.</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project5.jpg">
-                    <div class="card-text">
-                        <h3>Paying Debts for the Needy</h3>
-                        <p>Our initiative helps families and individuals who are unable to repay their debts, relieving them from financial burdens.</p>
-                    </div>
-                </div>
-            </a>
-
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project6.jpg">
-                    <div class="card-text">
-                        <h3>Meat Distribution</h3>
-                        <p>Each Eid Al-Adha, we distribute fresh sacrificial meat to underprivileged families across various regions of Egypt.</p>
-                    </div>
-                </div>
-            </a>
-
-
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project7.jpg">
-                    <div class="card-text">
-                        <h3>Prosthetic Limbs Support</h3>
-                        <p>We provide artificial limbs and medical support to amputees, helping them regain independence and confidence.</p>
-                    </div>
-                </div>
-            </a>
-
-
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project8.jpg">
-                    <div class="card-text">
-                        <h3>Water Connection Projects</h3>
-                        <p>We work to supply clean and safe water to families in rural and underserved areas, improving their health and living conditions.</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project9.jpg">
-                    <div class="card-text">
-                        <h3>Distribution of Blankets</h3>
-                        <p>We distribute blankets and winter supplies to protect families from the cold during harsh winter months.</p>
-                    </div>
-                </div>
-            </a>
-
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project10.jpg">
-                    <div class="card-text">
-                        <h3>Bride Preparation Support</h3>
-                        <p>We assist brides from low-income families by providing essential home furnishings and wedding needs.</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project11.jpg">
-                    <div class="card-text">
-                        <h3>Home Renovation in Upper Egypt</h3>
-                        <p>We repair and rebuild homes for families living in poor conditions across Upper Egypt villages.</p>
-                    </div>
-                </div>
-            </a>
-
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project12.jpg">
-                    <div class="card-text">
-                        <h3>Water Purification Stations</h3>
-                        <p>We establish purification stations to provide clean, filtered water to rural communities lacking access to safe drinking water.</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project13.jpg">
-                    <div class="card-text">
-                        <h3>Hearing Aid Installation for Children</h3>
-                        <p>We provide hearing aids and medical support to children with hearing difficulties, helping them reconnect, in their communities.</p>
-                    </div>
-                </div>
-            </a>
-
-
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project14.jpg">
-                    <div class="card-text">
-                        <h3>Cancer Patient Care</h3>
-                        <p>We offer support to cancer patients through treatment assistance and regular medical checkups to ease their journey toward recovery.</p>
-                    </div>
-                </div>
-            </a>
-
-
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project15.jpg">
-                    <div class="card-text">
-                        <h3>Dialysis Unit Support</h3>
-                        <p>We fund and equip dialysis units to ensure that patients with kidney failure receive the necessary treatment in a safe environment.</p>
-                    </div>
-                </div>
-            </a>
-
-
-            <a href="donate.php" class="project-link">
-                <div class="project-card">
-                    <img src="images/project16.jpg">
-                    <div class="card-text">
-                        <h3>Relief Bag Distribution</h3>
-                        <p>We organize large-scale campaigns to distribute essential relief bags filled with basic necessities to families in need during times of crisis.</p>
-                    </div>
-                </div>
-            </a>
-
-
+    <footer class="home-footer py-4">
+        <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 fade-in">
+            <div>
+                <strong class="d-block">Al Mesbah Al Modie Foundation</strong>
+                <span class="footer-copy">Practical support for families across Egypt.</span>
+            </div>
+            <div class="footer-links-row d-flex flex-wrap gap-3">
+                <a href="about.php">About</a>
+                <a href="services.php">Services</a>
+                <a href="volunteer.php">Volunteer</a>
+                <a href="donate.php">Donate</a>
+            </div>
+            <div class="footer-social d-flex align-items-center gap-3">
+                <a href="https://www.facebook.com/ElMesbah.ElModea" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/elmesbaahelmodea/?igsh=MXJxYWFjazQwMjZiMw%3D%3D#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/201210012324" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
         </div>
-     </div>
+    </footer>
 
-    <!-- End Our Projects -->
-
-
-    <!-- Start Inquire -->
-
-    <div class="contact-box">
-        <div class="contact-text">
-            <h2>Inquire</h2>
-            <p>Our team will respond to you as soon as possible.</p>
-        </div>
-        
-        <form id="inquireForm" action="feedback-confirmation.php" method="get" >
-            <input type="text" id="inquireName" placeholder="Your Name: " >
-            <input type="text" id="inquireEmail" placeholder="Your Email: " >
-            <input type="text" id="inquirePhone" placeholder="Your Phone: " >
-            <textarea id="inquireMessage" rows="4" placeholder="Your Message: " ></textarea>
-            <button type="submit">Send Inquiry</button>
-        </form>
-    </div>
-
-    <!-- End Inquire -->
-
-
-    <!-- Start Footer -->
-<div class="footer">
-  <!-- LEFT SIDE -->
-  <div class="footer-left">
-    <h5>Quick Links</h5>
-    <ul class="footer-links">
-      <li><a href="feedback.php">Feedback</a></li>
-      <li><a href="branches.php">Branches</a></li> 
-      <li><a href="faqs.php">FAQs</a></li>
-    </ul>
-  </div>
-
-  <!-- RIGHT SIDE -->
-  <div class="footer-right">
-    <div class="contact-item">
-      <i class="fa-solid fa-phone"></i>
-      <div>16093</div>
-    </div>
-
-    <div class="contact-item">
-      <i class="fa-solid fa-envelope"></i>
-      <div>info@almesbah-almode.com</div>
-    </div>
-
-    <div class="contact-item">
-      <i class="fa-solid fa-location-dot"></i>
-      <div>6 Atlas Buildings, Ahmed Fakhry St., <br> Sixth District, Nasr City, Cairo</div>
-    </div>
-
-    <div class="footer-right-icons">
-      <a href="https://www.facebook.com/ElMesbah.ElModea" target="_blank"><i class="fa-brands fa-facebook-f" id="facebook-icon"></i></a>
-      <a href="https://www.instagram.com/elmesbaahelmodea/?igsh=MXJxYWFjazQwMjZiMw%3D%3D#" target="_blank"><i class="fa-brands fa-instagram" id="instagram-icon"></i></a>
-      <a href="https://wa.me/201210012324" target="_blank"><i class="fa-brands fa-whatsapp" id="whatsapp-icon"></i></a>
-    </div>
-  </div>
-</div>
-
-    <!-- End Footer -->
-
-
-<!-- End Content -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js?v=20260310d"></script>
 </body>
 </html>
