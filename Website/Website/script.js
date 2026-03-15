@@ -133,7 +133,7 @@ function updateProgress() {
 function validateDonateForm() {
     const name = getValue("name");
     const email = getValue("email");
-    const amount = parseFloat(getValue("donation-amount"));
+    const amount = Number.parseFloat(getValue("donation-amount"));
 
     if (!name) {
         return showError("Please enter your full name.");
@@ -147,7 +147,7 @@ function validateDonateForm() {
         return showError("Please enter a valid email.");
     }
 
-    if (isNaN(amount) || amount <= 0) {
+    if (Number.isNaN(amount) || amount <= 0) {
         return showError("Please enter a valid donation amount.");
     }
 
@@ -203,35 +203,14 @@ function setupVolunteerForm() {
 
 function setupDonateForm() {
     const form = document.getElementById("donateForm");
-    const amountField = document.getElementById("donation-amount");
 
-    if (!form || !amountField) {
+    if (!form) {
         return;
     }
 
     form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
         if (!validateDonateForm()) {
-            return;
-        }
-
-        const amount = parseFloat(amountField.value);
-        currentAmount += amount;
-        updateProgress();
-
-        alert("Thank you for donating EGP " + amount + " to Al Mesbah Al Modie Foundation!");
-
-        amountField.value = "";
-        const nameField = document.getElementById("name");
-        const emailField = document.getElementById("email");
-
-        if (nameField) {
-            nameField.value = "";
-        }
-
-        if (emailField) {
-            emailField.value = "";
+            event.preventDefault();
         }
     });
 }

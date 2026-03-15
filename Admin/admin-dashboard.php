@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+  header('Location: admin-login.php');
+  exit;
+}
+
+if (isset($_GET['logout']) && $_GET['logout'] === '1') {
+  session_unset();
+  session_destroy();
+  header('Location: admin-login.php');
+  exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,19 +32,20 @@
       <div class="sidebar">
         <div class="sidebar-list">
           <a href="admin-dashboard.php" class="active">🏠 Dashboard</a>
+          <a href="manage-users.php">👤 Users</a>
           <a href="manage-services.php">📦 Services</a>
           <a href="view-donations.php">💰 Donations</a>
           <a href="messages.php">📨 Messages</a>
           <a href="volunteer-requests.php">🤝 Volunteers</a>
           <a href="service-feedback.php">⭐ Feedback</a>
           <div class="logout">
-            <a href="admin-login.php">Logout</a>
+            <a href="admin-dashboard.php?logout=1">Logout</a>
           </div>
         </div>
       </div>
 
       <div class="main">
-        <h2>Welcome, Admin</h2>
+        <h2>Welcome, <?php echo htmlspecialchars($_SESSION['admin_username'] ?? 'Admin'); ?></h2>
 
         <div class="card">
           <h3>Recent Donations</h3>
@@ -51,6 +67,14 @@
           <h3>New Messages</h3>
           <ul>
             <li>You have 5 new messages.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Admin Tasks</h3>
+          <ul>
+            <li><a href="manage-users.php">CRUD for users</a></li>
+            <li><a href="manage-services.php">CRUD for services</a></li>
           </ul>
         </div>
       </div>

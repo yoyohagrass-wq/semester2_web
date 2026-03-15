@@ -314,3 +314,19 @@ select {
   color: #777;
   text-align: center;
 }
+
+.status-message {
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+}

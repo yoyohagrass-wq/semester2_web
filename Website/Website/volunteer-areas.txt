@@ -1,0 +1,4 @@
+food-distribution|Food Distribution
+events|Event Organization
+medical-support|Medical Support
+education|Education & Awareness

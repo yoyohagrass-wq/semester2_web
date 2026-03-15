@@ -1,3 +1,27 @@
+<?php
+$serviceRows = [];
+$servicesFile = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'services-data.txt';
+
+if (file_exists($servicesFile)) {
+  $lines = file($servicesFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  if ($lines !== false) {
+    foreach ($lines as $line) {
+      $parts = explode('~', $line, 3);
+      $id = intval(trim($parts[0] ?? '0'));
+      $name = trim($parts[1] ?? '');
+      $description = trim($parts[2] ?? '');
+
+      if ($id > 0 && $name !== '') {
+        $serviceRows[] = [
+          'id' => $id,
+          'name' => $name,
+          'description' => $description
+        ];
+      }
+    }
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +34,7 @@
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <meta name="robots" content="index, follow">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="style.css?v=20260310e">
     <script src="script.js?v=20260310e"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -18,22 +43,29 @@
 <body>
 
     <!-- Start Header -->
-    <div class="header">
-        <a href="index.php">
-            <img src="images/logo.png" alt=" Logo" class="logo">
+    <nav class="navbar navbar-expand-lg navbar-dark home-navbar sticky-top py-3">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-3" href="index.php">
+          <img src="images/logo.png" alt="Al Mesbah Al Modie Foundation logo" class="home-logo" width="84" height="84">
+          <span class="brand-copy">
+            <span class="brand-name">Al Mesbah Al Modie Foundation</span>
+            <span class="brand-subtitle">Charity and humanitarian aid in Egypt</span>
+          </span>
         </a>
-        <div class="header-brand">
-            <h1>Al Mesbah Al Modie Foundation</h1>
-            <p class="header-tagline">Charity and humanitarian aid in Egypt</p>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#homeNavbar" aria-controls="homeNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="homeNavbar">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+            <li class="nav-item"><a class="nav-link active" href="services.php">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="volunteer.php">Volunteer</a></li>
+            <li class="nav-item"><a class="btn btn-warning ms-lg-3 px-4 fw-semibold" href="donate.php">Donate</a></li>
+          </ul>
         </div>
-        <div class="nav">
-            <a href="index.php">Home</a>
-            <a href="about.php">About</a>
-            <a href="services.php">Services</a>
-            <a href="volunteer.php">Volunteer</a>
-            <a href="donate.php">Donate</a>
-        </div>
-    </div>
+      </div>
+    </nav>
 
     <!-- End Header -->
 
@@ -63,7 +95,7 @@
         <div class="service-card">
           <img src="images/project2.jpg" alt="Orphan’s Day Celebration" class="service-img">
           <h3 class="service-name">Orphan’s Day Celebration</h3>
-          <p class="service-desc">We organize special events for orphans filled with joy, games, and gifts to bring happiness and a sense of belonging.</p>  
+          <p class="service-desc">We organize special events for orphans filled with joy, games, and gifts to bring happiness and a sense of belonging.</p>
         </div>
       </a>
 
@@ -123,7 +155,7 @@
           <h3 class="service-name">Water Connection Projects</h3>
           <p class="service-desc">
             We work to supply clean and safe water to families in rural and underserved areas, improving their health and living conditions.
-          </p>        
+          </p>
         </div>
       </a>
 
@@ -206,39 +238,27 @@
 
 
 
-    <h2 class="services-subtitle">Service Summary</h2>
+    <h2 class="services-subtitle">Service Summary (From Admin Data)</h2>
 
     <table class="services-table">
       <tr>
+        <th>ID</th>
         <th>Service</th>
-        <th>Region</th>
-        <th>Beneficiaries</th>
+        <th>Description</th>
       </tr>
-      <tr>
-        <td>Ma’edet El Rahman</td>
-        <td>Cairo</td>
-        <td>300 families</td>
-      </tr>
-      <tr>
-        <td>Distribution of Blankets</td>
-        <td>Fayoum</td>
-        <td>150 families</td>
-      </tr>
-      <tr>
-        <td>Prostethic limbs</td>
-        <td>Assiout</td>
-        <td>10 individuals</td>
-      </tr>
-      <tr>
-        <td>Homes renovated</td>
-        <td>Sohag</td>
-        <td>50 families</td>
-      </tr>
-      <tr>
-        <td>Brides prepared</td>
-        <td>Luxor</td>
-        <td>50 individuals</td>
-      </tr>
+      <?php if (!empty($serviceRows)): ?>
+        <?php foreach ($serviceRows as $serviceRow): ?>
+          <tr>
+            <td><?php echo htmlspecialchars((string) $serviceRow['id']); ?></td>
+            <td><?php echo htmlspecialchars($serviceRow['name']); ?></td>
+            <td><?php echo htmlspecialchars($serviceRow['description']); ?></td>
+          </tr>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <tr>
+          <td colspan="3">No services available. Add services from the admin dashboard.</td>
+        </tr>
+      <?php endif; ?>
 
     </table>
   </div>
@@ -253,9 +273,9 @@
       </div>
 
       <form id="newsletterForm" action="subscription-confirmation.php" method="get" onsubmit="return validateNewsletterForm();">
-          <input type="text" id="newsletterFirstName" placeholder="First Name">
-          <input type="text" id="newsletterLastName" placeholder="Last Name">
-          <input type="text" id="newsletterEmail" placeholder="Email">
+          <input type="text" id="newsletterFirstName" name="first_name" placeholder="First Name">
+          <input type="text" id="newsletterLastName" name="last_name" placeholder="Last Name">
+          <input type="text" id="newsletterEmail" name="email" placeholder="Email">
           <button type="submit">Subscribe</button>
       </form>
   </div>
@@ -303,6 +323,6 @@
 
 <!-- End Content -->
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -9,9 +9,7 @@ function validateLoginForm() {
     return false;
   }
 
-  alert("Login successful!");
-  window.location.href = "admin-dashboard.php";
-  return false;
+  return true;
 }
 
 /*Services*/
@@ -43,8 +41,8 @@ function AddService() {
   }
 
   let services = document.querySelectorAll(".servicesList li");
-  for (let i = 0; i < services.length; i++) {
-    if (services[i].textContent.toLowerCase() === serviceName.toLowerCase()) {
+  for (let serviceItem of services) {
+    if (serviceItem.textContent.toLowerCase() === serviceName.toLowerCase()) {
       alert("This service already exists");
       return;
     }

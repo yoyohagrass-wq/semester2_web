@@ -10,6 +10,7 @@
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <meta name="robots" content="index, follow">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=20260310e">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
@@ -19,22 +20,29 @@
 
 
     <!-- Start Header -->
-        <div class="header">
-            <a href="index.php">
-                <img src="images/logo.png" alt=" Logo" class="logo">
-            </a>
-            <div class="header-brand">
-                <h1>Al Mesbah Al Modie Foundation</h1>
-                <p class="header-tagline">Charity and humanitarian aid in Egypt</p>
-            </div>
-            <div class="nav">
-                <a href="index.php">Home</a>
-                <a href="about.php">About</a>
-                <a href="services.php">Services</a>
-                <a href="volunteer.php">Volunteer</a>
-                <a href="donate.php">Donate</a>
-            </div>
+      <nav class="navbar navbar-expand-lg navbar-dark home-navbar sticky-top py-3">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center gap-3" href="index.php">
+            <img src="images/logo.png" alt="Al Mesbah Al Modie Foundation logo" class="home-logo" width="84" height="84">
+            <span class="brand-copy">
+              <span class="brand-name">Al Mesbah Al Modie Foundation</span>
+              <span class="brand-subtitle">Charity and humanitarian aid in Egypt</span>
+            </span>
+          </a>
+          <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#homeNavbar" aria-controls="homeNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="homeNavbar">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+              <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="volunteer.php">Volunteer</a></li>
+              <li class="nav-item"><a class="btn btn-warning ms-lg-3 px-4 fw-semibold" href="donate.php">Donate</a></li>
+            </ul>
+          </div>
         </div>
+      </nav>
     <!-- End Header -->
 
 
@@ -128,6 +136,6 @@
   </div>
   <!-- End Footer -->
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
