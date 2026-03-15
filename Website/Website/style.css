@@ -2,7 +2,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI";
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html {
@@ -86,7 +86,7 @@ html {
 
 .nav a:hover {
   color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(0, 0, 0, 0.28);
 }
 
 .nav a[href="donate.php"] {
@@ -149,13 +149,13 @@ html {
 /* Start Footer */
 
 .footer {
-  background-color: #7f7f7f;
+  background-color: #565d5d;
   color: white;
   display: flex;
   justify-content: space-between;
   padding: 40px;
   align-items: flex-start;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
 }
 
 /* LEFT SIDE */
@@ -360,7 +360,7 @@ form textarea {
 }
 
 form button {
-  background-color: #09B4B4;
+  background-color: #067f7f;
   color: white;
   border: none;
   padding: 10px;
@@ -418,8 +418,7 @@ form button:hover {
 }
 
 .donate-btn {
-  display: inline-block;
-  background-color: #09B4B4;
+  background-color: #067f7f;
   color: white;
   text-decoration: none;
   padding: 15px 50px;
@@ -454,7 +453,7 @@ form button:hover {
   border-radius: 12px;
   box-shadow: 0 4px 10px gray;
   padding: 40px;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
 }
 
 .about-title {
@@ -486,7 +485,7 @@ form button:hover {
 }
 
 .about-table th {
-  background-color: #09B4B4;
+  background-color: #067f7f;
   color: white;
   padding: 12px;
   text-align: left;
@@ -520,7 +519,7 @@ form button:hover {
   width: 1100px;
   margin: 60px auto;
   padding: 10px;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   text-align: center;
   background-color: #f7fdfd;
   border-radius: 12px;
@@ -596,7 +595,7 @@ form button:hover {
 }
 
 .services-table th {
-  background-color: #09B4B4;
+  background-color: #067f7f;
   color: white;
   text-align: center;
   padding: 12px;
@@ -639,7 +638,7 @@ form button:hover {
   justify-content: center;
   padding: 60px;
   background-color: #f0f9f9;
-  font: Arial;
+  font-family: Arial, sans-serif;
 }
 
 .donation-title {
@@ -683,7 +682,7 @@ form button:hover {
 .donation-btn {
   margin-top: 20px;
   padding: 12px;
-  background-color: #09B4B4;
+  background-color: #067f7f;
   color: white;
   border: none;
   border-radius: 6px;
@@ -707,7 +706,7 @@ form button:hover {
 
 .dc-body {
   margin: 0;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background-color: #f7fdfd;
   display: flex;
   justify-content: center;
@@ -767,7 +766,7 @@ form button:hover {
   display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #09B4B4;
+  background-color: #067f7f;
   color: white;
   text-decoration: none;
   border-radius: 8px;
@@ -793,7 +792,7 @@ form button:hover {
   background-color: #f7fdfd;
   border-radius: 12px;
   box-shadow: 0 4px 10px gray;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   text-align: center;
 }
 
@@ -857,7 +856,7 @@ form button:hover {
   width: 950px;
   margin: 60px auto;
   text-align: center;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
 }
 
 .branches-title {
@@ -912,7 +911,7 @@ form button:hover {
 /* End General Branches */
 
 .branch-body {
-      font-family: 'Arial';
+  font-family: Arial, sans-serif;
       background-color: #f9f9f9;
       margin: 0;
       padding: 0;
@@ -1130,7 +1129,7 @@ form button:hover {
   padding: 12px;
   border: none;
   border-radius: 10px;
-  background-color: #09B4B4;
+  background-color: #067f7f;
   color: white;
   font-size: 16px;
   font-weight: 600;
@@ -1200,7 +1199,7 @@ form button:hover {
 }
 
 .newsletter-box button {
-    background-color: #09B4B4;
+  background-color: #067f7f;
     color: white;
     border: none;
     padding: 10px;
@@ -1296,7 +1295,7 @@ form button:hover {
   min-height: 2.75rem;
   padding: 0.65rem 1rem;
   border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(0, 0, 0, 0.25);
   color: #ffffff;
   font-size: 0.9rem;
   letter-spacing: 0.01em;
@@ -1308,8 +1307,8 @@ form button:hover {
   display: inline-block;
   padding: 0.5rem 0.9rem;
   border-radius: 999px;
-  background-color: rgba(255, 209, 102, 0.18);
-  color: #ffd166;
+  background-color: rgba(255, 209, 102, 0.34);
+  color: #4a3200;
   font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -1327,7 +1326,7 @@ form button:hover {
   height: 100%;
   padding: 1.15rem 1rem;
   border-radius: 1.15rem;
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #ffffff;
   display: flex;
@@ -1437,7 +1436,7 @@ form button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0bb6ad, #0c6b65);
+  background: linear-gradient(135deg, #056b67, #044f4a);
   color: #ffffff;
   font-size: 1.15rem;
   margin-bottom: 1rem;
@@ -1567,13 +1566,13 @@ form button:hover {
   display: inline-flex;
   padding: 0.75rem 1rem;
   border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.22);
+  color: #173533;
   text-decoration: none;
 }
 
 .quick-links-box a:hover {
-  background-color: rgba(255, 255, 255, 0.18);
+  background-color: rgba(255, 255, 255, 0.32);
 }
 
 .form-panel {
