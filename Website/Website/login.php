@@ -36,10 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["userid"] = $userid;
                             $_SESSION["username"] = $username;
                             $_SESSION["useremail"] = $useremail;
-                            $message = "Login successful. Welcome back to Al Mesbah Al Modie Foundation.";
-                            $messageClass = "success";
-                            $found = true;
-                            break;
+                            header("Location: index.php");
+                            exit;
                         }
                     }
                 }

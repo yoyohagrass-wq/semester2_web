@@ -1,6 +1,11 @@
 <?php
-header("Location: register.php");
-exit;
+session_start();
+
+// If not logged in, redirect to register
+if (!isset($_SESSION["userid"])) {
+    header("Location: register.php");
+    exit;
+}
 
 $impactStats = [
     ["value" => "16", "label" => "Active programs"],
