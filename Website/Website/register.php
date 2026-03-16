@@ -64,42 +64,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Register - Al Mesbah Al Modie Foundation</title>
     <meta name="description" content="Register with Al Mesbah Al Modie Foundation and stay connected with charity and humanitarian aid activities in Egypt.">
     <meta name="author" content="Al Mesbah Al Modie Foundation">
-    <link rel="stylesheet" href="style.css?v=20260310e">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="auth-body">
-    <main class="auth-shell">
-        <section class="auth-card">
-            <div class="auth-brand">Al Mesbah Al Modie Foundation</div>
-            <h1>Create an Account</h1>
-            <p class="auth-tagline">Charity and humanitarian aid in Egypt</p>
-            <p class="auth-copy">Register to stay close to Al Mesbah Al Modie Foundation campaigns, volunteer opportunities, and community support work across Egypt.</p>
+<body class="bg-light">
+    <div class="min-vh-100 d-flex align-items-center justify-content-center py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card shadow-lg border-0 rounded-4">
+                        <div class="card-body p-5">
+                            <h2 class="card-title text-center mb-2">Al Mesbah Al Modie Foundation</h2>
+                            <h1 class="h3 text-center mb-4 fw-bold">Create an Account</h1>
+                            <p class="text-center text-muted mb-4">Charity and humanitarian aid in Egypt</p>
 
-            <form action="register.php" method="post" class="auth-form">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($name); ?>" placeholder="Enter your name">
+                            <form action="register.php" method="post">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" name="name" id="name" class="form-control form-control-lg" value="<?php echo htmlspecialchars($name); ?>" placeholder="Enter your name" required>
+                                </div>
 
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" value="<?php echo htmlspecialchars($email); ?>" placeholder="Enter your email">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control form-control-lg" value="<?php echo htmlspecialchars($email); ?>" placeholder="Enter your email" required>
+                                </div>
 
-                <input type="submit" value="Register">
-            </form>
+                                <button type="submit" class="btn btn-warning btn-lg w-100 fw-semibold mt-4">Register</button>
+                            </form>
 
-            <div class="auth-links">
-                <p><a href="login.php">Already have an account?</a> Log in here.</p>
-                <p><a href="index.php">Back to home</a></p>
-            </div>
+                            <?php if ($message != ""): ?>
+                                <div class="alert alert-<?php echo $messageClass === 'success' ? 'success' : 'danger'; ?> alert-dismissible fade show mt-4" role="alert">
+                                    <?php echo htmlspecialchars($message); ?>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <?php endif; ?>
 
-            <?php if ($message != ""): ?>
-                <div class="status-message <?php echo $messageClass; ?>"><?php echo htmlspecialchars($message); ?></div>
-            <?php endif; ?>
-
-            <?php if (isset($_SESSION["userid"])): ?>
-                <div class="session-details">
-                    <p>Session User: <?php echo htmlspecialchars($_SESSION["userid"] . " - " . $_SESSION["username"] . " - " . $_SESSION["useremail"]); ?></p>
-                    <p><a href="register.php?logout=1">Logout</a></p>
+                            <div class="text-center mt-4">
+                                <p class="mb-2"><a href="login.php" class="text-decoration-none">Already have an account?</a> Log in here.</p>
+                                <p><a href="index.php" class="text-decoration-none">Back to home</a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <?php endif; ?>
-        </section>
-    </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
