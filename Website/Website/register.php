@@ -26,13 +26,6 @@ $message = "";
 $messageClass = "";
 $filename = "users.txt";
 
-if (isset($_GET["logout"])) {
-    session_unset();
-    session_destroy();
-    header("Location: register.php");
-    exit;
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST["name"] ?? "");
     $email = trim($_POST["email"] ?? "");

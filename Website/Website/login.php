@@ -8,13 +8,6 @@ $messageClass = "";
 $filename = "users.txt";
 $filepath = __DIR__ . DIRECTORY_SEPARATOR . $filename;
 
-if (isset($_GET["logout"])) {
-    session_unset();
-    session_destroy();
-    header("Location: login.php");
-    exit;
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST["name"] ?? "");
     $email = trim($_POST["email"] ?? "");
@@ -98,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php if (isset($_SESSION["userid"])): ?>
                 <div class="session-details">
                     <p>Session User: <?php echo htmlspecialchars($_SESSION["userid"] . " - " . $_SESSION["username"] . " - " . $_SESSION["useremail"]); ?></p>
-                    <p><a href="login.php?logout=1">Logout</a></p>
+                    <p><a href="logout.php">Logout</a></p>
                 </div>
             <?php endif; ?>
         </section>
