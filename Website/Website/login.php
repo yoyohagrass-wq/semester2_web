@@ -20,13 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($name != "" && $email != "") {
         if (file_exists($filepath)) {
-            $content = file_get_contents($filepath);
+            $lines = file($filepath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
-            if ($content !== false) {
-                $records = preg_split('/(?=\d+~)/', $content, -1, PREG_SPLIT_NO_EMPTY);
-
-                foreach ($records as $record) {
-                    $data = explode("~", trim($record), 3);
+            if ($lines !== false) {
+                foreach ($lines as $line) {
+                    $data = explode("~", trim($line), 3);
                     $userid = intval($data[0] ?? 0);
                     $username = trim($data[1] ?? "");
                     $useremail = trim($data[2] ?? "");
