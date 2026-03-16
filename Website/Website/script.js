@@ -147,7 +147,7 @@ function validateDonateForm() {
         return showError("Please enter a valid email.");
     }
 
-    if (Number.isNaN(amount) || amount <= 0) {
+    if (Number.isNaN(amount) || amount <= 0 || amount > 30000) {
         return showError("Please enter a valid donation amount.");
     }
 
