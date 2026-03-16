@@ -48,10 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["username"] = $name;
         $_SESSION["useremail"] = $email;
 
-        $message = "Registration successful. Thank you for joining Al Mesbah Al Modie Foundation.";
-        $messageClass = "success";
-        $name = "";
-        $email = "";
+        header("Location: login.php");
+        exit;
     } else {
         $message = "Please enter your name and email.";
         $messageClass = "error";
