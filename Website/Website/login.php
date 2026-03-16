@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($name != "" && $email != "") {
         if (file_exists($filepath)) {
-            $filehandler = fopen($filepath, "r");
+            $filehandler = fopen($filepath, "r+");
 
             if ($filehandler) {
                 while (($line = fgets($filehandler)) !== false) {
@@ -36,8 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["userid"] = $userid;
                             $_SESSION["username"] = $username;
                             $_SESSION["useremail"] = $useremail;
-                            header("Location: index.php");
-                            exit;
+                            $message = "Login successful. Welcome back to Al Mesbah Al Modie Foundation.";
+                            $messageClass = "success";
+                            $found = true;
+                            break;
                         }
                     }
                 }
