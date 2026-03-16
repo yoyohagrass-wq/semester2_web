@@ -8,6 +8,11 @@ $messageClass = "";
 $filename = "users.txt";
 $filepath = __DIR__ . DIRECTORY_SEPARATOR . $filename;
 
+if (isset($_SESSION["userid"])) {
+    header("Location: index.php");
+    exit;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST["name"] ?? "");
     $email = trim($_POST["email"] ?? "");
@@ -15,27 +20,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($name != "" && $email != "") {
         if (file_exists($filepath)) {
-            $filehandler = fopen($filepath, "r+");
+            $content = file_get_contents($filepath);
 
-            if ($filehandler) {
-                while (($line = fgets($filehandler)) !== false) {
-                    if (trim($line) != "") {
-                        $data = explode("~", $line);
-                        $userid = intval($data[0] ?? 0);
-                        $username = trim($data[1] ?? "");
-                        $useremail = trim($data[2] ?? "");
+            if ($content !== false) {
+                $records = preg_split('/(?=\d+~)/', $content, -1, PREG_SPLIT_NO_EMPTY);
 
-                        if ($username == $name && $useremail == $email) {
-                            $_SESSION["userid"] = $userid;
-                            $_SESSION["username"] = $username;
-                            $_SESSION["useremail"] = $useremail;
-                            header("Location: index.php");
-                            exit;
-                        }
+                foreach ($records as $record) {
+                    $data = explode("~", trim($record), 3);
+                    $userid = intval($data[0] ?? 0);
+                    $username = trim($data[1] ?? "");
+                    $useremail = trim($data[2] ?? "");
+
+                    if (strcasecmp($username, $name) === 0 && strcasecmp($useremail, $email) === 0) {
+                        $_SESSION["userid"] = $userid;
+                        $_SESSION["username"] = $username;
+                        $_SESSION["useremail"] = $useremail;
+                        header("Location: index.php");
+                        exit;
                     }
                 }
-
-                fclose($filehandler);
             }
         }
 
