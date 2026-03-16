@@ -1,4 +1,7 @@
 <?php
+header("Location: register.php");
+exit;
+
 $impactStats = [
     ["value" => "16", "label" => "Active programs"],
     ["value" => "3", "label" => "Cairo branches"],
