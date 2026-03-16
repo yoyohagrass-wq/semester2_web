@@ -577,6 +577,7 @@ form button:hover {
 .service-desc {
   color: #333;
   font-size: 14px;
+  overflow: hidden;
 }
 
 .services-subtitle {
