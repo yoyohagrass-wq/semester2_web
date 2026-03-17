@@ -1,20 +1,3 @@
-<?php
-  $firstname = trim($_REQUEST["first_name"] ?? $_REQUEST["firstname"] ?? "");
-  $lastname = trim($_REQUEST["last_name"] ?? $_REQUEST["lastname"] ?? "");
-  $email = trim($_REQUEST["email"] ?? "");
-
-  if ($firstname !== "" || $lastname !== "" || $email !== "") {
-    $filePath = __DIR__ . DIRECTORY_SEPARATOR . "NewsletterSubscriptions.txt";
-    $filehandler = fopen($filePath, "a");
-    if ($filehandler) {
-      $mydata = $firstname . "~" . $lastname . "~" . $email . "\n";
-      fwrite($filehandler, $mydata);
-      fclose($filehandler);
-    }
-  }
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
