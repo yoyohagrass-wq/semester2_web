@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border: 0;
             border-radius: 1.25rem;
             overflow: hidden;
-            box-shadow: 0 1rem 2.5rem rgba(15, 23, 42, 0.14);
+            box-shadow: 0 1rem 2.5rem #0f172a24;
         }
 
         .login-side {

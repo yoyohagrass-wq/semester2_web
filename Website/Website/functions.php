@@ -57,7 +57,7 @@ function newsletterBox($description = '') {
         <h2>Sign Up for Our Newsletter</h2>
         <p><?= htmlspecialchars($description) ?></p>
     </div>
-    <form id="newsletterForm" action="subscription-confirmation.php" method="get" onsubmit="return validateNewsletterForm();">
+    <form id="newsletterForm" action="subscription-confirmation.php" method="post" onsubmit="return validateNewsletterForm();">
         <input type="text" id="newsletterFirstName" name="first_name" placeholder="First Name">
         <input type="text" id="newsletterLastName" name="last_name" placeholder="Last Name">
         <input type="text" id="newsletterEmail" name="email" placeholder="Email">
@@ -74,7 +74,7 @@ function inquiryForm($heading = 'Inquire', $intro = '') {
         <h2><?= htmlspecialchars($heading) ?></h2>
         <p><?= htmlspecialchars($intro) ?></p>
     </div>
-    <form id="inquireForm" action="feedback-confirmation.php" method="get" onsubmit="return validateInquireForm();">
+    <form id="inquireForm" action="feedback-confirmation.php" method="post" onsubmit="return validateInquireForm();">
         <input type="text" id="inquireName" name="inquireName" placeholder="Your Name">
         <input type="text" id="inquireEmail" name="inquireEmail" placeholder="Your Email">
         <input type="text" id="inquirePhone" name="inquirePhone" placeholder="Your Phone">
