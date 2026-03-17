@@ -18,6 +18,24 @@ if (!isset($_SESSION["userid"])) {
 ); ?>
 <?php headerSection(); ?>
 
+<style>
+.home-page .home-navbar .nav-link.active {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.home-page .home-navbar .nav-link.active::after {
+    transform: scaleX(0);
+}
+
+.home-page .home-navbar .nav-link:hover {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.home-page .home-navbar .nav-link:hover::after {
+    transform: scaleX(0);
+}
+</style>
+
     <main>
         <section class="hero-section">
             <div class="hero-orb hero-orb-one"></div>
