@@ -228,7 +228,7 @@ headerSection();
         <section class="inquiry-section py-5">
             <div class="container">
                 <div class="row g-4 align-items-stretch">
-                    <div class="col-lg-7">
+                    <div class="col-lg-7 mx-auto">
                         <div class="form-panel h-100 fade-in delay-2">
                             <form id="inquireForm" action="feedback-confirmation.php" method="get" onsubmit="return validateInquireForm();">
                                 <div class="row g-3">
