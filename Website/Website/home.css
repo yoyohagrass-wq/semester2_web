@@ -1,6 +1,10 @@
 .home-page {
   background:
-    radial-gradient(circle at top right, rgba(13, 180, 180, 0.12), transparent 26%),
+    radial-gradient(
+      circle at top right,
+      rgba(13, 180, 180, 0.12),
+      transparent 26%
+    ),
     linear-gradient(180deg, #eef7f6 0%, #f8fbfb 50%, #eef4f3 100%);
   color: #142624;
   overflow-x: hidden;
@@ -10,7 +14,9 @@
   background: rgba(8, 47, 44, 0.92);
   backdrop-filter: blur(12px);
   box-shadow: 0 12px 30px rgba(11, 39, 37, 0.18);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
   z-index: 1000;
 }
 
@@ -77,7 +83,11 @@
   overflow: hidden;
   isolation: isolate;
   background:
-    radial-gradient(circle at top left, rgba(255, 209, 102, 0.24), transparent 24%),
+    radial-gradient(
+      circle at top left,
+      rgba(255, 209, 102, 0.24),
+      transparent 24%
+    ),
     linear-gradient(135deg, #0b3d3a 0%, #0c5954 55%, #118a83 100%);
 }
 
@@ -111,7 +121,6 @@
   opacity: 0.55;
   filter: blur(1px);
   z-index: 0;
-  animation: floatOrb 16s ease-in-out infinite;
 }
 
 .hero-orb-one {
@@ -119,7 +128,11 @@
   left: -4rem;
   width: 16rem;
   height: 16rem;
-  background: radial-gradient(circle, rgba(255, 209, 102, 0.5), rgba(255, 209, 102, 0));
+  background: radial-gradient(
+    circle,
+    rgba(255, 209, 102, 0.5),
+    rgba(255, 209, 102, 0)
+  );
 }
 
 .hero-orb-two {
@@ -127,7 +140,11 @@
   right: 12%;
   width: 10rem;
   height: 10rem;
-  background: radial-gradient(circle, rgba(142, 243, 233, 0.4), rgba(142, 243, 233, 0));
+  background: radial-gradient(
+    circle,
+    rgba(142, 243, 233, 0.4),
+    rgba(142, 243, 233, 0)
+  );
   animation-delay: -6s;
 }
 
@@ -136,7 +153,11 @@
   left: 45%;
   width: 12rem;
   height: 12rem;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0));
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0)
+  );
   animation-delay: -11s;
 }
 
@@ -184,7 +205,10 @@
   flex-direction: column;
   gap: 0.25rem;
   transform: translateY(0);
-  transition: transform 0.35s ease, background-color 0.35s ease, border-color 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .impact-stat-card:hover {
@@ -230,10 +254,6 @@
   min-height: 32rem;
 }
 
-.float-card {
-  animation: gentleFloat 7s ease-in-out infinite;
-}
-
 .delay-float {
   animation-delay: -2s;
 }
@@ -245,7 +265,11 @@
   bottom: 1.25rem;
   padding: 1rem 1.1rem;
   border-radius: 1rem;
-  background: linear-gradient(180deg, rgba(12, 40, 39, 0.3), rgba(12, 40, 39, 0.84));
+  background: linear-gradient(
+    180deg,
+    rgba(12, 40, 39, 0.3),
+    rgba(12, 40, 39, 0.84)
+  );
   color: #ffffff;
 }
 
@@ -296,17 +320,10 @@
   border-radius: 1.4rem;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 18px 45px rgba(30, 61, 58, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
-}
-
-.pillar-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 5px;
-  border-radius: 1.4rem 1.4rem 0 0;
-  background: linear-gradient(90deg, #0bb6ad, #ffd166);
-  opacity: 0.92;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease;
 }
 
 .pillar-card:hover {
@@ -346,7 +363,11 @@
 }
 
 .featured-section {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.65));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0.65)
+  );
 }
 
 .section-title {
@@ -365,7 +386,9 @@
   border-radius: 1.35rem;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(22, 51, 49, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .program-card::after {
@@ -374,10 +397,17 @@
   inset: -40% auto auto -120%;
   width: 75%;
   height: 180%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.32),
+    transparent
+  );
   transform: rotate(16deg);
   opacity: 0;
-  transition: left 0.7s ease, opacity 0.3s ease;
+  transition:
+    left 0.7s ease,
+    opacity 0.3s ease;
   pointer-events: none;
 }
 
@@ -422,7 +452,9 @@
 .program-cta {
   color: #0a756e;
   font-weight: 700;
-  transition: transform 0.25s ease, color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
 }
 
 .program-link:hover .program-cta {
@@ -432,7 +464,11 @@
 
 .inquiry-section {
   background:
-    radial-gradient(circle at bottom left, rgba(11, 182, 173, 0.14), transparent 28%),
+    radial-gradient(
+      circle at bottom left,
+      rgba(11, 182, 173, 0.14),
+      transparent 28%
+    ),
     linear-gradient(180deg, #edf5f4 0%, #f7fbfb 100%);
 }
 
@@ -461,7 +497,10 @@
 }
 
 .btn {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
 }
 
 .btn:hover {

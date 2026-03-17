@@ -52,10 +52,6 @@ headerSection();
                         <div class="hero-showcase">
                             <div class="hero-main-panel float-card">
                                 <img src="images/project11.jpg" alt="Volunteers renovating a home" class="img-fluid">
-                                <div class="hero-main-caption">
-                                    <span>Current focus</span>
-                                    <h2>Fast support for families facing housing and medical pressure.</h2>
-                                </div>
                             </div>
                             <div class="hero-side-stack">
                                 <div class="hero-mini-panel float-card delay-float">
