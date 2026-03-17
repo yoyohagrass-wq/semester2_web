@@ -1,22 +1,12 @@
 <?php
-session_start();
-require_once 'functions.php';
-
-if (!isset($_SESSION["userid"])) {
-    header("Location: register.php");
-    exit;
-}
-
-[$impactStats, $supportPillars, $featuredPrograms] = getHomePageData();
-?>
-<?php pageHead(
+require_once 'functions.php'; 
+pageHead(
     'Al Mesbah Al Modie Foundation',
-    'Al Mesbah Al Modie Foundation is a nonprofit charity in Egypt supporting needy families through humanitarian, social, and community projects.',
-    'charity Egypt, nonprofit foundation, humanitarian aid, community support',
-    'home.css?v=20260317f',
-    'home-page'
-); ?>
-<?php headerSection(); ?>
+    'Learn about Al Mesbah Al Modie Foundation, our mission, values, and commitment to charity and humanitarian aid in Egypt.',
+    'about charity Egypt, nonprofit mission, humanitarian organization Egypt'
+);
+headerSection();
+?>
 
 
     <main>
@@ -38,14 +28,24 @@ if (!isset($_SESSION["userid"])) {
                             <a href="volunteer.php" class="btn btn-outline-light btn-lg px-4">Join as a volunteer</a>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-3 g-3 mt-4">
-                            <?php foreach ($impactStats as $index => $stat): ?>
-                                <div class="col">
-                                    <div class="impact-stat-card fade-in delay-<?= $index + 1 ?>">
-                                        <strong><?= htmlspecialchars($stat["value"]) ?></strong>
-                                        <span><?= htmlspecialchars($stat["label"]) ?></span>
-                                    </div>
+                            <div class="col">
+                                <div class="impact-stat-card fade-in delay-1">
+                                    <strong>16</strong>
+                                    <span>Active programs</span>
                                 </div>
-                            <?php endforeach; ?>
+                            </div>
+                            <div class="col">
+                                <div class="impact-stat-card fade-in delay-2">
+                                    <strong>3</strong>
+                                    <span>Cairo branches</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="impact-stat-card fade-in delay-3">
+                                    <strong>100K+</strong>
+                                    <span>EGP monthly goal</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-6 fade-in delay-2">
@@ -72,7 +72,6 @@ if (!isset($_SESSION["userid"])) {
                 </div>
             </div>
         </section>
-
         <section class="support-section py-5">
             <div class="container">
                 <div class="row justify-content-center mb-5">
@@ -83,57 +82,159 @@ if (!isset($_SESSION["userid"])) {
                     </div>
                 </div>
                 <div class="row g-4">
-                    <?php foreach ($supportPillars as $index => $pillar): ?>
-                        <div class="col-md-4">
-                            <div class="pillar-card h-100 fade-in delay-<?= $index + 1 ?>">
-                                <div class="pillar-icon">
-                                    <i class="<?= htmlspecialchars($pillar["icon"]) ?>"></i>
-                                </div>
-                                <h2><?= htmlspecialchars($pillar["title"]) ?></h2>
-                                <p><?= htmlspecialchars($pillar["text"]) ?></p>
+                    <div class="col-md-4">
+                        <div class="pillar-card h-100 fade-in delay-1">
+                            <div class="pillar-icon">
+                                <i class="fa-solid fa-bowl-food"></i>
                             </div>
+                            <h2>Food Security</h2>
+                            <p>Hot meals, Ramadan tables, and grocery support that help families manage daily needs.</p>
                         </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </section>
-
-        <section class="featured-section py-5">
-            <div class="container">
-                <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4 fade-in">
-                    <div>
-                        <span class="section-tag">Featured programs</span>
-                        <h2 class="section-title mt-2">Where support turns into direct community impact.</h2>
-                        <p class="section-copy mb-0">A selection of the programs donors and volunteers help sustain across the year.</p>
                     </div>
-                    <a href="services.php" class="btn btn-outline-dark px-4">View all services</a>
-                </div>
-                <div class="row g-4">
-                    <?php foreach ($featuredPrograms as $index => $program): ?>
-                        <div class="col-md-6 col-xl-3">
-                            <a href="donate.php" class="program-link fade-in delay-<?= ($index % 4) + 1 ?>">
-                                <article class="card border-0 h-100 program-card">
-                                    <img src="<?= htmlspecialchars($program["image"]) ?>" alt="<?= htmlspecialchars($program["title"]) ?>" class="card-img-top program-image">
-                                    <div class="card-body d-flex flex-column p-4">
-                                        <span class="program-tag"><?= htmlspecialchars($program["tag"]) ?></span>
-                                        <h3 class="program-title mt-3"><?= htmlspecialchars($program["title"]) ?></h3>
-                                        <p class="program-description"><?= htmlspecialchars($program["description"]) ?></p>
-                                        <span class="program-cta mt-auto">Support this program <i class="fa-solid fa-arrow-right ms-2"></i></span>
-                                    </div>
-                                </article>
-                            </a>
+                    <div class="col-md-4">
+                        <div class="pillar-card h-100 fade-in delay-2">
+                            <div class="pillar-icon">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <h2>Medical Support</h2>
+                            <p>Dialysis, cancer care, hearing aids, and prosthetic support for vulnerable patients.</p>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pillar-card h-100 fade-in delay-3">
+                            <div class="pillar-icon">
+                                <i class="fa-solid fa-hand-holding-heart"></i>
+                            </div>
+                            <h2>Emergency Relief</h2>
+                            <p>Winter blankets, relief bags, debt support, and home renovation for families under pressure.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
+        <section class="featured-section py-5">
+    <div class="container">
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4 fade-in">
+            <div>
+                <span class="section-tag">Featured programs</span>
+                <h2 class="section-title mt-2">Where support turns into direct community impact.</h2>
+                <p class="section-copy mb-0">A selection of the programs donors and volunteers help sustain across the year.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-xl-3">
+                <a href="donate.php" class="program-link fade-in delay-1">
+                    <article class="card border-0 h-100 program-card">
+                        <img src="images/project1.jpg" alt="Maedet El Rahman" class="card-img-top program-image">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="program-tag">Seasonal relief</span>
+                            <h3 class="program-title mt-3">Maedet El Rahman</h3>
+                            <p class="program-description">Public iftar tables during Ramadan that provide dependable daily meals for families in need.</p>
+                            <span class="program-cta mt-auto">Support this program <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                        </div>
+                    </article>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <a href="donate.php" class="program-link fade-in delay-2">
+                    <article class="card border-0 h-100 program-card">
+                        <img src="images/project3.jpg" alt="Ramadan Food Boxes" class="card-img-top program-image">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="program-tag">Family support</span>
+                            <h3 class="program-title mt-3">Ramadan Food Boxes</h3>
+                            <p class="program-description">Essential food boxes that help households prepare meals at home with dignity and stability.</p>
+                            <span class="program-cta mt-auto">Support this program <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                        </div>
+                    </article>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <a href="donate.php" class="program-link fade-in delay-3">
+                    <article class="card border-0 h-100 program-card">
+                        <img src="images/project7.jpg" alt="Prosthetic Limbs Support" class="card-img-top program-image">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="program-tag">Healthcare</span>
+                            <h3 class="program-title mt-3">Prosthetic Limbs Support</h3>
+                            <p class="program-description">Artificial limbs and practical support that help amputees regain movement and independence.</p>
+                            <span class="program-cta mt-auto">Support this program <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                        </div>
+                    </article>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <a href="donate.php" class="program-link fade-in delay-4">
+                    <article class="card border-0 h-100 program-card">
+                        <img src="images/project8.jpg" alt="Water Connection Projects" class="card-img-top program-image">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="program-tag">Infrastructure</span>
+                            <h3 class="program-title mt-3">Water Connection Projects</h3>
+                            <p class="program-description">Clean water access for rural families through direct connection and improvement projects.</p>
+                            <span class="program-cta mt-auto">Support this program <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                        </div>
+                    </article>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <a href="donate.php" class="program-link fade-in delay-1">
+                    <article class="card border-0 h-100 program-card">
+                        <img src="images/project11.jpg" alt="Home Renovation in Upper Egypt" class="card-img-top program-image">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="program-tag">Housing</span>
+                            <h3 class="program-title mt-3">Home Renovation in Upper Egypt</h3>
+                            <p class="program-description">Repairing and rebuilding homes for families living in unsafe or unstable conditions.</p>
+                            <span class="program-cta mt-auto">Support this program <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                        </div>
+                    </article>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <a href="donate.php" class="program-link fade-in delay-2">
+                    <article class="card border-0 h-100 program-card">
+                        <img src="images/project14.jpg" alt="Cancer Patient Care" class="card-img-top program-image">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="program-tag">Medical care</span>
+                            <h3 class="program-title mt-3">Cancer Patient Care</h3>
+                            <p class="program-description">Treatment assistance and regular checkups that reduce pressure on patients and caregivers.</p>
+                            <span class="program-cta mt-auto">Support this program <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                        </div>
+                    </article>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <a href="donate.php" class="program-link fade-in delay-3">
+                    <article class="card border-0 h-100 program-card">
+                        <img src="images/project15.jpg" alt="Dialysis Unit Support" class="card-img-top program-image">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="program-tag">Hospital support</span>
+                            <h3 class="program-title mt-3">Dialysis Unit Support</h3>
+                            <p class="program-description">Funding equipment and treatment capacity so kidney patients receive care safely and consistently.</p>
+                            <span class="program-cta mt-auto">Support this program <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                        </div>
+                    </article>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <a href="donate.php" class="program-link fade-in delay-4">
+                    <article class="card border-0 h-100 program-card">
+                        <img src="images/project16.jpg" alt="Relief Bag Distribution" class="card-img-top program-image">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="program-tag">Rapid response</span>
+                            <h3 class="program-title mt-3">Relief Bag Distribution</h3>
+                            <p class="program-description">Large-scale campaigns delivering basic essentials to families during difficult periods.</p>
+                            <span class="program-cta mt-auto">Support this program <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                        </div>
+                    </article>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
         <section class="inquiry-section py-5">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
+                <div class="row g-4 align-items-stretch">
+                    <div class="col-lg-7">
                         <div class="form-panel h-100 fade-in delay-2">
-                            <form id="inquireForm" action="feedback-confirmation.php" method="post" onsubmit="return validateInquireForm();">
+                            <form id="inquireForm" action="feedback-confirmation.php" method="get" onsubmit="return validateInquireForm();">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
@@ -172,5 +273,7 @@ if (!isset($_SESSION["userid"])) {
         </section>
     </main>
 
-<?php pageFooter(); ?>
-<?php pageClose(); ?>
+<?php
+pageFooter();
+pageClose();
+?>
