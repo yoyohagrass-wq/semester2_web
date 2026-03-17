@@ -8,7 +8,7 @@ $serviceRows = loadServicesData();
     'Explore the humanitarian and social services provided by Al Mesbah Al Modie Foundation, including food distribution, medical support, water projects, and community assistance across Egypt.',
     'charity services Egypt, humanitarian projects, food distribution, medical aid, water projects, nonprofit services'
 ); ?>
-<?php navBar('services'); ?>
+<?php headerSection(); ?>
 
 <div class="services-container">
     <h1 class="services-title">Our Services</h1>

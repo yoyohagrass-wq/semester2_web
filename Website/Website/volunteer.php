@@ -7,7 +7,7 @@ $areas = loadPipedFile(__DIR__ . DIRECTORY_SEPARATOR . 'volunteer-areas.txt');
     'Join Al Mesbah Al Modie Foundation as a volunteer and help support humanitarian, social, and community projects across Egypt.',
     'volunteer Egypt, charity volunteer, nonprofit volunteering, community service Egypt'
 ); ?>
-<?php navBar('volunteer'); ?>
+<?php headerSection(); ?>
 
 <div class="donation-container">
     <h1 class="donation-title">Become a Volunteer</h1>

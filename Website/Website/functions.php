@@ -22,13 +22,7 @@ function pageHead($title, $description, $keywords, $extraCss = '', $bodyClass = 
 <?php
 }
 
-function navBar($activePage = '') {
-    $links = [
-        'index'     => 'Home',
-        'about'     => 'About',
-        'services'  => 'Services',
-        'volunteer' => 'Volunteer',
-    ];
+function headerSection() {
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark home-navbar sticky-top py-3">
     <div class="container">
@@ -44,11 +38,10 @@ function navBar($activePage = '') {
         </button>
         <div class="collapse navbar-collapse" id="homeNavbar">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-                <?php foreach ($links as $key => $label): ?>
-                    <li class="nav-item">
-                        <a class="nav-link<?= $activePage === $key ? ' active' : '' ?>" href="<?= $key ?>.php"><?= htmlspecialchars($label) ?></a>
-                    </li>
-                <?php endforeach; ?>
+                <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="about.php">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="volunteer.php">Volunteer</a></li>
                 <li class="nav-item"><a class="btn btn-warning ms-lg-3 px-4 fw-semibold" href="donate.php">Donate</a></li>
             </ul>
         </div>

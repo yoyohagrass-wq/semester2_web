@@ -7,7 +7,7 @@ $topics = loadPipedFile(__DIR__ . DIRECTORY_SEPARATOR . 'feedback-topics.txt');
     'Share your feedback and suggestions to help Al Mesbah Al Modie Foundation improve its services and activities.',
     'feedback Egypt, suggestions, nonprofit feedback, Al Mesbah Al Modie Foundation'
 ); ?>
-<?php navBar(); ?>
+<?php headerSection(); ?>
 
 <div class="donation-container">
     <h1 class="donation-title">Submit Your Feedback</h1>

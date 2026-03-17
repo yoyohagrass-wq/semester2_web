@@ -4,7 +4,7 @@
     'Support Al Mesbah Al Modie Foundation by donating to help families in need through humanitarian and social projects in Egypt.',
     'donate Egypt, charity donation, nonprofit support, humanitarian aid Egypt'
 ); ?>
-<?php navBar(); ?>
+<?php headerSection(); ?>
 
 <div class="donation-container">
     <h1 class="donation-title">Make a Donation</h1>

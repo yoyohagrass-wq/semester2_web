@@ -4,7 +4,7 @@
     'Contact Al Mesbah Al Modie Foundation for inquiries, volunteering, donations, and general support.',
     'contact charity Egypt, nonprofit contact, Al Mesbah Al Modie Foundation'
 ); ?>
-<?php navBar(); ?>
+<?php headerSection(); ?>
 
 <div class="about-container">
     <h1 class="about-title">Contact Al Mesbah Al Modie Foundation</h1>

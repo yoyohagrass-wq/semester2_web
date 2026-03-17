@@ -16,7 +16,7 @@ if (!isset($_SESSION["userid"])) {
     'home.css?v=20260317f',
     'home-page'
 ); ?>
-<?php navBar('index'); ?>
+<?php headerSection(); ?>
 
     <main>
         <section class="hero-section">

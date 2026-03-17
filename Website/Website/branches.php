@@ -4,7 +4,7 @@
     'Find all Al Mesbah Al Modie Foundation branches across Egypt, including Rehab City, Nasr City, and the 5th Settlement.',
     'Al Mesbah Al Modie Foundation branches, Egypt charity locations, Rehab City branch, Nasr City branch, 5th Settlement branch'
 ); ?>
-<?php navBar(); ?>
+<?php headerSection(); ?>
 
 <div class="branches-container">
     <h1 class="branches-title">Our Branches</h1>

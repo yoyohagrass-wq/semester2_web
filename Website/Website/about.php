@@ -4,7 +4,7 @@
     'Learn about Al Mesbah Al Modie Foundation, our mission, values, and commitment to charity and humanitarian aid in Egypt.',
     'about charity Egypt, nonprofit mission, humanitarian organization Egypt'
 ); ?>
-<?php navBar('about'); ?>
+<?php headerSection(); ?>
 
 <div class="about-container">
     <h1 class="about-title">About Al Mesbah Al Modie Foundation</h1>

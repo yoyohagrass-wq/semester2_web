@@ -4,7 +4,7 @@
     'Frequently asked questions about Al Mesbah Al Modie Foundation, including donations, volunteering, operations, and in-kind contributions.',
     'Al Mesbah Al Modie Foundation FAQs, donations, volunteering, charity in Egypt, foundation services'
 ); ?>
-<?php navBar(); ?>
+<?php headerSection(); ?>
 
 <div class="faq-container">
     <h1 class="faq-title">Frequently Asked Questions</h1>
