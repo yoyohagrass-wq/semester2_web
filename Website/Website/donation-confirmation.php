@@ -16,7 +16,7 @@
           <div class="card shadow-lg border-0 rounded-4 text-center">
             <div class="card-body p-5">
               <div class="mb-4">
-                <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                <i class="fas fa-check-circle text-success check-icon"></i>
               </div>
               <h6 class="text-muted mb-3 text-uppercase fw-semibold">Donation received</h6>
               <h2 class="mb-2 fw-bold">Al Mesbah Al Modie Foundation</h2>

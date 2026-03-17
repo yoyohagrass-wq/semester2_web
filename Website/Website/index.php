@@ -1,86 +1,13 @@
 <?php
 session_start();
+require_once 'functions.php';
 
-// If not logged in, redirect to register
 if (!isset($_SESSION["userid"])) {
     header("Location: register.php");
     exit;
 }
 
-$impactStats = [
-    ["value" => "16", "label" => "Active programs"],
-    ["value" => "3", "label" => "Cairo branches"],
-    ["value" => "100K+", "label" => "EGP monthly goal"],
-];
-
-$supportPillars = [
-    [
-        "icon" => "fa-solid fa-bowl-food",
-        "title" => "Food Security",
-        "text" => "Hot meals, Ramadan tables, and grocery support that help families manage daily needs.",
-    ],
-    [
-        "icon" => "fa-solid fa-heart-pulse",
-        "title" => "Medical Support",
-        "text" => "Dialysis, cancer care, hearing aids, and prosthetic support for vulnerable patients.",
-    ],
-    [
-        "icon" => "fa-solid fa-hand-holding-heart",
-        "title" => "Emergency Relief",
-        "text" => "Winter blankets, relief bags, debt support, and home renovation for families under pressure.",
-    ],
-];
-
-$featuredPrograms = [
-    [
-        "image" => "images/project1.jpg",
-        "title" => "Maedet El Rahman",
-        "tag" => "Seasonal relief",
-        "description" => "Public iftar tables during Ramadan that provide dependable daily meals for families in need.",
-    ],
-    [
-        "image" => "images/project3.jpg",
-        "title" => "Ramadan Food Boxes",
-        "tag" => "Family support",
-        "description" => "Essential food boxes that help households prepare meals at home with dignity and stability.",
-    ],
-    [
-        "image" => "images/project7.jpg",
-        "title" => "Prosthetic Limbs Support",
-        "tag" => "Healthcare",
-        "description" => "Artificial limbs and practical support that help amputees regain movement and independence.",
-    ],
-    [
-        "image" => "images/project8.jpg",
-        "title" => "Water Connection Projects",
-        "tag" => "Infrastructure",
-        "description" => "Clean water access for rural families through direct connection and improvement projects.",
-    ],
-    [
-        "image" => "images/project11.jpg",
-        "title" => "Home Renovation in Upper Egypt",
-        "tag" => "Housing",
-        "description" => "Repairing and rebuilding homes for families living in unsafe or unstable conditions.",
-    ],
-    [
-        "image" => "images/project14.jpg",
-        "title" => "Cancer Patient Care",
-        "tag" => "Medical care",
-        "description" => "Treatment assistance and regular checkups that reduce pressure on patients and caregivers.",
-    ],
-    [
-        "image" => "images/project15.jpg",
-        "title" => "Dialysis Unit Support",
-        "tag" => "Hospital support",
-        "description" => "Funding equipment and treatment capacity so kidney patients receive care safely and consistently.",
-    ],
-    [
-        "image" => "images/project16.jpg",
-        "title" => "Relief Bag Distribution",
-        "tag" => "Rapid response",
-        "description" => "Large-scale campaigns delivering basic essentials to families during difficult periods.",
-    ],
-];
+[$impactStats, $supportPillars, $featuredPrograms] = getHomePageData();
 ?>
 <!DOCTYPE html>
 <html lang="en">
