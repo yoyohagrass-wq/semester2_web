@@ -88,10 +88,10 @@
             <p>Stay updated on how Al Mesbah Al Modie Foundation delivers charity and humanitarian aid in Egypt.</p>
         </div>
 
-        <form id="newsletterForm" action="subscription-confirmation.php" method="get" onsubmit="return validateNewsletterForm();">
-            <input type="text" id="newsletterFirstName" placeholder="First Name">
-            <input type="text" id="newsletterLastName" placeholder="Last Name">
-            <input type="text" id="newsletterEmail" placeholder="Email">
+        <form id="newsletterForm" action="subscription-confirmation.php" method="post" onsubmit="return validateNewsletterForm();">
+            <input type="text" id="newsletterFirstName" name="firstname" placeholder="First Name">
+            <input type="text" id="newsletterLastName" name="lastname" placeholder="Last Name">
+            <input type="text" id="newsletterEmail" name="email" placeholder="Email">
             <button type="submit">Subscribe</button>
         </form>
     </div>
