@@ -436,69 +436,6 @@
     linear-gradient(180deg, #edf5f4 0%, #f7fbfb 100%);
 }
 
-.inquiry-panel,
-.form-panel {
-  height: 100%;
-  padding: 2rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 20px 50px rgba(18, 42, 40, 0.08);
-}
-
-.inquiry-panel {
-  background: linear-gradient(180deg, #113b38 0%, #0e5752 100%);
-  color: #ffffff;
-}
-
-.inquiry-panel .section-title,
-.inquiry-panel .section-copy {
-  color: #ffffff;
-}
-
-.inquiry-panel .section-copy {
-  opacity: 0.78;
-}
-
-.contact-stack {
-  display: grid;
-  gap: 0.85rem;
-}
-
-.contact-chip {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  padding: 0.95rem 1rem;
-  border-radius: 1rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  transition: transform 0.28s ease, background-color 0.28s ease;
-}
-
-.contact-chip:hover {
-  transform: translateX(6px);
-  background-color: rgba(255, 255, 255, 0.16);
-}
-
-.quick-links-box {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.quick-links-box a {
-  display: inline-flex;
-  padding: 0.75rem 1rem;
-  border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  text-decoration: none;
-  transition: transform 0.25s ease, background-color 0.25s ease;
-}
-
-.quick-links-box a:hover {
-  background-color: rgba(255, 255, 255, 0.18);
-  transform: translateY(-4px);
-}
-
 .form-panel {
   background: rgba(218, 253, 248, 0.82);
   border: 1px solid rgba(10, 165, 157, 0.25);
@@ -648,7 +585,6 @@
     grid-template-columns: 1fr;
   }
 
-  .inquiry-panel,
   .form-panel {
     padding: 1.5rem;
   }
@@ -662,8 +598,6 @@
   .program-card::after,
   .impact-stat-card,
   .pillar-card,
-  .contact-chip,
-  .quick-links-box a,
   .home-navbar,
   .home-navbar .nav-link::after {
     animation: none !important;

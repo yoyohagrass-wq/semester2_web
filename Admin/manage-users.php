@@ -189,7 +189,7 @@ foreach ($users as $user) {
                     <td><?php echo htmlspecialchars($user['email']); ?></td>
                     <td>
                       <a class="btn btn-sm btn-info" href="manage-users.php?selected=<?php echo urlencode((string) $user['id']); ?>">Select</a>
-                      <form method="post" action="manage-users.php" style="display:inline;">
+                      <form method="post" action="manage-users.php" class="d-inline">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="selected_id" value="<?php echo htmlspecialchars((string) $user['id']); ?>">
                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this user?')">Delete</button>

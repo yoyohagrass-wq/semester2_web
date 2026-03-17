@@ -93,7 +93,7 @@
                                     <h3 class="text-primary">1,050 EGP</h3>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <small class="text-muted">Target: 100,000 EGP</small>
                             </div>
