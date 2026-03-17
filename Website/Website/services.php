@@ -2,13 +2,13 @@
 require_once 'functions.php';
 $services  = getServicesData();
 $serviceRows = loadServicesData();
-?>
-<?php pageHead(
+pageHead(
     'Our Services - Al Mesbah Al Modie Foundation',
     'Explore the humanitarian and social services provided by Al Mesbah Al Modie Foundation, including food distribution, medical support, water projects, and community assistance across Egypt.',
     'charity services Egypt, humanitarian projects, food distribution, medical aid, water projects, nonprofit services'
-); ?>
-<?php headerSection(); ?>
+);
+headerSection();
+?>
 
 <div class="services-container">
     <h1 class="services-title">Our Services</h1>
@@ -45,6 +45,8 @@ $serviceRows = loadServicesData();
     </table>
 </div>
 
-<?php newsletterBox('Receive updates from Al Mesbah Al Modie Foundation about charity programs and humanitarian aid projects across Egypt.'); ?>
-<?php pageFooter(); ?>
-<?php pageClose(); ?>
+<?php 
+newsletterBox('Receive updates from Al Mesbah Al Modie Foundation about charity programs and humanitarian aid projects across Egypt.');
+pageFooter();
+pageClose();
+?>
