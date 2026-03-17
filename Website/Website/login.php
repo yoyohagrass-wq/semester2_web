@@ -6,7 +6,6 @@ $email = "";
 $message = "";
 $messageClass = "";
 $filename = "users.txt";
-$filepath = __DIR__ . DIRECTORY_SEPARATOR . $filename;
 
 if (isset($_SESSION["userid"])) {
     header("Location: index.php");
@@ -20,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $found = false;
 
     if ($name != "" && $email != "" && $password != "") {
-        if (file_exists($filepath)) {
-            $lines = file($filepath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        if (file_exists($filename)) {
+            $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
             if ($lines !== false) {
                 foreach ($lines as $line) {
