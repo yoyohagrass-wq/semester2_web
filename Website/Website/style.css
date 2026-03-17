@@ -513,6 +513,9 @@ form button:hover {
 
 
 
+
+
+
 /* 4: Start Service Page */
 
 .services-container {
@@ -528,7 +531,7 @@ form button:hover {
 
 .services-title {
   color: #09B4B4;
-  font-size: 40px;
+  font-size: 50px;
   margin-bottom: 16px;
 }
 
@@ -549,13 +552,15 @@ form button:hover {
   margin-bottom: 40px;
 }
 
-.service-card {
-  background-color: white;
-  width: 300px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px gray;
-  cursor: pointer;
-  padding-bottom: 10px;
+.service-card{
+  background-color:white;
+  width:300px;
+  height: 320px;
+  border-radius:12px;
+  box-shadow:0 4px 10px gray;
+  cursor:pointer;
+  padding:10px;
+  overflow:hidden;
 }
 
 .service-card:hover {
@@ -573,6 +578,7 @@ form button:hover {
 .service-name {
   color: #09B4B4;
   margin: 10px 0 10px;
+  font-size: 25px;
 }
 
 .service-desc {
@@ -615,6 +621,7 @@ form button:hover {
 }
 
 /* End Services Page */
+
 
 
 
