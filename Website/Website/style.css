@@ -319,6 +319,7 @@ form button:hover,
   border-collapse: collapse;
   background: #fff;
 }
+.services-table { table-layout: fixed; }
 .about-table th,
 .services-table th {
   background: var(--primary-dark);
@@ -330,6 +331,12 @@ form button:hover,
   padding: 12px;
   border-bottom: 1px solid #ddd;
   color: var(--text);
+}
+.services-table th,
+.services-table td {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  vertical-align: top;
 }
 .about-table tr:hover,
 .services-table tr:hover { background: #f0fafa; }
@@ -359,15 +366,30 @@ form button:hover,
 .service-card {
   background: #fff;
   width: 300px;
-  height: 270px;
+  min-height: 300px;
+  height: auto;
+  overflow: hidden;
 }
 .service-img {
   width: 100%;
   height: 140px;
   border-radius: 10px;
+  object-fit: cover;
 }
-.service-name { color: var(--primary); margin: 10px 0; }
-.service-desc { color: var(--text); font-size: 14px; overflow: hidden; }
+.service-name {
+  color: var(--primary);
+  margin: 10px 0;
+  padding: 0 12px;
+  overflow-wrap: anywhere;
+}
+.service-desc {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 0 12px 12px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 .services-subtitle { margin: 80px 0 25px; font-size: 30px; }
 
 .donation-container {
