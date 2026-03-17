@@ -1,141 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQs - Al Mesbah Al Modie Foundation</title>
-
-    <meta name="description" content="Frequently asked questions about Al Mesbah Al Modie Foundation, including donations, volunteering, operations, and in-kind contributions.">
-    <meta name="keywords" content="Al Mesbah Al Modie Foundation FAQs, donations, volunteering, charity in Egypt, foundation services">
-    <meta name="author" content="Al Mesbah Al Modie Foundation">
-    <meta name="robots" content="index, follow">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260310e">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-</head>
-<body>
-
-
-
-
-    <!-- Start Header -->
-      <nav class="navbar navbar-expand-lg navbar-dark home-navbar sticky-top py-3">
-        <div class="container">
-          <a class="navbar-brand d-flex align-items-center gap-3" href="index.php">
-            <img src="images/logo.png" alt="Al Mesbah Al Modie Foundation logo" class="home-logo" width="84" height="84">
-            <span class="brand-copy">
-              <span class="brand-name">Al Mesbah Al Modie Foundation</span>
-              <span class="brand-subtitle">Charity and humanitarian aid in Egypt</span>
-            </span>
-          </a>
-          <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#homeNavbar" aria-controls="homeNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="homeNavbar">
-            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-              <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-              <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
-              <li class="nav-item"><a class="nav-link" href="volunteer.php">Volunteer</a></li>
-              <li class="nav-item"><a class="btn btn-warning ms-lg-3 px-4 fw-semibold" href="donate.php">Donate</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    <!-- End Header -->
-
-
+﻿<?php require_once 'functions.php'; ?>
+<?php pageHead(
+    'FAQs - Al Mesbah Al Modie Foundation',
+    'Frequently asked questions about Al Mesbah Al Modie Foundation, including donations, volunteering, operations, and in-kind contributions.',
+    'Al Mesbah Al Modie Foundation FAQs, donations, volunteering, charity in Egypt, foundation services'
+); ?>
+<?php navBar(); ?>
 
 <div class="faq-container">
     <h1 class="faq-title">Frequently Asked Questions</h1>
     <p class="page-intro">Learn how Al Mesbah Al Modie Foundation provides charity and humanitarian aid in Egypt, from donations and volunteering to branch services and in-kind support.</p>
-
     <div class="faq-box">
         <div class="faq-item">
-        <h3 class="faq-question">How can I make a donation?</h3>
-        <p class="faq-answer">You can donate through our <a href="donate.php">donation page</a> by choosing a preset amount or entering a custom amount. All donations go directly toward supporting families in need.</p>
+            <h3 class="faq-question">How can I make a donation?</h3>
+            <p class="faq-answer">You can donate through our <a href="donate.php">donation page</a> by choosing a preset amount or entering a custom amount. All donations go directly toward supporting families in need.</p>
         </div>
-
         <div class="faq-item">
-        <h3 class="faq-question">Can I volunteer with the organization?</h3>
-        <p class="faq-answer">Yes! Visit our <a href="volunteer.php">volunteering page</a> and fill out the form. Once submitted, our team will contact you with available opportunities that match your interests.</p>
+            <h3 class="faq-question">Can I volunteer with the organization?</h3>
+            <p class="faq-answer">Yes! Visit our <a href="volunteer.php">volunteering page</a> and fill out the form. Once submitted, our team will contact you with available opportunities that match your interests.</p>
         </div>
-
         <div class="faq-item">
-        <h3 class="faq-question">Where does the foundation operate?</h3>
-        <p class="faq-answer">Al Mesbah Al Modie Foundation operates across several governorates in Egypt, including Cairo, Giza, and Upper Egypt regions.</p>
+            <h3 class="faq-question">Where does the foundation operate?</h3>
+            <p class="faq-answer">Al Mesbah Al Modie Foundation operates across several governorates in Egypt, including Cairo, Giza, and Upper Egypt regions.</p>
         </div>
-
         <div class="faq-item">
-        <h3 class="faq-question">How can I stay updated on your projects?</h3>
-        <p class="faq-answer">Follow us on <a href="https://www.facebook.com/ElMesbah.ElModea" target="_blank">Facebook</a> or <a href="https://www.instagram.com/elmesbaahelmodea/" target="_blank">Instagram</a> for the latest updates and events.</p>
+            <h3 class="faq-question">How can I stay updated on your projects?</h3>
+            <p class="faq-answer">Follow us on <a href="https://www.facebook.com/ElMesbah.ElModea" target="_blank">Facebook</a> or <a href="https://www.instagram.com/elmesbaahelmodea/" target="_blank">Instagram</a> for the latest updates and events.</p>
         </div>
-
         <div class="faq-item">
-        <h3 class="faq-question">Can I donate items instead of money?</h3>
-        <p class="faq-answer">Absolutely. We accept in-kind donations such as clothes, food, and furniture. You can coordinate delivery with one of our branch offices listed on the <a href="branches.php">branches page</a>.</p>
+            <h3 class="faq-question">Can I donate items instead of money?</h3>
+            <p class="faq-answer">Absolutely. We accept in-kind donations such as clothes, food, and furniture. You can coordinate delivery with one of our branch offices listed on the <a href="branches.php">branches page</a>.</p>
         </div>
     </div>
 </div>
 
-
-      <div class="contact-box">
-        <div class="contact-text">
-            <h2>Inquire</h2>
-            <p>Our team will respond as soon as possible with help related to foundation services, donations, or humanitarian aid programs in Egypt.</p>
-        </div>
-        
-        <form id="inquireForm" action="feedback-confirmation.php" method="get" onsubmit="return validateInquireForm();" >
-            <input type="text" id="inquireName" placeholder="Your Name: " >
-            <input type="text" id="inquireEmail" placeholder="Your Email: " >
-            <input type="text" id="inquirePhone" placeholder="Your Phone: " >
-            <textarea id="inquireMessage" rows="4" placeholder="Your Message: " ></textarea>
-            <button type="submit">Send Inquiry</button>
-        </form>
-      </div>
-
-
-
-  
-  <!-- Start Footer -->
-  <div class="footer">
-    <!-- LEFT SIDE -->
-    <div class="footer-left">
-      <h5>Quick Links</h5>
-      <ul class="footer-links">
-        <li><a href="feedback.php">Feedback</a></li>
-        <li><a href="branches.php">Branches</a></li>
-        <li><a href="faqs.php">FAQs</a></li>
-      </ul>
-    </div>
-
-    <!-- RIGHT SIDE -->
-    <div class="footer-right">
-      <div class="contact-item">
-        <i class="fa-solid fa-phone"></i>
-        <div>16093</div>
-      </div>
-
-      <div class="contact-item">
-        <i class="fa-solid fa-envelope"></i>
-        <div>info@almesbah-almode.com</div>
-      </div>
-
-      <div class="contact-item">
-        <i class="fa-solid fa-location-dot"></i>
-        <div>6 Atlas Buildings, Ahmed Fakhry St., <br> Sixth District, Nasr City, Cairo</div>
-      </div>
-
-      <div class="footer-right-icons">
-        <a href="https://www.facebook.com/ElMesbah.ElModea" target="_blank"><i class="fa-brands fa-facebook-f" id="facebook-icon"></i></a>
-        <a href="https://www.instagram.com/elmesbaahelmodea/?igsh=MXJxYWFjazQwMjZiMw%3D%3D#" target="_blank"><i class="fa-brands fa-instagram" id="instagram-icon"></i></a>
-        <a href="https://wa.me/201210012324" target="_blank"><i class="fa-brands fa-whatsapp" id="whatsapp-icon"></i></a>
-      </div>
-    </div>
-  </div>
-  <!-- End Footer -->
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<?php inquiryForm('Inquire', 'Our team will respond as soon as possible with help related to foundation services, donations, or humanitarian aid programs in Egypt.'); ?>
+<?php pageFooter(); ?>
+<?php pageClose(); ?>
