@@ -1,7 +1,8 @@
 ﻿<?php
 
-function pageHead($title, $description, $keywords, $extraCss = '') {
+function pageHead($title, $description, $keywords, $extraCss = '', $bodyClass = '') {
     $cssTag = $extraCss ? "\n    <link rel=\"stylesheet\" href=\"{$extraCss}\">" : '';
+    $bodyClassAttr = $bodyClass ? ' class="' . htmlspecialchars($bodyClass) . '"' : '';
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@ function pageHead($title, $description, $keywords, $extraCss = '') {
     <link rel="stylesheet" href="style.css?v=20260317f"><?= $cssTag ?>
     <script src="script.js?v=20260317f" defer></script>
 </head>
-<body>
+<body<?= $bodyClassAttr ?>>
 <?php
 }
 
