@@ -1,10 +1,12 @@
-﻿<?php require_once 'functions.php'; ?>
-<?php pageHead(
+﻿<?php
+require_once 'functions.php'; 
+pageHead(
     'Contact Us - Al Mesbah Al Modie Foundation',
     'Contact Al Mesbah Al Modie Foundation for inquiries, volunteering, donations, and general support.',
     'contact charity Egypt, nonprofit contact, Al Mesbah Al Modie Foundation'
-); ?>
-<?php headerSection(); ?>
+); 
+headerSection();
+?>
 
 <div class="about-container">
     <h1 class="about-title">Contact Al Mesbah Al Modie Foundation</h1>
@@ -22,6 +24,8 @@
     </table>
 </div>
 
-<?php inquiryForm('Send an Inquiry', 'Use the form to contact our team about charity programs, humanitarian aid, donations, or volunteering in Egypt.'); ?>
-<?php pageFooter(); ?>
-<?php pageClose(); ?>
+<?php 
+inquiryForm('Send an Inquiry', 'Use the form to contact our team about charity programs, humanitarian aid, donations, or volunteering in Egypt.');
+pageFooter();
+pageClose();
+?>

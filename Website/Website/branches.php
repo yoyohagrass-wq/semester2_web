@@ -1,10 +1,12 @@
-﻿<?php require_once 'functions.php'; ?>
-<?php pageHead(
+﻿<?php 
+require_once 'functions.php'; 
+pageHead(
     'Branches - Al Mesbah Al Modie Foundation',
     'Find all Al Mesbah Al Modie Foundation branches across Egypt, including Rehab City, Nasr City, and the 5th Settlement.',
     'Al Mesbah Al Modie Foundation branches, Egypt charity locations, Rehab City branch, Nasr City branch, 5th Settlement branch'
-); ?>
-<?php headerSection(); ?>
+);
+headerSection();
+?>
 
 <div class="branches-container">
     <h1 class="branches-title">Our Branches</h1>
@@ -26,5 +28,8 @@
     </div>
 </div>
 
-<?php pageFooter(); ?>
-<?php pageClose(); ?>
+<?php
+ pageFooter();
+pageClose();
+?>
+
