@@ -32,9 +32,7 @@ img {
   max-width: 100%;
 }
 button,
-.donate-btn,
-.home-btn,
-.back-btn {
+.donate-btn {
   background: var(--primary-dark);
   color: var(--white);
   border: none;
@@ -43,8 +41,7 @@ button,
   text-align: center;
 }
 button:hover,
-.donate-btn:hover,
-.home-btn:hover {
+.donate-btn:hover {
   background: var(--primary-dark-hover);
 }
 
@@ -57,7 +54,6 @@ button:hover,
 .service-details,
 .about-container,
 .services-container,
-.success-card,
 .newsletter-box,
 .branch-container {
   box-shadow: var(--shadow);
@@ -273,8 +269,7 @@ button:hover,
 .project-card:hover,
 .service-card:hover,
 .faq-item:hover,
-.branch-card:hover,
-.back-btn:hover {
+.branch-card:hover {
   transform: translateY(-5px);
 }
 .project-card img {
@@ -314,7 +309,6 @@ button:hover,
 
 form,
 .donation-form,
-.auth-form,
 .newsletter-box form {
   display: flex;
   flex-direction: column;
@@ -327,7 +321,6 @@ form,
 form input,
 form textarea,
 .newsletter-box input,
-.auth-form input,
 .donation-input,
 .donation-select,
 .donation-textarea {
@@ -340,9 +333,7 @@ form textarea {
   resize: none;
 }
 form button,
-.newsletter-box button,
-.auth-form button,
-.auth-form input[type="submit"] {
+.newsletter-box button {
   background: var(--primary-dark);
   color: #fff;
   padding: 10px;
@@ -350,9 +341,7 @@ form button,
   font-size: 16px;
 }
 form button:hover,
-.newsletter-box button:hover,
-.auth-form button:hover,
-.auth-form input[type="submit"]:hover {
+.newsletter-box button:hover {
   background: #007a7a;
 }
 
@@ -537,64 +526,6 @@ form button:hover,
   color: #333;
 }
 
-.dc-body,
-.auth-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.dc-body {
-  font-family: Arial, sans-serif;
-  background: var(--bg-light);
-}
-.success-container {
-  text-align: center;
-}
-.success-card {
-  background: #fff;
-  padding: 40px 50px;
-  max-width: 400px;
-}
-.success-kicker,
-.auth-brand {
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.success-kicker {
-  color: var(--primary);
-  margin-bottom: 14px;
-  display: inline-block;
-}
-.success-brand {
-  margin-bottom: 6px;
-  color: #164847;
-  font-size: 18px;
-  font-weight: bold;
-}
-.success-tagline {
-  margin-bottom: 20px;
-  color: #5a6f6f;
-  font-size: 14px;
-}
-.success-card h1 {
-  color: var(--primary);
-  font-size: 32px;
-  margin-bottom: 15px;
-}
-.success-card p {
-  font-size: 16px;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-.home-btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-}
 
 .faq-container {
   width: 950px;
@@ -630,8 +561,7 @@ form button:hover,
 .faq-answer a {
   color: var(--accent);
 }
-.faq-answer a:hover,
-.auth-links a:hover {
+.faq-answer a:hover {
   text-decoration: underline;
 }
 
@@ -703,17 +633,6 @@ form button:hover,
   height: 100%;
   border: none;
 }
-.back-btn {
-  display: inline-block;
-  margin-top: 30px;
-  background: var(--accent);
-  padding: 12px 26px;
-  font-size: 16px;
-  font-weight: 500;
-}
-.back-btn:hover {
-  background: #089b96;
-}
 
 .donation-prog-title {
   margin-top: 30px;
@@ -749,97 +668,6 @@ form button:hover,
   line-height: 1.6;
 }
 
-.auth-body {
-  padding: 32px 20px;
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(9, 180, 180, 0.14),
-      transparent 24%
-    ),
-    linear-gradient(180deg, #eef8f8 0%, #f8fcfc 100%);
-}
-.auth-shell {
-  width: 100%;
-  max-width: 460px;
-}
-.auth-card {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 16px 35px rgba(20, 70, 68, 0.14);
-  padding: 34px 32px;
-}
-.auth-brand {
-  color: #0b7777;
-  font-size: 14px;
-}
-.auth-card h1 {
-  color: #123b3b;
-  font-size: 30px;
-  margin: 12px 0 8px;
-}
-.auth-tagline {
-  color: #5d7272;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 18px;
-}
-.auth-copy {
-  color: #334949;
-  font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 24px;
-}
-.auth-form label {
-  color: #274545;
-  font-weight: 600;
-  margin-bottom: -6px;
-}
-.auth-form input {
-  padding: 12px 14px;
-  border: 1px solid #c9dddd;
-  border-radius: 10px;
-  font-size: 15px;
-}
-.auth-form input:focus,
-.form-panel .form-control:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(9, 180, 180, 0.12);
-}
-.auth-links {
-  margin-top: 20px;
-  color: #4b6262;
-  line-height: 1.7;
-}
-.auth-links a {
-  color: #0b7777;
-  font-weight: 600;
-}
-.status-message {
-  margin-top: 18px;
-  padding: 12px 14px;
-  border-radius: 10px;
-  font-size: 14px;
-  line-height: 1.6;
-}
-.status-message.success {
-  background: #e8f7f4;
-  color: #156654;
-}
-.status-message.error {
-  background: #fdeaea;
-  color: #a03c3c;
-}
-.session-details {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid #e2eded;
-  color: #415757;
-  font-size: 14px;
-  line-height: 1.7;
-}
 
 /* Bootstrap Homepage */
 .home-page {
@@ -1007,7 +835,6 @@ body.auth-register {
 .hero-main-panel,
 .hero-mini-panel,
 .program-card,
-.inquiry-panel,
 .form-panel {
   position: relative;
   overflow: hidden;
@@ -1154,50 +981,15 @@ body.auth-register {
     ),
     linear-gradient(180deg, #edf5f4 0%, #f7fbfb 100%);
 }
-.inquiry-panel,
 .form-panel {
   height: 100%;
   padding: 2rem;
   box-shadow: 0 20px 50px rgba(18, 42, 40, 0.08);
 }
-.inquiry-panel {
-  background: linear-gradient(180deg, #113b38 0%, #0e5752 100%);
-  color: #fff;
-}
-.inquiry-panel .section-title,
-.inquiry-panel .section-copy {
-  color: #fff;
-}
-.inquiry-panel .section-copy {
-  opacity: 0.78;
-}
 
 .contact-stack {
   display: grid;
   gap: 0.85rem;
-}
-.contact-chip {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  padding: 0.95rem 1rem;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-}
-.quick-links-box {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-.quick-links-box a {
-  display: inline-flex;
-  padding: 0.75rem 1rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.22);
-  color: #173533;
-}
-.quick-links-box a:hover {
-  background: rgba(255, 255, 255, 0.32);
 }
 
 .form-panel {
@@ -1287,7 +1079,6 @@ body.auth-register {
   .hero-side-stack {
     grid-template-columns: 1fr;
   }
-  .inquiry-panel,
   .form-panel {
     padding: 1.5rem;
   }

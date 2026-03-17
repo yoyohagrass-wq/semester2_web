@@ -174,7 +174,7 @@ foreach ($services as $service) {
                                         <td><?php echo htmlspecialchars(substr($service['description'], 0, 50)); ?>...</td>
                                         <td>
                                             <a class="btn btn-sm btn-info" href="manage-services.php?selected=<?php echo urlencode((string) $service['id']); ?>">Select</a>
-                                            <form method="post" action="manage-services.php" style="display:inline;">
+                                            <form method="post" action="manage-services.php" class="d-inline">
                                                 <input type="hidden" name="action" value="delete">
                                                 <input type="hidden" name="selected_id" value="<?php echo htmlspecialchars((string) $service['id']); ?>">
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this service?')">Delete</button>
