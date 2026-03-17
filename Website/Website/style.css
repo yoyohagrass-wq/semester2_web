@@ -913,3 +913,4 @@ form button:hover,
   .hero-side-stack { grid-template-columns: 1fr; }
   .inquiry-panel, .form-panel { padding: 1.5rem; }
 }
+.check-icon { font-size: 4rem; }
