@@ -15,10 +15,8 @@ headerSection();
             <div class="hero-orb hero-orb-two"></div>
             <div class="hero-orb hero-orb-three"></div>
             <div class="container py-5">
-                <div id="welcomeMessage" class="home-welcome fade-in">Supporting families across Egypt.</div>
                 <div class="row align-items-center g-5 py-lg-4">
                     <div class="col-lg-6 fade-in">
-                        <span class="hero-kicker">Direct help. Real outcomes.</span>
                         <h1 class="display-4 fw-bold text-white mt-3">Supporting families with food, healthcare, and emergency relief.</h1>
                         <p class="hero-lead mt-4">
                             Al Mesbah Al Modie Foundation works across Egypt to deliver practical support through trusted community programs, branch coordination, and donor-backed campaigns.

@@ -154,24 +154,6 @@ function validateDonateForm() {
     return true;
 }
 
-function setWelcomeMessage() {
-    const welcomeMessage = document.getElementById("welcomeMessage");
-
-    if (!welcomeMessage) {
-        return;
-    }
-
-    const hour = new Date().getHours();
-    let greeting = "Good evening";
-
-    if (hour < 12) {
-        greeting = "Good morning";
-    } else if (hour < 18) {
-        greeting = "Good afternoon";
-    }
-
-    welcomeMessage.textContent = greeting + ". Al Mesbah Al Modie Foundation provides charity and humanitarian aid across Egypt.";
-}
 
 function setupFeedbackForm() {
     const form = document.getElementById("feedbackForm");
@@ -216,7 +198,6 @@ function setupDonateForm() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    setWelcomeMessage();
     updateProgress();
     setupFeedbackForm();
     setupVolunteerForm();
