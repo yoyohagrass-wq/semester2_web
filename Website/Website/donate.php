@@ -12,7 +12,7 @@ headerSection();
     <h1 class="donation-title">Make a Donation</h1>
     <p class="page-intro">Support Al Mesbah Al Modie Foundation, a charity and humanitarian aid organization in Egypt, by funding food assistance, medical care, emergency relief, and community support for families in need.</p>
     <div class="donation-box">
-        <form id="donateForm" class="donation-form" action="donation-confirmation.php" method="get">
+        <form id="donateForm" class="donation-form" action="donation-confirmation.php" method="post">
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" class="donation-input" placeholder="Enter your full name">
             <label for="email">Email:</label>

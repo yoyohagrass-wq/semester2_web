@@ -220,6 +220,12 @@ foreach ($users as $user) {
                 <input type="email" id="userEmail" name="userEmail" class="form-control" value="<?php echo htmlspecialchars($selectedUser['email'] ?? ''); ?>" placeholder="Enter user email" required>
               </div>
 
+              <div class="mb-3">
+                <label for="userPassword" class="form-label">Password</label>
+                <input type="password" id="userPassword" name="userPassword" class="form-control" value="<?php echo htmlspecialchars($selectedUser['password'] ?? ''); ?>" placeholder="Enter user password" required>
+              </div>
+
+
               <div class="btn-group w-100" role="group">
                 <button type="submit" class="btn btn-outline-success" name="action" value="add"><i class="fas fa-plus me-2"></i>Add User</button>
                 <button type="submit" class="btn btn-outline-primary" name="action" value="edit"><i class="fas fa-edit me-2"></i>Update User</button>

@@ -16,20 +16,22 @@ if (isset($_SESSION["userid"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST["name"] ?? "");
     $email = trim($_POST["email"] ?? "");
+    $password = trim($_POST["password"] ?? "");
     $found = false;
 
-    if ($name != "" && $email != "") {
+    if ($name != "" && $email != "" && $password != "") {
         if (file_exists($filepath)) {
             $lines = file($filepath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
             if ($lines !== false) {
                 foreach ($lines as $line) {
-                    $data = explode("~", trim($line), 3);
+                    $data = explode("~", trim($line), 4);
                     $userid = intval($data[0] ?? 0);
                     $username = trim($data[1] ?? "");
                     $useremail = trim($data[2] ?? "");
+                    $userpassword = trim($data[3] ?? "");
 
-                    if (strcasecmp($username, $name) === 0 && strcasecmp($useremail, $email) === 0) {
+                    if (strcasecmp($username, $name) === 0 && strcasecmp($useremail, $email) === 0 && $userpassword === $password) {
                         $_SESSION["userid"] = $userid;
                         $_SESSION["username"] = $username;
                         $_SESSION["useremail"] = $useremail;
@@ -41,11 +43,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if (!$found) {
-            $message = "User not found. Register to support Al Mesbah Al Modie Foundation.";
+            $message = "Invalid credentials. Please check your details.";
             $messageClass = "error";
         }
     } else {
-        $message = "Please enter your name and email.";
+        $message = "Please enter your name, email, and password.";
         $messageClass = "error";
     }
 }
@@ -129,6 +131,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <div class="mb-3">
                                         <label for="email" class="form-label fw-semibold">Email</label>
                                         <input type="email" name="email" id="email" class="form-control form-control-lg" value="<?php echo htmlspecialchars($email); ?>" placeholder="Enter your email" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label fw-semibold">Password</label>
+                                        <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Enter your password" required>
                                     </div>
 
                                     <button type="submit" class="btn btn-warning btn-lg w-100 btn-login mt-3">Login</button>

@@ -13,7 +13,7 @@ $areas = loadPipedFile(__DIR__ . DIRECTORY_SEPARATOR . 'volunteer-areas.txt');
     <h1 class="donation-title">Become a Volunteer</h1>
     <p class="page-intro">Volunteer with Al Mesbah Al Modie Foundation and help deliver charity and humanitarian aid in Egypt through food distribution, healthcare support, events, and community outreach.</p>
     <div class="donation-box">
-        <form id="volunteerForm" class="donation-form" action="volunteer-confirmation.php" method="get">
+        <form id="volunteerForm" class="donation-form" action="volunteer-confirmation.php" method="post">
             <input type="text" id="name" name="name" class="donation-input" placeholder="Full Name">
             <input type="text" id="email" name="email" class="donation-input" placeholder="Email">
             <input type="text" id="phone" name="phone" class="donation-input" placeholder="Phone Number">

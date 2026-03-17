@@ -39,10 +39,11 @@ function headerSection() {
         <div class="collapse navbar-collapse" id="homeNavbar">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                 <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                <li class="nav-item"><a class="nav-link active" href="about.php">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="volunteer.php">Volunteer</a></li>
                 <li class="nav-item"><a class="btn btn-warning ms-lg-3 px-4 fw-semibold" href="donate.php">Donate</a></li>
+                <li class="nav-item"><a class="btn btn-outline-light" href="logout.php">Logout</a></li>
             </ul>
         </div>
     </div>

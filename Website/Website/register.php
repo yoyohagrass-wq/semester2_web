@@ -29,22 +29,46 @@ $filename = "users.txt";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST["name"] ?? "");
     $email = trim($_POST["email"] ?? "");
+    $password = trim($_POST["password"] ?? "");
     $filepath = __DIR__ . DIRECTORY_SEPARATOR . $filename;
 
-    if ($name != "" && $email != "") {
-        $lastid = getLastId($filepath);
-        $newid = $lastid + 1;
-        $line = $newid . "~" . $name . "~" . $email . "\n";
-        file_put_contents($filepath, $line, FILE_APPEND);
+    if ($name != "" && $email != "" && $password != "" && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Check if email already exists
+        $emailExists = false;
+        if (file_exists($filepath)) {
+            $filehandler = fopen($filepath, "r");
+            if ($filehandler) {
+                while (($line = fgets($filehandler)) !== false) {
+                    if (trim($line) != "") {
+                        $data = explode("~", trim($line));
+                        if (count($data) >= 3 && $data[2] === $email) {
+                            $emailExists = true;
+                            break;
+                        }
+                    }
+                }
+                fclose($filehandler);
+            }
+        }
 
-        $_SESSION["userid"] = $newid;
-        $_SESSION["username"] = $name;
-        $_SESSION["useremail"] = $email;
+        if (!$emailExists) {
+            $lastid = getLastId($filepath);
+            $newid = $lastid + 1;
+            $line = $newid . "~" . $name . "~" . $email . "~" . $password . "\n";
+            file_put_contents($filepath, $line, FILE_APPEND);
 
-        header("Location: login.php");
-        exit;
+            $_SESSION["userid"] = $newid;
+            $_SESSION["username"] = $name;
+            $_SESSION["useremail"] = $email;
+
+            header("Location: login.php");
+            exit;
+        } else {
+            $message = "Email already registered.";
+            $messageClass = "error";
+        }
     } else {
-        $message = "Please enter your name and email.";
+        $message = "Please enter valid name, email, and password.";
         $messageClass = "error";
     }
 }
@@ -128,6 +152,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <div class="mb-3">
                                         <label for="email" class="form-label fw-semibold">Email</label>
                                         <input type="email" name="email" id="email" class="form-control form-control-lg" value="<?php echo htmlspecialchars($email); ?>" placeholder="Enter your email" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label fw-semibold">Password</label>
+                                        <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Enter your password" required>
                                     </div>
 
                                     <button type="submit" class="btn btn-warning btn-lg w-100 btn-register mt-3">Register</button>

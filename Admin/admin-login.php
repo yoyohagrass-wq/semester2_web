@@ -19,7 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $username = trim($_POST['username'] ?? '');
   $password = trim($_POST['password'] ?? '');
 
-  if ($username === 'admin' && $password === 'admin123') {
+  include 'admin_config.php';
+
+  if ($username === $admin_username && $password === $admin_password) {
     $_SESSION['admin_logged_in'] = true;
     $_SESSION['admin_username'] = $username;
     header('Location: admin-dashboard.php');

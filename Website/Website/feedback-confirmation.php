@@ -9,6 +9,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body class="bg-light">
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['name'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $phone = trim($_POST['phone'] ?? '');
+    $message = trim($_POST['message'] ?? '');
+
+    if ($name && $email && $message) {
+        $filepath = __DIR__ . DIRECTORY_SEPARATOR . 'feedback.txt';
+        $lastid = 0;
+        if (file_exists($filepath)) {
+            $lines = file($filepath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            if (!empty($lines)) {
+                $lastLine = end($lines);
+                $data = explode("~", $lastLine);
+                $lastid = intval($data[0] ?? 0);
+            }
+        }
+        $newid = $lastid + 1;
+        $line = $newid . "~" . $name . "~" . $email . "~" . $phone . "~" . $message . "~" . date('Y-m-d H:i:s') . "\n";
+        file_put_contents($filepath, $line, FILE_APPEND);
+    }
+}
+?>
   <div class="min-vh-100 d-flex align-items-center justify-content-center py-5">
     <div class="container">
       <div class="row justify-content-center">
