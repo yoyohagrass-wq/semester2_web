@@ -29,6 +29,9 @@ headerSection();
     </table>
 </div>
 
-<?php newsletterBox('Stay updated on how Al Mesbah Al Modie Foundation delivers charity and humanitarian aid in Egypt.'); ?>
-<?php pageFooter(); ?>
-<?php pageClose(); ?>
+<?php 
+newsletterBox('Stay updated on how Al Mesbah Al Modie Foundation delivers charity and humanitarian aid in Egypt.'); 
+pageFooter();
+pageClose();
+?>
+
