@@ -37,7 +37,7 @@ function headerSection() {
         <div class="collapse navbar-collapse" id="homeNavbar">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                 <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="about.php">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="volunteer.php">Volunteer</a></li>
                 <li class="nav-item"><a class="btn btn-warning ms-lg-3 px-4 fw-semibold" href="donate.php">Donate</a></li>
@@ -125,22 +125,6 @@ function pageClose() {
 </body>
 </html>
 <?php
-}
-
-function loadPipedFile($filePath) {
-    $rows = [];
-    if (!file_exists($filePath)) return $rows;
-    $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    if ($lines === false) return $rows;
-    foreach ($lines as $line) {
-        $parts = explode('|', $line, 2);
-        $value = trim($parts[0] ?? '');
-        $label = trim($parts[1] ?? '');
-        if ($value !== '' && $label !== '') {
-            $rows[] = ['value' => $value, 'label' => $label];
-        }
-    }
-    return $rows;
 }
 
 function loadServicesData() {

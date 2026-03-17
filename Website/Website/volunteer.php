@@ -1,13 +1,12 @@
 ﻿<?php
 require_once 'functions.php';
-$areas = loadPipedFile(__DIR__ . DIRECTORY_SEPARATOR . 'volunteer-areas.txt');
-?>
-<?php pageHead(
+pageHead(
     'Volunteer - Al Mesbah Al Modie Foundation',
     'Join Al Mesbah Al Modie Foundation as a volunteer and help support humanitarian, social, and community projects across Egypt.',
     'volunteer Egypt, charity volunteer, nonprofit volunteering, community service Egypt'
-); ?>
-<?php headerSection(); ?>
+);
+headerSection();
+?>
 
 <div class="donation-container">
     <h1 class="donation-title">Become a Volunteer</h1>
@@ -17,12 +16,6 @@ $areas = loadPipedFile(__DIR__ . DIRECTORY_SEPARATOR . 'volunteer-areas.txt');
             <input type="text" id="name" name="name" class="donation-input" placeholder="Full Name">
             <input type="text" id="email" name="email" class="donation-input" placeholder="Email">
             <input type="text" id="phone" name="phone" class="donation-input" placeholder="Phone Number">
-            <select id="area" name="area" class="donation-select">
-                <option value="">Preferred Volunteering Area</option>
-                <?php foreach ($areas as $area): ?>
-                    <option value="<?= htmlspecialchars($area['value']) ?>"><?= htmlspecialchars($area['label']) ?></option>
-                <?php endforeach; ?>
-            </select>
             <textarea id="message" name="message" class="donation-textarea" rows="4" placeholder="Message (Optional)"></textarea>
             <button type="submit" class="donation-btn">Submit Form</button>
         </form>
