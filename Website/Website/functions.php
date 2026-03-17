@@ -127,44 +127,6 @@ function pageClose() {
 <?php
 }
 
-function loadServicesData() {
-    $rows = [];
-    $file = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'services-data.txt';
-    if (!file_exists($file)) return $rows;
-    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    if ($lines === false) return $rows;
-    foreach ($lines as $line) {
-        $parts = explode('~', $line, 3);
-        $id = intval(trim($parts[0] ?? '0'));
-        $name = trim($parts[1] ?? '');
-        $description = trim($parts[2] ?? '');
-        if ($id > 0 && $name !== '') {
-            $rows[] = ['id' => $id, 'name' => $name, 'description' => $description];
-        }
-    }
-    return $rows;
-}
-
-function getServicesData() {
-    return [
-        ['image' => 'images/project1.jpg',  'name' => "Ma'edet El Rahman",                  'desc' => 'Organizing free iftar tables during Ramadan to serve daily meals for families in need.'],
-        ['image' => 'images/project2.jpg',  'name' => "Orphan's Day Celebration",           'desc' => 'We organize special events for orphans filled with joy, games, and gifts to bring happiness and a sense of belonging.'],
-        ['image' => 'images/project3.jpg',  'name' => 'Ramadan Food Boxes',                 'desc' => 'During Ramadan, we distribute essential food boxes to families, helping them prepare their daily meals with ease.'],
-        ['image' => 'images/project4.jpg',  'name' => "Mother's Day Celebration",           'desc' => 'We honor mothers with gifts and gatherings to appreciate their efforts and spread love and gratitude in the community.'],
-        ['image' => 'images/project5.jpg',  'name' => 'Paying Debts for the Needy',        'desc' => 'Our initiative helps families and individuals who are unable to repay their debts, relieving them from financial burdens.'],
-        ['image' => 'images/project6.jpg',  'name' => 'Meat Distribution',                  'desc' => 'Each Eid Al-Adha, we distribute fresh sacrificial meat to underprivileged families across various regions of Egypt.'],
-        ['image' => 'images/project7.jpg',  'name' => 'Prosthetic Limbs Support',           'desc' => 'We provide artificial limbs and medical support to amputees, helping them regain independence and confidence.'],
-        ['image' => 'images/project8.jpg',  'name' => 'Water Connection Projects',          'desc' => 'We work to supply clean and safe water to families in rural and underserved areas, improving their health and living conditions.'],
-        ['image' => 'images/project9.jpg',  'name' => 'Distribution of Blankets',           'desc' => 'We distribute blankets and winter supplies to protect families from the cold during harsh winter months.'],
-        ['image' => 'images/project10.jpg', 'name' => 'Bride Preparation Support',          'desc' => 'We assist brides from low-income families by providing essential home furnishings and wedding needs.'],
-        ['image' => 'images/project11.jpg', 'name' => 'Home Renovation in Upper Egypt',     'desc' => 'We repair and rebuild homes for families living in poor conditions across Upper Egypt villages.'],
-        ['image' => 'images/project12.jpg', 'name' => 'Water Purification Stations',        'desc' => 'We establish purification stations to provide clean, filtered water to rural communities lacking access to safe drinking water.'],
-        ['image' => 'images/project13.jpg', 'name' => 'Hearing Aid Installation for Children', 'desc' => 'We provide hearing aids and medical support to children with hearing difficulties, helping them reconnect in their communities.'],
-        ['image' => 'images/project14.jpg', 'name' => 'Cancer Patient Care',                'desc' => 'We offer support to cancer patients through treatment assistance and regular medical checkups to ease their journey toward recovery.'],
-        ['image' => 'images/project15.jpg', 'name' => 'Dialysis Unit Support',              'desc' => 'We fund and equip dialysis units to ensure that patients with kidney failure receive the necessary treatment in a safe environment.'],
-    ];
-}
-
 function getHomePageData() {
     $impactStats = [
         ["value" => "16",    "label" => "Active programs"],
