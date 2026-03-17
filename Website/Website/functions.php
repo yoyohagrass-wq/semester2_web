@@ -6,9 +6,9 @@ function pageHead($title, $description, $keywords) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?= htmlspecialchars($title) ?></title>
-    <meta name="description" content="<?= htmlspecialchars($description) ?>">
-    <meta name="keywords" content="<?= htmlspecialchars($keywords) ?>">
+    <title><?= $title ?></title>
+    <meta name="description" content="<?= $description ?>">
+    <meta name="keywords" content="<?= $keywords ?>">
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <meta name="robots" content="index, follow">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@ function newsletterBox($description = '') {
 <div class="newsletter-box">
     <div class="newsletter-text">
         <h2>Sign Up for Our Newsletter</h2>
-        <p><?= htmlspecialchars($description) ?></p>
+        <p><?= $description ?></p>
     </div>
     <form id="newsletterForm" action="subscription-confirmation.php" method="post" onsubmit="return validateNewsletterForm();">
         <input type="text" id="newsletterFirstName" name="first_name" placeholder="First Name">
@@ -70,8 +70,8 @@ function inquiryForm($heading = 'Inquire', $intro = '') {
 ?>
 <div class="contact-box">
     <div class="contact-text">
-        <h2><?= htmlspecialchars($heading) ?></h2>
-        <p><?= htmlspecialchars($intro) ?></p>
+        <h2><?= $heading ?></h2>
+        <p><?= $intro ?></p>
     </div>
     <form id="inquireForm" action="feedback-confirmation.php" method="post" onsubmit="return validateInquireForm();">
         <input type="text" id="inquireName" name="inquireName" placeholder="Your Name">
