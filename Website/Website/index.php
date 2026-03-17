@@ -147,36 +147,10 @@ if (!isset($_SESSION["userid"])) {
 
         <section class="inquiry-section py-5">
             <div class="container">
-                <div class="row g-4 align-items-stretch">
-                    <div class="col-lg-5">
-                        <div class="inquiry-panel h-100 fade-in">
-                            <span class="section-tag">Reach out</span>
-                            <h2 class="section-title mt-2">Ask a question or connect with the team.</h2>
-                            <p class="section-copy">We respond to inquiries about donations, volunteering, branch support, and ongoing programs.</p>
-                            <div class="contact-stack mt-4">
-                                <div class="contact-chip">
-                                    <i class="fa-solid fa-phone"></i>
-                                    <span>16093</span>
-                                </div>
-                                <div class="contact-chip">
-                                    <i class="fa-solid fa-envelope"></i>
-                                    <span>info@almesbah-almode.com</span>
-                                </div>
-                                <div class="contact-chip align-items-start">
-                                    <i class="fa-solid fa-location-dot mt-1"></i>
-                                    <span>6 Atlas Buildings, Ahmed Fakhry St., Sixth District, Nasr City, Cairo</span>
-                                </div>
-                            </div>
-                            <div class="quick-links-box mt-4">
-                                <a href="feedback.php">Feedback</a>
-                                <a href="branches.php">Branches</a>
-                                <a href="faqs.php">FAQs</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
                         <div class="form-panel h-100 fade-in delay-2">
-                            <form id="inquireForm" action="feedback-confirmation.php" method="get" onsubmit="return validateInquireForm();">
+                            <form id="inquireForm" action="feedback-confirmation.php" method="post" onsubmit="return validateInquireForm();">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
