@@ -1,3 +1,17 @@
+<?php
+$firstname = $_POST["firstname"];
+$lastname = $_POST["lastname"];
+$email = $_POST["email"];
+
+$filehandler = fopen("NewsletterSubscriptions.txt","a");
+
+$mydata = $firstname."~".$lastname."~".$email."\n";
+
+fwrite($filehandler,$mydata);
+
+fclose($filehandler);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

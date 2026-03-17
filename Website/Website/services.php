@@ -198,9 +198,19 @@ headerSection();
 
     </table>
 </div>
-
-<?php 
-newsletterBox('Receive updates from Al Mesbah Al Modie Foundation about charity programs and humanitarian aid projects across Egypt.');
+<div class="newsletter-box">
+    <div class="newsletter-text">
+        <h2>Sign Up for Our Newsletter</h2>
+        <p>Receive updates from Al Mesbah Al Modie Foundation about charity programs and humanitarian aid projects across Egypt.</p>
+    </div>
+    <form id="newsletterForm" action="subscription-confirmation.php" method="post">
+        <input type="text" id="newsletterFirstName" name="firstname" placeholder="First Name">
+        <input type="text" id="newsletterLastName" name="lastname" placeholder="Last Name">
+        <input type="text" id="newsletterEmail" name="email" placeholder="Email">
+        <button type="submit">Subscribe</button>
+    </form>
+</div>
+<?php
 pageFooter();
 pageClose();
 ?>

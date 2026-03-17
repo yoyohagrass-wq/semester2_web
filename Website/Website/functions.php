@@ -50,41 +50,6 @@ function headerSection() {
 <?php
 }
 
-function newsletterBox($description = '') {
-?>
-<div class="newsletter-box">
-    <div class="newsletter-text">
-        <h2>Sign Up for Our Newsletter</h2>
-        <p><?= $description ?></p>
-    </div>
-    <form id="newsletterForm" action="subscription-confirmation.php" method="post" onsubmit="return validateNewsletterForm();">
-        <input type="text" id="newsletterFirstName" name="first_name" placeholder="First Name">
-        <input type="text" id="newsletterLastName" name="last_name" placeholder="Last Name">
-        <input type="text" id="newsletterEmail" name="email" placeholder="Email">
-        <button type="submit">Subscribe</button>
-    </form>
-</div>
-<?php
-}
-
-function inquiryForm($heading , $intro) {
-?>
-<div class="contact-box">
-    <div class="contact-text">
-        <h2><?= $heading ?></h2>
-        <p><?= $intro ?></p>
-    </div>
-    <form id="inquireForm" action="feedback-confirmation.php" method="post" onsubmit="return validateInquireForm();">
-        <input type="text" id="inquireName" name="inquireName" placeholder="Your Name">
-        <input type="text" id="inquireEmail" name="inquireEmail" placeholder="Your Email">
-        <input type="text" id="inquirePhone" name="inquirePhone" placeholder="Your Phone">
-        <textarea id="inquireMessage" name="inquireMessage" rows="4" placeholder="Your Message"></textarea>
-        <button type="submit">Send Inquiry</button>
-    </form>
-</div>
-<?php
-}
-
 function pageFooter() {
 ?>
 <div class="footer">

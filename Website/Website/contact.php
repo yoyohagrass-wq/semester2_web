@@ -23,9 +23,20 @@ headerSection();
         <tr><td>WhatsApp</td><td>+20 121 001 2324</td></tr>
     </table>
 </div>
-
+<div class="contact-box">
+    <div class="contact-text">
+        <h2>Inquire</h2>
+        <p>Our team will respond as soon as possible with help related to foundation services, donations, or humanitarian aid programs in Egypt.</p>
+    </div>
+    <form id="inquireForm" action="feedback-confirmation.php" method="post" onsubmit="return validateInquireForm();">
+        <input type="text" id="inquireName" name="inquireName" placeholder="Your Name">
+        <input type="text" id="inquireEmail" name="inquireEmail" placeholder="Your Email">
+        <input type="text" id="inquirePhone" name="inquirePhone" placeholder="Your Phone">
+        <textarea id="inquireMessage" name="inquireMessage" rows="4" placeholder="Your Message"></textarea>
+        <button type="submit">Send Inquiry</button>
+    </form>
+</div>
 <?php 
-inquiryForm('Send an Inquiry', 'Use the form to contact our team about charity programs, humanitarian aid, donations, or volunteering in Egypt.');
 pageFooter();
 pageClose();
 ?>
