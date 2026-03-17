@@ -30,12 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST["name"] ?? "");
     $email = trim($_POST["email"] ?? "");
     $password = trim($_POST["password"] ?? "");
-    $filepath = __DIR__ . DIRECTORY_SEPARATOR . $filename;
 
     if ($name != "" && $email != "" && $password != "" && filter_var($email, FILTER_VALIDATE_EMAIL)) {
         // Check if email already exists
         $emailExists = false;
-        if (file_exists($filepath)) {
+        if (file_exists($filename)) {
             $filehandler = fopen($filepath, "r");
             if ($filehandler) {
                 while (($line = fgets($filehandler)) !== false) {
