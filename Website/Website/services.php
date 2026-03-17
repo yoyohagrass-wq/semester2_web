@@ -16,11 +16,13 @@ $serviceRows = loadServicesData();
 
     <div class="services-grid">
         <?php foreach ($services as $service): ?>
-            <a href="donate.php" class="project-link">
+            <a href="donate.php" class="project-link service-link">
                 <div class="service-card">
                     <img src="<?= htmlspecialchars($service['image']) ?>" alt="<?= htmlspecialchars($service['name']) ?>" class="service-img">
-                    <h3 class="service-name"><?= htmlspecialchars($service['name']) ?></h3>
-                    <p class="service-desc"><?= htmlspecialchars($service['desc']) ?></p>
+                    <div class="service-copy">
+                        <h3 class="service-name"><?= htmlspecialchars($service['name']) ?></h3>
+                        <p class="service-desc"><?= htmlspecialchars($service['desc']) ?></p>
+                    </div>
                 </div>
             </a>
         <?php endforeach; ?>

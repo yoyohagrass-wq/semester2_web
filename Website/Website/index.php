@@ -21,8 +21,8 @@ if (!isset($_SESSION["userid"])) {
     <meta name="robots" content="index, follow" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=20260310e">
-    <link rel="stylesheet" href="home.css?v=20260310e">
+    <link rel="stylesheet" href="style.css?v=20260317f">
+    <link rel="stylesheet" href="home.css?v=20260317f">
 </head>
 <body class="home-page">
     <nav class="navbar navbar-expand-lg navbar-dark home-navbar sticky-top py-3">
@@ -250,6 +250,6 @@ if (!isset($_SESSION["userid"])) {
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js?v=20260310e"></script>
+    <script src="script.js?v=20260317f"></script>
 </body>
 </html>
