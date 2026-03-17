@@ -28,7 +28,6 @@ function headerSection() {
 <?php
 }
 
-
 function footerSection() {
 ?>
 <div class="footer">
@@ -43,15 +42,16 @@ function footerSection() {
     </div>
 
     <div class="footer-right">
-        <div class="contact-item">
+
+        <a href="tel:16093" class="contact-item">
             <i class="fa-solid fa-phone"></i>
             <div>16093</div>
-        </div>
+        </a>
 
-        <div class="contact-item">
+        <a href="mailto:info@almesbah-almode.com" class="contact-item">
             <i class="fa-solid fa-envelope"></i>
             <div>info@almesbah-almode.com</div>
-        </div>
+        </a>
 
         <div class="contact-item">
             <i class="fa-solid fa-location-dot"></i>
@@ -59,13 +59,19 @@ function footerSection() {
         </div>
 
         <div class="footer-right-icons">
-            <a href="https://www.facebook.com/ElMesbah.ElModea" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f" id="facebook-icon"></i></a>
-            <a href="https://www.instagram.com/elmesbaahelmodea/?igsh=MXJxYWFjazQwMjZiMw%3D%3D#" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" id="instagram-icon"></i></a>
-            <a href="https://wa.me/201210012324" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" id="whatsapp-icon"></i></a>
+            <a href="https://www.facebook.com/ElMesbah.ElModea" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-facebook-f" id="facebook-icon"></i>
+            </a>
+            <a href="https://www.instagram.com/elmesbaahelmodea/?igsh=MXJxYWFjazQwMjZiMw%3D%3D#" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-instagram" id="instagram-icon"></i>
+            </a>
+            <a href="https://wa.me/201210012324" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp" id="whatsapp-icon"></i>
+            </a>
         </div>
+
     </div>
 </div>
 <?php
 }
-
 ?>
