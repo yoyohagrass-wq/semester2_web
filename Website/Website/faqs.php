@@ -1,10 +1,12 @@
-﻿<?php require_once 'functions.php'; ?>
-<?php pageHead(
+﻿<?php
+require_once 'functions.php';
+pageHead(
     'FAQs - Al Mesbah Al Modie Foundation',
     'Frequently asked questions about Al Mesbah Al Modie Foundation, including donations, volunteering, operations, and in-kind contributions.',
     'Al Mesbah Al Modie Foundation FAQs, donations, volunteering, charity in Egypt, foundation services'
-); ?>
-<?php headerSection(); ?>
+);
+headerSection();
+?>
 
 <div class="faq-container">
     <h1 class="faq-title">Frequently Asked Questions</h1>
@@ -33,6 +35,8 @@
     </div>
 </div>
 
-<?php inquiryForm('Inquire', 'Our team will respond as soon as possible with help related to foundation services, donations, or humanitarian aid programs in Egypt.'); ?>
-<?php pageFooter(); ?>
-<?php pageClose(); ?>
+<?php
+inquiryForm('Inquire', 'Our team will respond as soon as possible with help related to foundation services, donations, or humanitarian aid programs in Egypt.');
+pageFooter();
+pageClose();
+?>
