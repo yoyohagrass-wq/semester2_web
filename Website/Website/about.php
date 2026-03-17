@@ -1,10 +1,12 @@
-<?php require_once 'functions.php'; ?>
-<?php pageHead(
+<?php 
+require_once 'functions.php'; 
+pageHead(
     'About Us - Al Mesbah Al Modie Foundation',
     'Learn about Al Mesbah Al Modie Foundation, our mission, values, and commitment to charity and humanitarian aid in Egypt.',
     'about charity Egypt, nonprofit mission, humanitarian organization Egypt'
-); ?>
-<?php headerSection(); ?>
+);
+headerSection();
+?>
 
 <div class="about-container">
     <h1 class="about-title">About Al Mesbah Al Modie Foundation</h1>
