@@ -895,9 +895,51 @@ form button:hover,
   font-weight: 500;
   white-space: nowrap;
 }
-.home-navbar .nav-link:hover,
+.home-navbar .nav-link:hover {
+  color: rgba(255, 255, 255, 0.82);
+}
+
 .home-navbar .nav-link.active {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* Auth / login/register/admin pages */
+body.auth-login,
+body.auth-register {
+  background: linear-gradient(135deg, #f4f7fb 0%, #eaf2ff 45%, #fff3dc 100%);
+}
+
+.admin-login-card,
+.login-card,
+.register-card {
+  border: 0;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 1rem 2.5rem rgba(15, 23, 42, 0.14);
+}
+
+.admin-side,
+.login-side,
+.register-side {
+  background: linear-gradient(160deg, #0d3b66 0%, #1d4e89 60%, #2f6fb0 100%);
   color: #fff;
+}
+
+.admin-form-panel,
+.login-form-panel,
+.register-form-panel {
+  background-color: #ffffff;
+}
+
+.form-control.form-control-lg {
+  border-radius: 0.8rem;
+}
+
+.btn-admin-login,
+.btn-login,
+.btn-register {
+  border-radius: 0.8rem;
+  font-weight: 600;
 }
 
 .hero-section {

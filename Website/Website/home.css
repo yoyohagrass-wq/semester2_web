@@ -46,9 +46,12 @@
   transition: color 0.25s ease;
 }
 
-.home-navbar .nav-link:hover,
+.home-navbar .nav-link:hover {
+  color: rgba(255, 255, 255, 0.82);
+}
+
 .home-navbar .nav-link.active {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .home-navbar .nav-link::after {
@@ -65,8 +68,7 @@
   transition: transform 0.28s ease;
 }
 
-.home-navbar .nav-link:hover::after,
-.home-navbar .nav-link.active::after {
+.home-navbar .nav-link:hover::after {
   transform: scaleX(1);
 }
 

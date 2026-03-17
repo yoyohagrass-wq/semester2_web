@@ -61,45 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="description" content="Log in to Al Mesbah Al Modie Foundation to stay connected with charity and humanitarian aid activities in Egypt.">
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body.auth-login {
-            background: linear-gradient(135deg, #f4f7fb 0%, #eaf2ff 45%, #fff3dc 100%);
-        }
-
-        .login-card {
-            border: 0;
-            border-radius: 1.25rem;
-            overflow: hidden;
-            box-shadow: 0 1rem 2.5rem #0f172a24;
-        }
-
-        .login-side {
-            background: linear-gradient(160deg, #0d3b66 0%, #1d4e89 60%, #2f6fb0 100%);
-            color: #fff;
-        }
-
-        .login-side ul {
-            margin: 0;
-            padding-left: 1rem;
-        }
-
-        .login-side li {
-            margin-bottom: 0.6rem;
-        }
-
-        .login-form-panel {
-            background-color: #ffffff;
-        }
-
-        .form-control.form-control-lg {
-            border-radius: 0.8rem;
-        }
-
-        .btn-login {
-            border-radius: 0.8rem;
-            font-weight: 600;
-        }
-    </style>
 </head>
 <body class="auth-login">
     <main class="min-vh-100 d-flex align-items-center justify-content-center py-4 py-lg-5">
