@@ -1,4 +1,4 @@
-﻿<?php require_once 'functions.php'; ?>
+<?php require_once 'functions.php'; ?>
 <?php pageHead(
     'About Us - Al Mesbah Al Modie Foundation',
     'Learn about Al Mesbah Al Modie Foundation, our mission, values, and commitment to charity and humanitarian aid in Egypt.',
