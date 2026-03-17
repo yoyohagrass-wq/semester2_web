@@ -29,7 +29,7 @@ headerSection();
 </div>
 
 <?php
- pageFooter();
+pageFooter();
 pageClose();
 ?>
 
