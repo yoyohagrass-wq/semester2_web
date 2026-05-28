@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 function pageHead($title, $description, $keywords)
 {

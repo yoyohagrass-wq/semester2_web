@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once 'functions.php'; 
 pageHead(
     'Contact Us - Al Mesbah Al Modie Foundation',
