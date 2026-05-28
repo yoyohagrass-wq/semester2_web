@@ -1,242 +1,317 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header('Location: admin-login.php');
-    exit;
-}
-
-$usersFile = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Website' . DIRECTORY_SEPARATOR . 'Website' . DIRECTORY_SEPARATOR . 'users.txt';
-
-function readUsers($filePath)
+if (!isset($_SESSION["admin_logged_in"]))
 {
-    $users = [];
-
-    if (!file_exists($filePath)) {
-        return $users;
-    }
-
-    $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    if ($lines === false) {
-        return $users;
-    }
-
-    foreach ($lines as $line) {
-        $parts = explode('~', $line, 3);
-        $id = intval(trim($parts[0] ?? '0'));
-        $name = trim($parts[1] ?? '');
-        $email = trim($parts[2] ?? '');
-
-        if ($id > 0 && $name !== '' && $email !== '') {
-            $users[] = [
-                'id' => $id,
-                'name' => $name,
-                'email' => $email
-            ];
-        }
-    }
-
-    return $users;
+    header("Location: admin-login.php");
+    exit();
 }
 
-function writeUsers($filePath, $users)
+$fileName = "../Website/Website/users.txt";
+$message = "";
+
+function ListAllUsers($fileName)
 {
-    $rows = [];
+    $Result=array();
 
-    foreach ($users as $user) {
-        $rows[] = $user['id'] . '~' . $user['name'] . '~' . $user['email'];
+    if (!file_exists($fileName))
+    {
+        return $Result;
     }
 
-    file_put_contents($filePath, implode("\n", $rows) . (!empty($rows) ? "\n" : ''));
-}
+    $myfile=fopen($fileName,"r");
+    $i=0;
 
-$message = '';
-$messageClass = '';
-$users = readUsers($usersFile);
-$selectedId = intval($_GET['selected'] ?? $_POST['selected_id'] ?? 0);
+    while(!feof($myfile))
+    {
+        $line=fgets($myfile);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'] ?? '';
-    $name = trim($_POST['userName'] ?? '');
-    $email = trim($_POST['userEmail'] ?? '');
-    $selectedId = intval($_POST['selected_id'] ?? 0);
-
-    if ($action === 'add') {
-        if ($name === '' || $email === '') {
-            $message = 'Please fill in all fields.';
-            $messageClass = 'error';
-        } else {
-            $maxId = 0;
-            foreach ($users as $user) {
-                if ($user['id'] > $maxId) {
-                    $maxId = $user['id'];
-                }
-            }
-            $users[] = [
-                'id' => $maxId + 1,
-                'name' => $name,
-                'email' => $email
-            ];
-            writeUsers($usersFile, $users);
-            $message = 'User added.';
-            $messageClass = 'success';
+        if($line!="")
+        {
+            $Result[$i]=$line;
+            $i++;
         }
     }
 
-    if ($action === 'edit') {
-        if ($selectedId > 0 && $name !== '' && $email !== '') {
-            foreach ($users as &$user) {
-                if ($user['id'] === $selectedId) {
-                    $user['name'] = $name;
-                    $user['email'] = $email;
-                }
-            }
-            unset($user);
-            writeUsers($usersFile, $users);
-            $message = 'User updated.';
-            $messageClass = 'success';
-        } else {
-            $message = 'Select a user and fill in all fields.';
-            $messageClass = 'error';
+    fclose($myfile);
+
+    return $Result;
+}
+
+function getLastId($fileName,$Separator)
+{
+    if (!file_exists($fileName))
+    {
+        return 0;
+    }
+
+    $myfile=fopen($fileName,"r");
+    $LastId=0;
+
+    while(!feof($myfile))
+    {
+        $line=fgets($myfile);
+        $ArrayLine=explode($Separator,$line);
+
+        if($ArrayLine[0]!="")
+        {
+            $LastId=$ArrayLine[0];
         }
     }
 
-    if ($action === 'delete') {
-        $users = array_values(array_filter($users, function ($user) use ($selectedId) {
-            return $user['id'] !== $selectedId;
-        }));
-        writeUsers($usersFile, $users);
-        $selectedId = 0;
-        $message = 'User deleted.';
-        $messageClass = 'success';
-    }
+    fclose($myfile);
 
-    $users = readUsers($usersFile);
+    return $LastId;
 }
 
-$selectedUser = null;
-foreach ($users as $user) {
-    if ($user['id'] === $selectedId) {
-        $selectedUser = $user;
+function getUserById($fileName,$id)
+{
+    if (!file_exists($fileName))
+    {
+        return FALSE;
+    }
+
+    $myfile=fopen($fileName,"r");
+
+    while(!feof($myfile))
+    {
+        $line=fgets($myfile);
+        $ArrayLine=explode("~",$line);
+
+        if($ArrayLine[0]==$id)
+        {
+            fclose($myfile);
+            return $line;
+        }
+    }
+
+    fclose($myfile);
+    return FALSE;
+}
+
+function StoreRecord($fileName,$record)
+{
+    $myfile=fopen($fileName,"a+");
+    fwrite($myfile,$record."\r\n");
+    fclose($myfile);
+}
+
+function DeleteRecord($fileName,$record)
+{
+    $contents=file_get_contents($fileName);
+    $contents=str_replace($record,'',$contents);
+    file_put_contents($fileName,$contents);
+}
+
+function UpdateRecord($fileName,$NewRecord,$OldRecord)
+{
+    $contents=file_get_contents($fileName);
+    $contents=str_replace($OldRecord,$NewRecord,$contents);
+    file_put_contents($fileName,$contents);
+}
+
+if(isset($_GET["selected"]))
+{
+    $selectedId=$_GET["selected"];
+}
+else
+{
+    $selectedId=0;
+}
+
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+    $action=$_POST["action"];
+    $name=trim($_POST["userName"]);
+    $email=trim($_POST["userEmail"]);
+    $password=trim($_POST["userPassword"]);
+    $selectedId=$_POST["selected_id"];
+
+    if($action=="add")
+    {
+        if($name=="" || $email=="" || $password=="")
+        {
+            $message="Please fill all fields";
+        }
+        else
+        {
+            $id=getLastId($fileName,"~")+1;
+            $record=$id."~".$name."~".$email."~".$password;
+
+            StoreRecord($fileName,$record);
+
+            $message="User Added";
+        }
+    }
+
+    if($action=="edit")
+    {
+        if($selectedId!=0)
+        {
+            $OldRecord=getUserById($fileName,$selectedId);
+            $NewRecord=$selectedId."~".$name."~".$email."~".$password."\r\n";
+
+            UpdateRecord($fileName,$NewRecord,$OldRecord);
+
+            $message="User Updated";
+        }
+    }
+
+    if($action=="delete")
+    {
+        $record=getUserById($fileName,$selectedId);
+
+        DeleteRecord($fileName,$record);
+
+        $selectedId=0;
+
+        $message="User Deleted";
     }
 }
+
+$SelectedName="";
+$SelectedEmail="";
+$SelectedPassword="";
+
+if($selectedId!=0)
+{
+    $SelectedRecord=getUserById($fileName,$selectedId);
+
+    if($SelectedRecord!=FALSE)
+    {
+        $Arr=explode("~",$SelectedRecord);
+
+        $SelectedName=trim($Arr[1]);
+        $SelectedEmail=trim($Arr[2]);
+        $SelectedPassword=trim($Arr[3]);
+    }
+}
+
+$AllUsers=ListAllUsers($fileName);
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manage Users - Al Mesbah Al Modie Foundation</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Manage Users</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
+
 <body class="bg-light">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+
+<nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">Manage Users</span>
-      <span class="navbar-text text-white">Al Mesbah Al Modie Foundation</span>
+        <span class="navbar-brand">Manage Users</span>
     </div>
-  </nav>
+</nav>
 
-  <div class="container-fluid">
-    <div class="row min-vh-100">
-      <!-- Sidebar -->
-      <nav class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar py-4">
-        <div class="position-sticky">
-          <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link text-white" href="admin-dashboard.php"><i class="fas fa-home me-2"></i>Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link active text-white" href="manage-users.php"><i class="fas fa-users me-2"></i>Users</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="manage-services.php"><i class="fas fa-boxes me-2"></i>Services</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="view-donations.php"><i class="fas fa-dollar-sign me-2"></i>Donations</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="messages.php"><i class="fas fa-envelope me-2"></i>Messages</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="volunteer-requests.php"><i class="fas fa-handshake me-2"></i>Volunteers</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="service-feedback.php"><i class="fas fa-star me-2"></i>Feedback</a></li>
-            <li class="nav-item mt-4"><a class="nav-link text-danger" href="admin-login.php?logout=1"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-          </ul>
-        </div>
-      </nav>
+<div class="container mt-4">
 
-      <!-- Main Content -->
-      <main class="col-md-9 col-lg-10 px-4 py-4">
-        <h2 class="mb-4">Users CRUD</h2>
+    <h2>Users CRUD</h2>
 
-        <?php if ($message !== ''): ?>
-          <div class="alert alert-<?php echo $messageClass === 'success' ? 'success' : 'danger'; ?> alert-dismissible fade show" role="alert">
-            <?php echo htmlspecialchars($message); ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        <?php endif; ?>
+    <font color="red">
+        <?php echo $message; ?>
+    </font>
 
-        <div class="card shadow-sm mb-4">
-          <div class="card-header bg-primary text-white">
-            <h5 class="mb-0"><i class="fas fa-list me-2"></i>All Users</h5>
-          </div>
-          <div class="card-body table-responsive">
-            <table class="table table-hover table-striped">
-              <thead class="table-dark">
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php foreach ($users as $user): ?>
-                  <tr>
-                    <td><?php echo htmlspecialchars((string) $user['id']); ?></td>
-                    <td><?php echo htmlspecialchars($user['name']); ?></td>
-                    <td><?php echo htmlspecialchars($user['email']); ?></td>
-                    <td>
-                      <a class="btn btn-sm btn-info" href="manage-users.php?selected=<?php echo urlencode((string) $user['id']); ?>">Select</a>
-                      <form method="post" action="manage-users.php" class="d-inline">
-                        <input type="hidden" name="action" value="delete">
-                        <input type="hidden" name="selected_id" value="<?php echo htmlspecialchars((string) $user['id']); ?>">
-                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this user?')">Delete</button>
-                      </form>
-                    </td>
-                  </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
+    <br><br>
 
-        <div class="card shadow-sm">
-          <div class="card-header bg-success text-white">
-            <h5 class="mb-0"><i class="fas fa-plus me-2"></i>Create / Update User</h5>
-          </div>
-          <div class="card-body">
-            <form method="post" action="manage-users.php">
-              <input type="hidden" name="selected_id" value="<?php echo htmlspecialchars((string) ($selectedUser['id'] ?? 0)); ?>">
+    <table class="table table-bordered table-striped">
 
-              <div class="mb-3">
-                <label for="userName" class="form-label">Name</label>
-                <input type="text" id="userName" name="userName" class="form-control" value="<?php echo htmlspecialchars($selectedUser['name'] ?? ''); ?>" placeholder="Enter user name" required>
-              </div>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Select</th>
+            <th>Delete</th>
+        </tr>
 
-              <div class="mb-3">
-                <label for="userEmail" class="form-label">Email</label>
-                <input type="email" id="userEmail" name="userEmail" class="form-control" value="<?php echo htmlspecialchars($selectedUser['email'] ?? ''); ?>" placeholder="Enter user email" required>
-              </div>
+        <?php
 
-              <div class="mb-3">
-                <label for="userPassword" class="form-label">Password</label>
-                <input type="password" id="userPassword" name="userPassword" class="form-control" value="<?php echo htmlspecialchars($selectedUser['password'] ?? ''); ?>" placeholder="Enter user password" required>
-              </div>
+        for($i=0;$i<count($AllUsers);$i++)
+        {
+            $Row=explode("~",$AllUsers[$i]);
 
+            if(count($Row)>3)
+            {
+                echo "<tr>";
 
-              <div class="btn-group w-100" role="group">
-                <button type="submit" class="btn btn-outline-success" name="action" value="add"><i class="fas fa-plus me-2"></i>Add User</button>
-                <button type="submit" class="btn btn-outline-primary" name="action" value="edit"><i class="fas fa-edit me-2"></i>Update User</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </main>
-    </div>
-  </div>
+                echo "<td>".$Row[0]."</td>";
+                echo "<td>".$Row[1]."</td>";
+                echo "<td>".$Row[2]."</td>";
+                echo "<td>".$Row[3]."</td>";
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+                echo "<td>
+                <a class='btn btn-info btn-sm'
+                href=manage-users.php?selected=".$Row[0].">
+                Select
+                </a>
+                </td>";
+
+                echo "<td>
+                <form method=post action=manage-users.php>
+                <input type=hidden name=action value=delete>
+                <input type=hidden name=selected_id value=".$Row[0].">
+                <input type=submit
+                value=Delete
+                class='btn btn-danger btn-sm'>
+                </form>
+                </td>";
+
+                echo "</tr>";
+            }
+        }
+
+        ?>
+
+    </table>
+
+    <hr>
+
+    <form method="post" action="manage-users.php">
+
+        <input type="hidden"
+        name="selected_id"
+        value="<?php echo $selectedId; ?>">
+
+        Name<br>
+        <input type="text"
+        name="userName"
+        class="form-control"
+        value="<?php echo $SelectedName; ?>">
+        <br>
+
+        Email<br>
+        <input type="text"
+        name="userEmail"
+        class="form-control"
+        value="<?php echo $SelectedEmail; ?>">
+        <br>
+
+        Password<br>
+        <input type="text"
+        name="userPassword"
+        class="form-control"
+        value="<?php echo $SelectedPassword; ?>">
+        <br>
+
+        <input type="submit"
+        name="action"
+        value="add"
+        class="btn btn-success">
+
+        <input type="submit"
+        name="action"
+        value="edit"
+        class="btn btn-primary">
+
+    </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
