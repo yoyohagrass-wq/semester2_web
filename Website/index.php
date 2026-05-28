@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+if(!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+
 require_once 'functions.php'; 
 pageHead(
     'Al Mesbah Al Modie Foundation',
