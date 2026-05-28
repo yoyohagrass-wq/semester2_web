@@ -41,7 +41,6 @@ function headerSection() {
                 <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="volunteer.php">Volunteer</a></li>
-                <li class="nav-item"><a class="btn btn-warning ms-lg-3 px-4 fw-semibold">Shopping Cart</a></li>
                 <li class="nav-item"><a class="btn btn-warning ms-lg-3 px-4 fw-semibold" href="donate.php">Donate</a></li>
                 <li class="nav-item"><a class="btn btn-outline-light" href="logout.php">Logout</a></li>
             </ul>
