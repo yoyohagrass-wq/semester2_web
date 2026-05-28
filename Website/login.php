@@ -1,114 +1,67 @@
 <?php
 session_start();
 
-$name = "";
-$email = "";
-$message = "";
-$messageClass = "";
-$filename = "users.txt";
+$error = "";
 
-if (isset($_SESSION["userid"])) {
-    header("Location: index.php");
-    exit;
-}
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = trim($_POST["name"] ?? "");
-    $email = trim($_POST["email"] ?? "");
-    $found = false;
+    $username = trim($_REQUEST["username"]);
+    $password = trim($_REQUEST["password"]);
 
-    if ($name != "" && $email != "") {
-        if (file_exists($filename)) {
-            $lines = file($filename);
+    if($username == "" || $password == ""){
+        $error = "All fields are required";
+    }
+    else {
 
-            if ($lines !== false) {
-                foreach ($lines as $line) {
-                    $data = explode("~", trim($line), 3);
-                    $userid = intval($data[0] ?? 0);
-                    $username = trim($data[1] ?? "");
-                    $useremail = trim($data[2] ?? "");
+        $FileHandler = fopen("userdata.txt", "r") or die("error opening file!");
 
-                    if (strcasecmp($username, $name) === 0 && strcasecmp($useremail, $email) === 0) {
-                        $_SESSION["userid"] = $userid;
-                        $_SESSION["username"] = $username;
-                        $_SESSION["useremail"] = $useremail;
-                        header("Location: index.php");
-                        exit;
-                    }
-                }
+        $found = false;
+
+        while(!feof($FileHandler)){
+            $line = fgets($FileHandler);
+            $data = explode("~", $line);
+
+            if(trim($data[0]) == trim($username) && trim($data[1]) == trim($password)){
+
+                $_SESSION['username'] = $username;
+                $found = true;
+
+                fclose($FileHandler);
+                header("Location: index.php");
+                exit();
             }
         }
-
-        if (!$found) {
-            $message = "User not found. Register to support Al Mesbah Al Modie Foundation.";
-            $messageClass = "error";
+        if(!$found){
+            $error = "Invalid username or password";
         }
-    } else {
-        $message = "Please enter your name and email.";
-        $messageClass = "error";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Al Mesbah Al Modie Foundation</title>
-    <meta name="description" content="Log in to Al Mesbah Al Modie Foundation to stay connected with charity and humanitarian aid activities in Egypt.">
-    <meta name="author" content="Al Mesbah Al Modie Foundation">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="home.css">
+    <title>Login</title>
 </head>
-<body class="auth-login">
-    <main class="min-vh-100 d-flex align-items-center justify-content-center py-4 py-lg-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 col-xl-9">
-                    <section class="card login-card">
-                        <div class="row g-0">
-                            <div class="col-lg-5 login-side p-4 p-lg-5 d-flex flex-column justify-content-center">
-                                <h2 class="h4 mb-3">Al Mesbah Al Modie Foundation</h2>
-                                <p class="mb-4 opacity-75">Charity and humanitarian aid in Egypt</p>
-                                <h3 class="h5 mb-3">Member access</h3>
-                                <ul class="small">
-                                    <li>Check your member details and account session.</li>
-                                    <li>Continue supporting donation and volunteer programs.</li>
-                                    <li>Stay connected with current initiatives.</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-7 login-form-panel p-4 p-lg-5">
-                                <h1 class="h3 fw-bold mb-2">Member Login</h1>
-                                <p class="text-muted mb-4">Sign in to continue supporting community programs.</p>
+<body>
 
-                                <form action="login.php" method="post">
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label fw-semibold">Name</label>
-                                        <input type="text" name="name" id="name" class="form-control form-control-lg" value="<?php echo htmlspecialchars($name); ?>" placeholder="Enter your name" required>
-                                    </div>
+    <form action="" method="post">
+        <input type="text" name="username" placeholder="username"><br>
+        <input type="password" name="password" placeholder="password"><br>
+        <input type="submit" value="Login"><br>
 
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label fw-semibold">Email</label>
-                                        <input type="email" name="email" id="email" class="form-control form-control-lg" value="<?php echo htmlspecialchars($email); ?>" placeholder="Enter your email" required>
-                                    </div>
+        <p style="color:red;">
+            <?php echo $error; ?>
+        </p>
 
-                                    <a href="index.php" class="btn btn-warning btn-lg w-100 btn-login mt-3">Login</a>
-                                </form>
+    </form>
 
-                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2 mt-4 pt-2 border-top">
-                                    <a href="register.php" class="text-decoration-none fw-semibold">Create an account</a>
-                                    <a href="index.php" class="text-decoration-none">Back to home</a>
-                                </div>
+    Don't have an account?
+    <button onclick="window.location.href='signup.php'">
+        Sign Up
+    </button>
 
-                                <div class="mt-3 text-center">
-                                    <a href="../../Admin/admin-login.php" class="btn btn-outline-primary px-4">I am Admin</a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </main>
 </body>
 </html>
