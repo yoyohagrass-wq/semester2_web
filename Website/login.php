@@ -39,29 +39,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="auth-html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="auth-login">
+    <div class="login-container">
+        <h1>Login</h1>
+        <p>Welcome back to our platform</p>
 
-    <form action="" method="post">
-        <input type="text" name="username" placeholder="username"><br>
-        <input type="password" name="password" placeholder="password"><br>
-        <input type="submit" value="Login"><br>
+        <form action="" method="post">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+            
+            <?php if($error): ?>
+                <div class="error-message"><?php echo $error; ?></div>
+            <?php endif; ?>
+        </form>
 
-        <p style="color:red;">
-            <?php echo $error; ?>
-        </p>
-
-    </form>
-
-    Don't have an account?
-    <button onclick="window.location.href='signup.php'">
-        Sign Up
-    </button>
-
+        <div class="signup-link">
+            Don't have an account?
+            <button type="button" onclick="window.location.href='signup.php'">
+                Sign Up
+            </button>
+        </div>
+    </div>
 </body>
 </html>
