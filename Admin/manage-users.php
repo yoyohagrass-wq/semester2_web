@@ -7,7 +7,7 @@ if (!isset($_SESSION["admin_logged_in"]))
     exit();
 }
 
-$fileName = "../Website/Website/users.txt";
+$fileName = "../Website/Website/userdata.txt";
 $message = "";
 
 function ListAllUsers($fileName)
@@ -87,13 +87,6 @@ function getUserById($fileName,$id)
 
     fclose($myfile);
     return FALSE;
-}
-
-function StoreRecord($fileName,$record)
-{
-    $myfile=fopen($fileName,"a+");
-    fwrite($myfile,$record."\r\n");
-    fclose($myfile);
 }
 
 function DeleteRecord($fileName,$record)
