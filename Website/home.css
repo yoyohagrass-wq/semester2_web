@@ -20,14 +20,6 @@
   z-index: 1000;
 }
 
-.home-logo {
-  width: 84px !important;
-  max-width: 84px !important;
-  height: auto !important;
-  flex: 0 0 84px;
-  display: block;
-}
-
 .brand-copy {
   display: flex;
   flex-direction: column;
@@ -38,11 +30,6 @@
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-}
-
-.brand-subtitle {
-  font-size: 0.76rem;
-  opacity: 0.75;
 }
 
 .home-navbar .nav-link {

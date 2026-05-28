@@ -33,9 +33,11 @@ function headerSection()
 <nav class="navbar navbar-expand-lg navbar-dark home-navbar sticky-top py-3">
     <div class="container">
 
-        <a class="navbar-brand" href="index.php">
+        <a class="navbar-brand d-flex align-items-center gap-3" href="index.php">
             <img src="images/logo.png" width="84" height="84">
-            Al Mesbah Al Modie Foundation
+            <span class="brand-copy">
+                <span class="brand-name">Al Mesbah Al Modie Foundation</span>
+            </span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#homeNavbar">
