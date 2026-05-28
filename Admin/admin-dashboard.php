@@ -1,16 +1,15 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-  header('Location: admin-login.php');
-  exit;
+if (!isset($_SESSION['admin_logged_in'])) {
+    header("Location: admin-login.php");
+    exit();
 }
 
-if (isset($_GET['logout']) && $_GET['logout'] === '1') {
-  session_unset();
-  session_destroy();
-  header('Location: admin-login.php');
-  exit;
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: admin-login.php");
+    exit();
 }
 ?>
 <!DOCTYPE html>
