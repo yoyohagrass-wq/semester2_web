@@ -81,6 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="description" content="Register with Al Mesbah Al Modie Foundation and stay connected with charity and humanitarian aid activities in Egypt.">
     <meta name="author" content="Al Mesbah Al Modie Foundation">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
 </head>
 <body class="auth-register">
     <div class="min-vh-100 d-flex align-items-center justify-content-center py-4 py-lg-5">
