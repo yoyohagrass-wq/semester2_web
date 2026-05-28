@@ -1,10 +1,8 @@
 <?php
 session_start();
-
-// If not logged in, redirect to register
-if (!isset($_SESSION["userid"])) {
-    header("Location: test.html");
-    exit;
+if(!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
 }
 
 $impactStats = [
