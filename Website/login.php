@@ -18,19 +18,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $found = false;
 
         while(!feof($FileHandler)){
+
             $line = fgets($FileHandler);
             $data = explode("~", $line);
 
-            if(trim($data[0]) == trim($username) && trim($data[1]) == trim($password)){
+            if(count($data) > 1){
 
-                $_SESSION['username'] = $username;
-                $found = true;
+                if(trim($data[0]) == trim($username)
+                && trim($data[1]) == trim($password)){
 
-                fclose($FileHandler);
-                header("Location: index.php");
-                exit();
+                    $_SESSION["username"] = $username;
+                    $found = true;
+
+                    fclose($FileHandler);
+                    header("Location: index.php");
+                    exit();
+                }
             }
         }
+
+        fclose($FileHandler);
+
         if(!$found){
             $error = "Invalid username or password";
         }
@@ -39,29 +47,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
 <body>
 
-    <form action="" method="post">
-        <input type="text" name="username" placeholder="username"><br>
-        <input type="password" name="password" placeholder="password"><br>
-        <input type="submit" value="Login"><br>
+<form action="" method="post">
 
-        <p style="color:red;">
-            <?php echo $error; ?>
-        </p>
+    <input type="text" name="username" placeholder="username"><br>
 
-    </form>
+    <input type="password" name="password" placeholder="password"><br>
 
-    Don't have an account?
-    <button onclick="window.location.href='signup.php'">
-        Sign Up
-    </button>
+    <input type="submit" value="Login"><br>
+
+    <font color="red">
+        <?php echo $error; ?>
+    </font>
+
+</form>
+
+Don't have an account?
+
+<a href="signup.php">
+    Sign Up
+</a>
 
 </body>
 </html>
