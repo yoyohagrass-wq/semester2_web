@@ -105,8 +105,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
                             <br>
 
-                            <a href="../Website/Website/index.php">
-                                Back to website
+                            <a href="../Website/index.php" class="btn-back-website">
+                                &larr; Back to website
                             </a>
 
                         </div>
