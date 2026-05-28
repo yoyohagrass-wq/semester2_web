@@ -1089,3 +1089,129 @@ body.auth-register {
 .check-icon {
   font-size: 4rem;
 }
+
+/* Auth Login & Signup - Complete Override */
+html.auth-html {
+  background: linear-gradient(135deg, #0b3d3a 0%, #0c5954 55%, #118a83 100%) !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+body.auth-login,
+body.auth-signup {
+  background: linear-gradient(135deg, #0b3d3a 0%, #0c5954 55%, #118a83 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 100vh !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 20px !important;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.login-container,
+.signup-container {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(11, 39, 37, 0.25);
+  padding: 40px;
+  text-align: center;
+}
+
+.login-container h1,
+.signup-container h1 {
+  color: #0c5954;
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.login-container p,
+.signup-container p {
+  color: #666;
+  margin: 0 0 30px 0;
+  font-size: 14px;
+}
+
+.login-container form,
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+body.auth-login input[type="text"],
+body.auth-login input[type="password"],
+body.auth-signup input[type="text"],
+body.auth-signup input[type="password"],
+body.auth-signup input[type="email"] {
+  padding: 12px 16px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: white !important;
+  color: #333 !important;
+}
+
+body.auth-login input[type="text"]:focus,
+body.auth-login input[type="password"]:focus,
+body.auth-signup input[type="text"]:focus,
+body.auth-signup input[type="password"]:focus,
+body.auth-signup input[type="email"]:focus {
+  outline: none !important;
+  border-color: #0c5954 !important;
+  box-shadow: 0 0 0 3px rgba(12, 89, 84, 0.1) !important;
+}
+
+body.auth-login input[type="submit"],
+body.auth-signup input[type="submit"] {
+  padding: 12px 16px !important;
+  background: linear-gradient(135deg, #0c5954 0%, #118a83 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+body.auth-login input[type="submit"]:hover,
+body.auth-signup input[type="submit"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 20px rgba(12, 89, 84, 0.2) !important;
+}
+
+.error-message {
+  color: #dc3545 !important;
+  font-size: 14px !important;
+  margin: 10px 0 0 0 !important;
+}
+
+.signup-link,
+.login-link {
+  margin-top: 25px !important;
+  padding-top: 25px !important;
+  border-top: 1px solid #eee !important;
+  color: #666 !important;
+  font-size: 14px !important;
+}
+
+.signup-link button,
+.login-link button {
+  background: none !important;
+  border: none !important;
+  color: #0c5954 !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  text-decoration: underline !important;
+  font-size: 14px !important;
+  padding: 0 !important;
+  font-family: inherit !important;
+}
