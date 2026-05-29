@@ -1,14 +1,17 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["admin_logged_in"]))
-{
+if(!isset($_SESSION["admin_logged_in"])){
     header("Location: admin-login.php");
     exit();
 }
 
 $fileName = "../Website/userdata.txt";
 $message = "";
+$selectedId = 0;
+$SelectedName = "";
+$SelectedEmail = "";
+$SelectedPassword = "";
 
 function ListAllUsers($fileName)
 {
@@ -55,7 +58,7 @@ function getLastId($fileName,$Separator)
 
         if($ArrayLine[0]!="")
         {
-            $LastId=$ArrayLine[0];
+            $LastId=(int)trim($ArrayLine[0]);
         }
     }
 
@@ -89,6 +92,13 @@ function getUserById($fileName,$id)
     return FALSE;
 }
 
+function StoreRecord($fileName,$record)
+{
+    $myfile=fopen($fileName,"a+");
+    fwrite($myfile,$record."\r\n");
+    fclose($myfile);
+}
+
 function DeleteRecord($fileName,$record)
 {
     $contents=file_get_contents($fileName);
@@ -106,19 +116,38 @@ function UpdateRecord($fileName,$NewRecord,$OldRecord)
 if(isset($_GET["selected"]))
 {
     $selectedId=$_GET["selected"];
-}
-else
-{
-    $selectedId=0;
+
+    $SelectedRecord=getUserById($fileName,$selectedId);
+
+    if($SelectedRecord!=FALSE)
+    {
+        $Arr=explode("~",$SelectedRecord);
+
+        $SelectedName=trim($Arr[1]);
+        $SelectedEmail=trim($Arr[2]);
+        $SelectedPassword=trim($Arr[3]);
+    }
 }
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
     $action=$_POST["action"];
-    $name=trim($_POST["userName"]);
-    $email=trim($_POST["userEmail"]);
-    $password=trim($_POST["userPassword"]);
-    $selectedId=$_POST["selected_id"];
+
+    if(isset($_POST["selected_id"]))
+    {
+        $selectedId=$_POST["selected_id"];
+    }
+    else
+    {
+        $selectedId=0;
+    }
+
+    if($action=="add" || $action=="edit")
+    {
+        $name=trim($_POST["userName"]);
+        $email=trim($_POST["userEmail"]);
+        $password=trim($_POST["userPassword"]);
+    }
 
     if($action=="add")
     {
@@ -157,26 +186,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         DeleteRecord($fileName,$record);
 
         $selectedId=0;
+        $SelectedName="";
+        $SelectedEmail="";
+        $SelectedPassword="";
 
         $message="User Deleted";
-    }
-}
-
-$SelectedName="";
-$SelectedEmail="";
-$SelectedPassword="";
-
-if($selectedId!=0)
-{
-    $SelectedRecord=getUserById($fileName,$selectedId);
-
-    if($SelectedRecord!=FALSE)
-    {
-        $Arr=explode("~",$SelectedRecord);
-
-        $SelectedName=trim($Arr[1]);
-        $SelectedEmail=trim($Arr[2]);
-        $SelectedPassword=trim($Arr[3]);
     }
 }
 
@@ -205,7 +219,6 @@ $AllUsers=ListAllUsers($fileName);
 
     <div class="container-fluid">
         <div class="row min-vh-100">
-            <!-- Sidebar -->
             <nav class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar py-4">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
@@ -221,7 +234,6 @@ $AllUsers=ListAllUsers($fileName);
                 </div>
             </nav>
 
-            <!-- Main Content -->
             <main class="col-md-9 col-lg-10 px-4 py-4">
                 <h2>Users CRUD</h2>
 
@@ -243,7 +255,6 @@ $AllUsers=ListAllUsers($fileName);
                     </tr>
 
                     <?php
-
                     for($i=0;$i<count($AllUsers);$i++)
                     {
                         $Row=explode("~",$AllUsers[$i]);
@@ -277,7 +288,6 @@ $AllUsers=ListAllUsers($fileName);
                             echo "</tr>";
                         }
                     }
-
                     ?>
 
                 </table>

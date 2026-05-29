@@ -1,14 +1,17 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["admin_logged_in"]))
-{
+if(!isset($_SESSION["admin_logged_in"])){
     header("Location: admin-login.php");
     exit();
 }
 
 $fileName = "services-data.txt";
 $message = "";
+
+$selectedId = "";
+$SelectedName = "";
+$SelectedDesc = "";
 
 function ListAllServices($fileName)
 {
@@ -20,7 +23,6 @@ function ListAllServices($fileName)
     }
 
     $myfile = fopen($fileName, "r");
-
     $i=0;
 
     while(!feof($myfile))
@@ -56,7 +58,7 @@ function getLastId($fileName,$Separator)
 
         if($ArrayLine[0]!="")
         {
-            $LastId=$ArrayLine[0];
+            $LastId=(int)trim($ArrayLine[0]);
         }
     }
 
@@ -67,6 +69,11 @@ function getLastId($fileName,$Separator)
 
 function getServiceById($fileName,$id)
 {
+    if (!file_exists($fileName))
+    {
+        return FALSE;
+    }
+
     $myfile=fopen($fileName,"r");
 
     while(!feof($myfile))
@@ -109,6 +116,16 @@ function UpdateRecord($fileName,$NewRecord,$OldRecord)
 if(isset($_GET["selected"]))
 {
     $selectedId=$_GET["selected"];
+
+    $SelectedRecord=getServiceById($fileName,$selectedId);
+
+    if($SelectedRecord!=FALSE)
+    {
+        $Arr=explode("~",$SelectedRecord);
+
+        $SelectedName=trim($Arr[1]);
+        $SelectedDesc=trim($Arr[2]);
+    }
 }
 else
 {
@@ -118,28 +135,50 @@ else
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
     $action=$_POST["action"];
-    $name=trim($_POST["serviceName"]);
-    $desc=trim($_POST["serviceDesc"]);
-    $selectedId=$_POST["selected_id"];
+
+    if(isset($_POST["selected_id"]))
+    {
+        $selectedId=$_POST["selected_id"];
+    }
+    else
+    {
+        $selectedId=0;
+    }
+
+    if($action=="add" || $action=="edit")
+    {
+        $name=trim($_POST["serviceName"]);
+        $desc=trim($_POST["serviceDesc"]);
+    }
 
     if($action=="add")
     {
-        $id=getLastId($fileName,"~")+1;
-        $record=$id."~".$name."~".$desc;
+        if($name=="" || $desc=="")
+        {
+            $message="Please fill all fields";
+        }
+        else
+        {
+            $id=getLastId($fileName,"~")+1;
+            $record=$id."~".$name."~".$desc;
 
-        StoreRecord($fileName,$record);
+            StoreRecord($fileName,$record);
 
-        $message="Service Added";
+            $message="Service Added";
+        }
     }
 
     if($action=="edit")
     {
-        $OldRecord=getServiceById($fileName,$selectedId);
-        $NewRecord=$selectedId."~".$name."~".$desc."\r\n";
+        if($selectedId!=0)
+        {
+            $OldRecord=getServiceById($fileName,$selectedId);
+            $NewRecord=$selectedId."~".$name."~".$desc."\r\n";
 
-        UpdateRecord($fileName,$NewRecord,$OldRecord);
+            UpdateRecord($fileName,$NewRecord,$OldRecord);
 
-        $message="Service Updated";
+            $message="Service Updated";
+        }
     }
 
     if($action=="delete")
@@ -148,25 +187,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
         DeleteRecord($fileName,$record);
 
-        $message="Service Deleted";
-
         $selectedId=0;
-    }
-}
+        $SelectedName="";
+        $SelectedDesc="";
 
-$SelectedName="";
-$SelectedDesc="";
-
-if($selectedId!=0)
-{
-    $SelectedRecord=getServiceById($fileName,$selectedId);
-
-    if($SelectedRecord!=FALSE)
-    {
-        $Arr=explode("~",$SelectedRecord);
-
-        $SelectedName=trim($Arr[1]);
-        $SelectedDesc=trim($Arr[2]);
+        $message="Service Deleted";
     }
 }
 
@@ -195,7 +220,6 @@ $AllServices=ListAllServices($fileName);
 
     <div class="container-fluid">
         <div class="row min-vh-100">
-            <!-- Sidebar -->
             <nav class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar py-4">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
@@ -211,7 +235,6 @@ $AllServices=ListAllServices($fileName);
                 </div>
             </nav>
 
-            <!-- Main Content -->
             <main class="col-md-9 col-lg-10 px-4 py-4">
                 <h2>Manage Services</h2>
 
@@ -222,7 +245,6 @@ $AllServices=ListAllServices($fileName);
                 <br><br>
 
                 <table class="table table-bordered">
-
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -232,7 +254,6 @@ $AllServices=ListAllServices($fileName);
                     </tr>
 
                     <?php
-
                     for($i=0;$i<count($AllServices);$i++)
                     {
                         $Row=explode("~",$AllServices[$i]);
@@ -262,9 +283,7 @@ $AllServices=ListAllServices($fileName);
                             echo "</tr>";
                         }
                     }
-
                     ?>
-
                 </table>
 
                 <hr>
@@ -275,16 +294,12 @@ $AllServices=ListAllServices($fileName);
 
                     <div class="mb-3">
                         <label class="form-label">Service Name</label>
-                        <input type="text" name="serviceName"
-                        class="form-control"
-                        value="<?php echo $SelectedName; ?>">
+                        <input type="text" name="serviceName" class="form-control" value="<?php echo $SelectedName; ?>">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Description</label>
-                        <textarea
-                        name="serviceDesc"
-                        class="form-control" rows="3"><?php echo $SelectedDesc; ?></textarea>
+                        <textarea name="serviceDesc" class="form-control" rows="3"><?php echo $SelectedDesc; ?></textarea>
                     </div>
 
                     <button type="submit" name="action" value="add" class="btn btn-success">Add</button>
@@ -295,6 +310,7 @@ $AllServices=ListAllServices($fileName);
             </main>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
