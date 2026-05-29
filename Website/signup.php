@@ -6,7 +6,7 @@ $error = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $username = trim($_REQUEST["username"]);
-    $password = trim($_REQUEST["password"]);
+    $password = sha1(trim($_REQUEST["password"]));
     $email = trim($_REQUEST["email"]);
 
     if($username == "" || $password == "" || $email == ""){
