@@ -89,6 +89,13 @@ function getUserById($fileName,$id)
     return FALSE;
 }
 
+function StoreRecord($fileName,$record)
+{
+    $myfile=fopen($fileName,"a+");
+    fwrite($myfile,$record."\r\n");
+    fclose($myfile);
+}
+
 function DeleteRecord($fileName,$record)
 {
     $contents=file_get_contents($fileName);
