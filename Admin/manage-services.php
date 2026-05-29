@@ -1,8 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["admin_logged_in"]))
-{
+if(!isset($_SESSION["admin_logged_in"])){
     header("Location: admin-login.php");
     exit();
 }
@@ -10,167 +9,147 @@ if (!isset($_SESSION["admin_logged_in"]))
 $fileName = "services-data.txt";
 $message = "";
 
-function ListAllServices($fileName)
-{
-    $Result=array();
+$selectedId = "";
+$name = "";
+$desc = "";
 
-    if (!file_exists($fileName))
-    {
-        return $Result;
-    }
+if(isset($_GET["selected"])){
 
-    $myfile = fopen($fileName, "r");
+    $selectedId = $_GET["selected"];
 
-    $i=0;
+    $FileHandler = fopen($fileName,"r") or die("error opening file!");
 
-    while(!feof($myfile))
-    {
-        $line = fgets($myfile);
+    while(!feof($FileHandler)){
 
-        if($line!="")
-        {
-            $Result[$i]=$line;
-            $i++;
+        $line = fgets($FileHandler);
+        $data = explode("~",trim($line));
+
+        if(count($data) > 2){
+
+            if($data[0] == $selectedId){
+
+                $name = $data[1];
+                $desc = $data[2];
+                break;
+            }
         }
     }
 
-    fclose($myfile);
-
-    return $Result;
+    fclose($FileHandler);
 }
 
-function getLastId($fileName,$Separator)
-{
-    if (!file_exists($fileName))
-    {
-        return 0;
-    }
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $myfile = fopen($fileName,"r");
-    $LastId=0;
+    $action = $_POST["action"];
+    $selectedId = $_POST["selected_id"];
+    $name = trim($_POST["serviceName"]);
+    $desc = trim($_POST["serviceDesc"]);
 
-    while(!feof($myfile))
-    {
-        $line=fgets($myfile);
-        $ArrayLine=explode($Separator,$line);
+    if($action == "add"){
 
-        if($ArrayLine[0]!="")
-        {
-            $LastId=$ArrayLine[0];
+        if($name == "" || $desc == ""){
+            $message = "Please fill all fields";
+        }
+        else {
+
+            $FileHandler = fopen($fileName,"a+") or die("error opening file!");
+
+            $id = 1;
+
+            rewind($FileHandler);
+
+            while(!feof($FileHandler)){
+
+                $line = fgets($FileHandler);
+                $data = explode("~",$line);
+
+                if(count($data) > 0 && trim($data[0]) != ""){
+                    $id = (int)trim($data[0]) + 1;
+                }
+            }
+
+            $record = $id."~".$name."~".$desc."\r\n";
+
+            fwrite($FileHandler,$record);
+            fclose($FileHandler);
+
+            $message = "Service Added";
         }
     }
 
-    fclose($myfile);
+    if($action == "edit"){
 
-    return $LastId;
-}
+        $contents = file_get_contents($fileName);
 
-function getServiceById($fileName,$id)
-{
-    $myfile=fopen($fileName,"r");
+        $FileHandler = fopen($fileName,"r");
 
-    while(!feof($myfile))
-    {
-        $line=fgets($myfile);
-        $ArrayLine=explode("~",$line);
+        while(!feof($FileHandler)){
 
-        if($ArrayLine[0]==$id)
-        {
-            fclose($myfile);
-            return $line;
+            $line = fgets($FileHandler);
+            $data = explode("~",trim($line));
+
+            if(count($data) > 2){
+
+                if($data[0] == $selectedId){
+
+                    $oldRecord = $line;
+
+                    $newRecord =
+                    $selectedId."~".
+                    $name."~".
+                    $desc."\r\n";
+
+                    $contents =
+                    str_replace(
+                    $oldRecord,
+                    $newRecord,
+                    $contents);
+                }
+            }
         }
+
+        fclose($FileHandler);
+
+        file_put_contents($fileName,$contents);
+
+        $message = "Service Updated";
     }
 
-    fclose($myfile);
-    return FALSE;
-}
+    if($action == "delete"){
 
-function StoreRecord($fileName,$record)
-{
-    $myfile=fopen($fileName,"a+");
-    fwrite($myfile,$record."\r\n");
-    fclose($myfile);
-}
+        $contents = file_get_contents($fileName);
 
-function DeleteRecord($fileName,$record)
-{
-    $contents=file_get_contents($fileName);
-    $contents=str_replace($record,'',$contents);
-    file_put_contents($fileName,$contents);
-}
+        $FileHandler = fopen($fileName,"r");
 
-function UpdateRecord($fileName,$NewRecord,$OldRecord)
-{
-    $contents=file_get_contents($fileName);
-    $contents=str_replace($OldRecord,$NewRecord,$contents);
-    file_put_contents($fileName,$contents);
-}
+        while(!feof($FileHandler)){
 
-if(isset($_GET["selected"]))
-{
-    $selectedId=$_GET["selected"];
-}
-else
-{
-    $selectedId=0;
-}
+            $line = fgets($FileHandler);
+            $data = explode("~",trim($line));
 
-if($_SERVER["REQUEST_METHOD"]=="POST")
-{
-    $action=$_POST["action"];
-    $name=trim($_POST["serviceName"]);
-    $desc=trim($_POST["serviceDesc"]);
-    $selectedId=$_POST["selected_id"];
+            if(count($data) > 2){
 
-    if($action=="add")
-    {
-        $id=getLastId($fileName,"~")+1;
-        $record=$id."~".$name."~".$desc;
+                if($data[0] == $selectedId){
 
-        StoreRecord($fileName,$record);
+                    $contents =
+                    str_replace(
+                    $line,
+                    "",
+                    $contents);
+                }
+            }
+        }
 
-        $message="Service Added";
-    }
+        fclose($FileHandler);
 
-    if($action=="edit")
-    {
-        $OldRecord=getServiceById($fileName,$selectedId);
-        $NewRecord=$selectedId."~".$name."~".$desc."\r\n";
+        file_put_contents($fileName,$contents);
 
-        UpdateRecord($fileName,$NewRecord,$OldRecord);
+        $message = "Service Deleted";
 
-        $message="Service Updated";
-    }
-
-    if($action=="delete")
-    {
-        $record=getServiceById($fileName,$selectedId);
-
-        DeleteRecord($fileName,$record);
-
-        $message="Service Deleted";
-
-        $selectedId=0;
+        $selectedId = "";
+        $name = "";
+        $desc = "";
     }
 }
-
-$SelectedName="";
-$SelectedDesc="";
-
-if($selectedId!=0)
-{
-    $SelectedRecord=getServiceById($fileName,$selectedId);
-
-    if($SelectedRecord!=FALSE)
-    {
-        $Arr=explode("~",$SelectedRecord);
-
-        $SelectedName=trim($Arr[1]);
-        $SelectedDesc=trim($Arr[2]);
-    }
-}
-
-$AllServices=ListAllServices($fileName);
 ?>
 
 <!DOCTYPE html>

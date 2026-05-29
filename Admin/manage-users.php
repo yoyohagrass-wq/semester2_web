@@ -63,8 +63,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $line = fgets($FileHandler);
                 $data = explode("~",$line);
 
-                if(count($data) > 0){
-                    $id = trim($data[0]) + 1;
+                if(count($data) > 0 && trim($data[0]) != ""){
+                    $id = (int)trim($data[0]) + 1;
                 }
             }
 
