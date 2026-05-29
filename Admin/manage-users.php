@@ -55,7 +55,7 @@ function getLastId($fileName,$Separator)
 
         if($ArrayLine[0]!="")
         {
-            $LastId=$ArrayLine[0];
+            $LastId=(int)trim($ArrayLine[0]);
         }
     }
 
