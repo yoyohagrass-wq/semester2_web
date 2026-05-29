@@ -1,40 +1,40 @@
 <?php
 session_start();
 
-if (isset($_GET["logout"]) && $_GET["logout"] == "1")
-{
-    session_unset();
-    session_destroy();
-    header("Location: admin-login.php");
-    exit();
-}
+$error = "";
 
-if (isset($_SESSION["admin_logged_in"]) && $_SESSION["admin_logged_in"] == true)
-{
-    header("Location: admin-dashboard.php");
-    exit();
-}
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-$errorMessage = "";
+    $variable = trim($_REQUEST["field"]);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    $username = trim($_POST["username"]);
-    $password = trim($_POST["password"]);
-
-    include "admin_config.php";
-
-    if ($username == $admin_username && $password == $admin_password)
-    {
-        $_SESSION["admin_logged_in"] = true;
-        $_SESSION["admin_username"] = $username;
-
-        header("Location: admin-dashboard.php");
-        exit();
+    if($variable == ""){
+        $error = "Message";
     }
-    else
-    {
-        $errorMessage = "Invalid admin username or password.";
+    else {
+
+        $FileHandler = fopen("file.txt", "r") or die("error opening file!");
+
+        $found = false;
+
+        while(!feof($FileHandler)){
+            $line = fgets($FileHandler);
+            $data = explode("~", $line);
+
+            if(...){
+
+                $found = true;
+
+                fclose($FileHandler);
+                header("Location: page.php");
+                exit();
+            }
+        }
+
+        fclose($FileHandler);
+
+        if(!$found){
+            $error = "Error";
+        }
     }
 }
 ?>
