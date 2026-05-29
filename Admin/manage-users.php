@@ -9,140 +9,184 @@ if(!isset($_SESSION["admin_logged_in"])){
 $fileName = "../Website/userdata.txt";
 $message = "";
 $selectedId = "";
-$name = "";
-$email = "";
-$password = "";
+$SelectedName = "";
+$SelectedEmail = "";
+$SelectedPassword = "";
 
-if(isset($_GET["selected"])){
-    $selectedId = $_GET["selected"];
+function ListAllUsers($fileName)
+{
+    $Result=array();
 
-    $FileHandler = fopen($fileName,"r") or die("error opening file!");
+    if (!file_exists($fileName))
+    {
+        return $Result;
+    }
 
-    while(!feof($FileHandler)){
+    $myfile=fopen($fileName,"r");
+    $i=0;
 
-        $line = fgets($FileHandler);
-        $data = explode("~",trim($line));
+    while(!feof($myfile))
+    {
+        $line=fgets($myfile);
 
-        if(count($data) > 3){
-
-            if($data[0] == $selectedId){
-
-                $name = $data[1];
-                $email = $data[2];
-                $password = $data[3];
-                break;
-            }
+        if($line!="")
+        {
+            $Result[$i]=$line;
+            $i++;
         }
     }
 
-    fclose($FileHandler);
+    fclose($myfile);
+
+    return $Result;
 }
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+function getLastId($fileName,$Separator)
+{
+    if (!file_exists($fileName))
+    {
+        return 0;
+    }
 
-    $action = $_POST["action"];
-    $selectedId = $_POST["selected_id"];
-    $name = trim($_POST["userName"]);
-    $email = trim($_POST["userEmail"]);
-    $password = trim($_POST["userPassword"]);
+    $myfile=fopen($fileName,"r");
+    $LastId=0;
 
-    if($action == "add"){
+    while(!feof($myfile))
+    {
+        $line=fgets($myfile);
+        $ArrayLine=explode($Separator,$line);
 
-        if($name == "" || $email == "" || $password == ""){
-            $message = "Please fill all fields";
-        }
-        else {
-
-            $FileHandler = fopen($fileName,"a+") or die("error opening file!");
-
-            $id = 1;
-
-            rewind($FileHandler);
-
-            while(!feof($FileHandler)){
-                $line = fgets($FileHandler);
-                $data = explode("~",$line);
-
-                if(count($data) > 0 && trim($data[0]) != ""){
-                    $id = (int)trim($data[0]) + 1;
-                }
-            }
-
-            $record = $id."~".$name."~".$email."~".$password."\r\n";
-
-            fwrite($FileHandler,$record);
-            fclose($FileHandler);
-
-            $message = "User Added";
+        if($ArrayLine[0]!="")
+        {
+            $LastId=(int)trim($ArrayLine[0]);
         }
     }
 
-    if($action == "edit"){
+    fclose($myfile);
 
-        $contents = file_get_contents($fileName);
-        $FileHandler = fopen($fileName,"r");
+    return $LastId;
+}
 
-        while(!feof($FileHandler)){
-
-            $line = fgets($FileHandler);
-            $data = explode("~",trim($line));
-
-            if(count($data) > 3){
-
-                if($data[0] == $selectedId){
-
-                    $oldRecord = $line;
-                    $newRecord =
-                    $selectedId."~".
-                    $name."~".
-                    $email."~".
-                    $password."\r\n";
-
-                    $contents =
-                    str_replace(
-                    $oldRecord,
-                    $newRecord,
-                    $contents);
-                }
-            }
-        }
-
-        fclose($FileHandler);
-
-        file_put_contents($fileName,$contents);
-
-        $message = "User Updated";
+function getUserById($fileName,$id)
+{
+    if (!file_exists($fileName))
+    {
+        return FALSE;
     }
 
-    if($action == "delete"){
+    $myfile=fopen($fileName,"r");
 
-        $contents = file_get_contents($fileName);
-        $FileHandler = fopen($fileName,"r");
+    while(!feof($myfile))
+    {
+        $line=fgets($myfile);
+        $ArrayLine=explode("~",$line);
 
-        while(!feof($FileHandler)){
-
-            $line = fgets($FileHandler);
-            $data = explode("~",trim($line));
-
-            if(count($data) > 3){
-
-                if($data[0] == $selectedId){
-                    $contents =
-                    str_replace(
-                    $line,
-                    "",
-                    $contents);
-                }
-            }
+        if($ArrayLine[0]==$id)
+        {
+            fclose($myfile);
+            return $line;
         }
+    }
 
-        fclose($FileHandler);
+    fclose($myfile);
+    return FALSE;
+}
 
-        file_put_contents($fileName,$contents);
+function StoreRecord($fileName,$record)
+{
+    $myfile=fopen($fileName,"a+");
+    fwrite($myfile,$record."\r\n");
+    fclose($myfile);
+}
 
-        $message = "User Deleted";
+function DeleteRecord($fileName,$record)
+{
+    $contents=file_get_contents($fileName);
+    $contents=str_replace($record,'',$contents);
+    file_put_contents($fileName,$contents);
+}
+
+function UpdateRecord($fileName,$NewRecord,$OldRecord)
+{
+    $contents=file_get_contents($fileName);
+    $contents=str_replace($OldRecord,$NewRecord,$contents);
+    file_put_contents($fileName,$contents);
+}
+
+if(isset($_GET["selected"]))
+{
+    $selectedId=$_GET["selected"];
+}
+else
+{
+    $selectedId=0;
+}
+
+if($selectedId!=0)
+{
+    $SelectedRecord=getUserById($fileName,$selectedId);
+
+    if($SelectedRecord!=FALSE)
+    {
+        $Arr=explode("~",$SelectedRecord);
+
+        $SelectedName=trim($Arr[1]);
+        $SelectedEmail=trim($Arr[2]);
+        $SelectedPassword=trim($Arr[3]);
     }
 }
+
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+    $action=$_POST["action"];
+    $name=trim($_POST["userName"]);
+    $email=trim($_POST["userEmail"]);
+    $password=trim($_POST["userPassword"]);
+    $selectedId=$_POST["selected_id"];
+
+    if($action=="add")
+    {
+        if($name=="" || $email=="" || $password=="")
+        {
+            $message="Please fill all fields";
+        }
+        else
+        {
+            $id=getLastId($fileName,"~")+1;
+            $record=$id."~".$name."~".$email."~".$password;
+
+            StoreRecord($fileName,$record);
+
+            $message="User Added";
+        }
+    }
+
+    if($action=="edit")
+    {
+        if($selectedId!=0)
+        {
+            $OldRecord=getUserById($fileName,$selectedId);
+            $NewRecord=$selectedId."~".$name."~".$email."~".$password."\r\n";
+
+            UpdateRecord($fileName,$NewRecord,$OldRecord);
+
+            $message="User Updated";
+        }
+    }
+
+    if($action=="delete")
+    {
+        $record=getUserById($fileName,$selectedId);
+
+        DeleteRecord($fileName,$record);
+
+        $selectedId=0;
+
+        $message="User Deleted";
+    }
+}
+
+$AllUsers=ListAllUsers($fileName);
 ?>
 
 <!DOCTYPE html>
@@ -167,7 +211,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <div class="container-fluid">
         <div class="row min-vh-100">
-            <!-- Sidebar -->
             <nav class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar py-4">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
@@ -183,7 +226,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
             </nav>
 
-            <!-- Main Content -->
             <main class="col-md-9 col-lg-10 px-4 py-4">
                 <h2>Users CRUD</h2>
 
@@ -205,7 +247,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </tr>
 
                     <?php
-
                     for($i=0;$i<count($AllUsers);$i++)
                     {
                         $Row=explode("~",$AllUsers[$i]);
@@ -239,7 +280,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             echo "</tr>";
                         }
                     }
-
                     ?>
 
                 </table>
