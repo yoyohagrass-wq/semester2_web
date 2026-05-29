@@ -8,7 +8,7 @@ if(!isset($_SESSION["admin_logged_in"])){
 
 $fileName = "../Website/userdata.txt";
 $message = "";
-$selectedId = "";
+$selectedId = 0;
 $SelectedName = "";
 $SelectedEmail = "";
 $SelectedPassword = "";
@@ -116,14 +116,7 @@ function UpdateRecord($fileName,$NewRecord,$OldRecord)
 if(isset($_GET["selected"]))
 {
     $selectedId=$_GET["selected"];
-}
-else
-{
-    $selectedId=0;
-}
 
-if($selectedId!=0)
-{
     $SelectedRecord=getUserById($fileName,$selectedId);
 
     if($SelectedRecord!=FALSE)
@@ -139,10 +132,22 @@ if($selectedId!=0)
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
     $action=$_POST["action"];
-    $name=trim($_POST["userName"]);
-    $email=trim($_POST["userEmail"]);
-    $password=trim($_POST["userPassword"]);
-    $selectedId=$_POST["selected_id"];
+
+    if(isset($_POST["selected_id"]))
+    {
+        $selectedId=$_POST["selected_id"];
+    }
+    else
+    {
+        $selectedId=0;
+    }
+
+    if($action=="add" || $action=="edit")
+    {
+        $name=trim($_POST["userName"]);
+        $email=trim($_POST["userEmail"]);
+        $password=trim($_POST["userPassword"]);
+    }
 
     if($action=="add")
     {
@@ -181,6 +186,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         DeleteRecord($fileName,$record);
 
         $selectedId=0;
+        $SelectedName="";
+        $SelectedEmail="";
+        $SelectedPassword="";
 
         $message="User Deleted";
     }
