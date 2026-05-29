@@ -1,39 +1,30 @@
-<?php
+﻿<?php
 session_start();
 
-$error = "";
+$errorMessage = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $variable = trim($_REQUEST["field"]);
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);
 
-    if($variable == ""){
-        $error = "Message";
+    if($username == "" || $password == ""){
+        $errorMessage = "Please enter both username and password.";
     }
     else {
 
-        $FileHandler = fopen("file.txt", "r") or die("error opening file!");
+        include("admin_config.php");
 
-        $found = false;
+        if($username == $admin_username && $password == $admin_password){
 
-        while(!feof($FileHandler)){
-            $line = fgets($FileHandler);
-            $data = explode("~", $line);
+            $_SESSION["admin_logged_in"] = true;
+            $_SESSION["admin_username"] = $username;
 
-            if(...){
-
-                $found = true;
-
-                fclose($FileHandler);
-                header("Location: page.php");
-                exit();
-            }
+            header("Location: admin-dashboard.php");
+            exit();
         }
-
-        fclose($FileHandler);
-
-        if(!$found){
-            $error = "Error";
+        else {
+            $errorMessage = "Invalid username or password.";
         }
     }
 }
