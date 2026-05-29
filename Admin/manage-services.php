@@ -135,9 +135,21 @@ else
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
     $action=$_POST["action"];
-    $name=trim($_POST["serviceName"]);
-    $desc=trim($_POST["serviceDesc"]);
-    $selectedId=$_POST["selected_id"];
+
+    if(isset($_POST["selected_id"]))
+    {
+        $selectedId=$_POST["selected_id"];
+    }
+    else
+    {
+        $selectedId=0;
+    }
+
+    if($action=="add" || $action=="edit")
+    {
+        $name=trim($_POST["serviceName"]);
+        $desc=trim($_POST["serviceDesc"]);
+    }
 
     if($action=="add")
     {
