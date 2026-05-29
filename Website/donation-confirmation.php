@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     else {
 
-        $FileHandler = fopen("Admin\donations.txt", "a+") or die("error opening file!");
+        $FileHandler = fopen("../semester2_web/Admin/donations.txt", "a+") or die("error opening file!");
         $newdata = $username . "~" . $email . "~" . $donationAmount . "~" . $donorMessage . "\n";
 
         fwrite($FileHandler, $newdata);
