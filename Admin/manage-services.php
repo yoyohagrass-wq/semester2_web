@@ -10,146 +10,180 @@ $fileName = "services-data.txt";
 $message = "";
 
 $selectedId = "";
-$name = "";
-$desc = "";
+$SelectedName = "";
+$SelectedDesc = "";
 
-if(isset($_GET["selected"])){
+function ListAllServices($fileName)
+{
+    $Result=array();
 
-    $selectedId = $_GET["selected"];
+    if (!file_exists($fileName))
+    {
+        return $Result;
+    }
 
-    $FileHandler = fopen($fileName,"r") or die("error opening file!");
+    $myfile = fopen($fileName, "r");
+    $i=0;
 
-    while(!feof($FileHandler)){
+    while(!feof($myfile))
+    {
+        $line = fgets($myfile);
 
-        $line = fgets($FileHandler);
-        $data = explode("~",trim($line));
-
-        if(count($data) > 2){
-
-            if($data[0] == $selectedId){
-
-                $name = $data[1];
-                $desc = $data[2];
-                break;
-            }
+        if($line!="")
+        {
+            $Result[$i]=$line;
+            $i++;
         }
     }
 
-    fclose($FileHandler);
+    fclose($myfile);
+
+    return $Result;
 }
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+function getLastId($fileName,$Separator)
+{
+    if (!file_exists($fileName))
+    {
+        return 0;
+    }
 
-    $action = $_POST["action"];
-    $selectedId = $_POST["selected_id"];
-    $name = trim($_POST["serviceName"]);
-    $desc = trim($_POST["serviceDesc"]);
+    $myfile = fopen($fileName,"r");
+    $LastId=0;
 
-    if($action == "add"){
+    while(!feof($myfile))
+    {
+        $line=fgets($myfile);
+        $ArrayLine=explode($Separator,$line);
 
-        if($name == "" || $desc == ""){
-            $message = "Please fill all fields";
-        }
-        else {
-
-            $FileHandler = fopen($fileName,"a+") or die("error opening file!");
-
-            $id = 1;
-
-            rewind($FileHandler);
-
-            while(!feof($FileHandler)){
-
-                $line = fgets($FileHandler);
-                $data = explode("~",$line);
-
-                if(count($data) > 0 && trim($data[0]) != ""){
-                    $id = (int)trim($data[0]) + 1;
-                }
-            }
-
-            $record = $id."~".$name."~".$desc."\r\n";
-
-            fwrite($FileHandler,$record);
-            fclose($FileHandler);
-
-            $message = "Service Added";
+        if($ArrayLine[0]!="")
+        {
+            $LastId=(int)trim($ArrayLine[0]);
         }
     }
 
-    if($action == "edit"){
+    fclose($myfile);
 
-        $contents = file_get_contents($fileName);
+    return $LastId;
+}
 
-        $FileHandler = fopen($fileName,"r");
-
-        while(!feof($FileHandler)){
-
-            $line = fgets($FileHandler);
-            $data = explode("~",trim($line));
-
-            if(count($data) > 2){
-
-                if($data[0] == $selectedId){
-
-                    $oldRecord = $line;
-
-                    $newRecord =
-                    $selectedId."~".
-                    $name."~".
-                    $desc."\r\n";
-
-                    $contents =
-                    str_replace(
-                    $oldRecord,
-                    $newRecord,
-                    $contents);
-                }
-            }
-        }
-
-        fclose($FileHandler);
-
-        file_put_contents($fileName,$contents);
-
-        $message = "Service Updated";
+function getServiceById($fileName,$id)
+{
+    if (!file_exists($fileName))
+    {
+        return FALSE;
     }
 
-    if($action == "delete"){
+    $myfile=fopen($fileName,"r");
 
-        $contents = file_get_contents($fileName);
+    while(!feof($myfile))
+    {
+        $line=fgets($myfile);
+        $ArrayLine=explode("~",$line);
 
-        $FileHandler = fopen($fileName,"r");
-
-        while(!feof($FileHandler)){
-
-            $line = fgets($FileHandler);
-            $data = explode("~",trim($line));
-
-            if(count($data) > 2){
-
-                if($data[0] == $selectedId){
-
-                    $contents =
-                    str_replace(
-                    $line,
-                    "",
-                    $contents);
-                }
-            }
+        if($ArrayLine[0]==$id)
+        {
+            fclose($myfile);
+            return $line;
         }
+    }
 
-        fclose($FileHandler);
+    fclose($myfile);
+    return FALSE;
+}
 
-        file_put_contents($fileName,$contents);
+function StoreRecord($fileName,$record)
+{
+    $myfile=fopen($fileName,"a+");
+    fwrite($myfile,$record."\r\n");
+    fclose($myfile);
+}
 
-        $message = "Service Deleted";
+function DeleteRecord($fileName,$record)
+{
+    $contents=file_get_contents($fileName);
+    $contents=str_replace($record,'',$contents);
+    file_put_contents($fileName,$contents);
+}
 
-        $selectedId = "";
-        $name = "";
-        $desc = "";
+function UpdateRecord($fileName,$NewRecord,$OldRecord)
+{
+    $contents=file_get_contents($fileName);
+    $contents=str_replace($OldRecord,$NewRecord,$contents);
+    file_put_contents($fileName,$contents);
+}
+
+if(isset($_GET["selected"]))
+{
+    $selectedId=$_GET["selected"];
+
+    $SelectedRecord=getServiceById($fileName,$selectedId);
+
+    if($SelectedRecord!=FALSE)
+    {
+        $Arr=explode("~",$SelectedRecord);
+
+        $SelectedName=trim($Arr[1]);
+        $SelectedDesc=trim($Arr[2]);
     }
 }
+else
+{
+    $selectedId=0;
+}
+
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+    $action=$_POST["action"];
+    $name=trim($_POST["serviceName"]);
+    $desc=trim($_POST["serviceDesc"]);
+    $selectedId=$_POST["selected_id"];
+
+    if($action=="add")
+    {
+        if($name=="" || $desc=="")
+        {
+            $message="Please fill all fields";
+        }
+        else
+        {
+            $id=getLastId($fileName,"~")+1;
+            $record=$id."~".$name."~".$desc;
+
+            StoreRecord($fileName,$record);
+
+            $message="Service Added";
+        }
+    }
+
+    if($action=="edit")
+    {
+        if($selectedId!=0)
+        {
+            $OldRecord=getServiceById($fileName,$selectedId);
+            $NewRecord=$selectedId."~".$name."~".$desc."\r\n";
+
+            UpdateRecord($fileName,$NewRecord,$OldRecord);
+
+            $message="Service Updated";
+        }
+    }
+
+    if($action=="delete")
+    {
+        $record=getServiceById($fileName,$selectedId);
+
+        DeleteRecord($fileName,$record);
+
+        $selectedId=0;
+        $SelectedName="";
+        $SelectedDesc="";
+
+        $message="Service Deleted";
+    }
+}
+
+$AllServices=ListAllServices($fileName);
 ?>
 
 <!DOCTYPE html>
@@ -174,7 +208,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <div class="container-fluid">
         <div class="row min-vh-100">
-            <!-- Sidebar -->
             <nav class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar py-4">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
@@ -190,7 +223,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
             </nav>
 
-            <!-- Main Content -->
             <main class="col-md-9 col-lg-10 px-4 py-4">
                 <h2>Manage Services</h2>
 
@@ -201,7 +233,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <br><br>
 
                 <table class="table table-bordered">
-
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -211,7 +242,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </tr>
 
                     <?php
-
                     for($i=0;$i<count($AllServices);$i++)
                     {
                         $Row=explode("~",$AllServices[$i]);
@@ -241,9 +271,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             echo "</tr>";
                         }
                     }
-
                     ?>
-
                 </table>
 
                 <hr>
@@ -254,16 +282,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     <div class="mb-3">
                         <label class="form-label">Service Name</label>
-                        <input type="text" name="serviceName"
-                        class="form-control"
-                        value="<?php echo $SelectedName; ?>">
+                        <input type="text" name="serviceName" class="form-control" value="<?php echo $SelectedName; ?>">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Description</label>
-                        <textarea
-                        name="serviceDesc"
-                        class="form-control" rows="3"><?php echo $SelectedDesc; ?></textarea>
+                        <textarea name="serviceDesc" class="form-control" rows="3"><?php echo $SelectedDesc; ?></textarea>
                     </div>
 
                     <button type="submit" name="action" value="add" class="btn btn-success">Add</button>
@@ -274,6 +298,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </main>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
