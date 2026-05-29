@@ -1,2 +1,2 @@
-1~Omar Youssef~omar@example.com~01012345678~I would like to volunteer on weekends.~May 29, 2026~Pending
+1~Omar Youssef~omar@example.com~01012345678~I would like to volunteer on weekends.~May 29, 2026~Rejected
 2~Mona Ali~mona@example.com~01198765432~Interested in food packaging.~May 29, 2026~Approved
