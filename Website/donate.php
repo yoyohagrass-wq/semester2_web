@@ -1,4 +1,6 @@
 <?php
+
+
 require_once 'functions.php';
 pageHead(
     'Donate - Al Mesbah Al Modie Foundation',
@@ -18,9 +20,9 @@ headerSection();
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" class="donation-input" placeholder="Enter your email">
             <label for="amount">Donation Amount:</label>
-            <input type="text" id="donation-amount" name="Donation-Amount" placeholder="EGP">
+            <input type="text" id="donation-amount" name="donation-amount" placeholder="EGP">
             <label for="message">Message (Optional):</label>
-            <textarea id="donorMessage" name="message" class="donation-textarea" rows="4" placeholder="Add a message..."></textarea>
+            <textarea id="donorMessage" name="donorMessage" class="donation-textarea" rows="4" placeholder="Add a message..."></textarea>
             <button type="submit" class="donation-btn">Donate Now</button>
         </form>
         <h3 class="donation-prog-title">Donation Progress</h3>
