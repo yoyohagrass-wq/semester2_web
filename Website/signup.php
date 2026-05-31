@@ -3,54 +3,46 @@ session_start();
 
 $error = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $username = trim($_POST["username"] ?? "");
-    $passwordInput = trim($_POST["password"] ?? "");
-    $email = trim($_POST["email"] ?? "");
+$username = trim($_REQUEST["username"]);
+$password = sha1(trim($_REQUEST["password"]));
+$email = trim($_REQUEST["email"]);
 
-    if ($username === "" || $passwordInput === "" || $email === "") {
-        $error = "All fields are required";
-    } else {
-        $password = sha1($passwordInput);
-        $userFile = __DIR__ . DIRECTORY_SEPARATOR . "userdata.txt";
-        $FileHandler = @fopen($userFile, "a+");
+if($username == "" || $password == "" || $email == ""){
+    $error = "All fields are required";
+}
+else {
 
-        if ($FileHandler === false) {
-            $error = "error opening file!";
-        } else {
-            rewind($FileHandler);
+    $FileHandler = fopen("userdata.txt", "a+") or die("error opening file!");
 
-            $emailExists = false;
+    rewind($FileHandler);
 
-            while (($line = fgets($FileHandler)) !== false) {
-                $line = trim($line);
-                if ($line === "") {
-                    continue;
-                }
+    $emailExists = false;
 
-                $data = explode("~", $line);
-                if (isset($data[2]) && trim($data[2]) === $email) {
-                    $emailExists = true;
-                    break;
-                }
-            }
+    while(!feof($FileHandler)){
 
-            if ($emailExists) {
-                $error = "Email already exists";
-            } else {
-                $newdata = $username . "~" . $password . "~" . $email . "\n";
+        $line = fgets($FileHandler);
+        $data = explode("~", $line);
 
-                fwrite($FileHandler, $newdata);
-
-                $_SESSION["username"] = $username;
-                fclose($FileHandler);
-
-                header("Location: index.php");
-                exit();
-            }
-
-            fclose($FileHandler);
+        if(isset($data[2]) && trim($data[2]) == trim($email)){
+            $emailExists = true;
+            break;
         }
+    }
+
+    if($emailExists){
+        $error = "Email already exists";
+    }
+    else {
+
+        $newdata = $username . "~" . $password . "~" . $email . "\n";
+
+        fwrite($FileHandler, $newdata);
+        fclose($FileHandler);
+
+        $_SESSION['username'] = $username;
+
+        header("Location: index.php");
+        exit();
     }
 }
 ?>

@@ -3,49 +3,35 @@ session_start();
 
 $error = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $username = trim($_POST["username"] ?? "");
-    $passwordInput = trim($_POST["password"] ?? "");
+$username = trim($_REQUEST["username"]);
+$password = sha1(trim($_REQUEST["password"]));
 
-    if ($username === "" || $passwordInput === "") {
-        $error = "All fields are required";
-    } else {
-        $password = sha1($passwordInput);
-        $userFile = __DIR__ . DIRECTORY_SEPARATOR . "userdata.txt";
-        $FileHandler = @fopen($userFile, "r");
+if($username == "" || $password == ""){
+    $error = "All fields are required";
+}
+else {
 
-        if ($FileHandler === false) {
-            $error = "error opening file!";
-        } else {
-            $found = false;
+    $FileHandler = fopen("userdata.txt", "r") or die("error opening file!");
 
-            while (($line = fgets($FileHandler)) !== false) {
-                $line = trim($line);
-                if ($line === "") {
-                    continue;
-                }
+    $found = false;
 
-                $data = explode("~", $line);
-                if (count($data) < 2) {
-                    continue;
-                }
+    while(!feof($FileHandler)){
+        $line = fgets($FileHandler);
+        $data = explode("~", $line);
 
-                if (trim($data[0]) === $username && trim($data[1]) === $password) {
-                    $found = true;
-                    break;
-                }
-            }
+        if(trim($data[0]) == trim($username) && trim($data[1]) == trim($password)){
+
+            $_SESSION['username'] = $username;
+            $found = true;
 
             fclose($FileHandler);
-
-            if ($found) {
-                $_SESSION["username"] = $username;
-                header("Location: index.php");
-                exit();
-            }
-
-            $error = "Invalid username or password";
+            header("Location: index.php");
+            exit();
         }
+    }
+
+    if(!$found){
+        $error = "Invalid username or password";
     }
 }
 ?>
