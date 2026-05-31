@@ -135,8 +135,6 @@ if(isset($_POST["delete"]))
 
                 <hr>
 
-                <h2>Manage Service</h2>
-
                 <form method="post">
 
                     ID<br>
