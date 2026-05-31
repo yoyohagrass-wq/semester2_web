@@ -1,3 +1,21 @@
+<?php
+
+$conn = mysqli_connect("localhost", "root", "", "volunteer_db", 3307);
+
+$name = $_POST["name"];
+$email = $_POST["email"];
+$phone = $_POST["phone"];
+$message = $_POST["message"];
+
+$sql = "INSERT INTO volunteers(FullName,Email,PhoneNumber,Message)
+        VALUES('$name','$email','$phone','$message')";
+
+mysqli_query($conn,$sql);
+
+mysqli_close($conn);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
