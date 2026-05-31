@@ -37,6 +37,36 @@ function getAllServices()
 
 $allServices = getAllServices();
 
+$selectedService = null;
+
+if(isset($_GET["select"]))
+{
+    $selectedIndex = $_GET["select"];
+
+    if(isset($allServices[$selectedIndex]))
+    {
+        $selectedService = $allServices[$selectedIndex];
+    }
+}
+
+$allServices = getAllServices();
+
+
+if(isset($_POST["delete"]))
+{
+    $selectedIndex = $_POST["selectedIndex"];
+
+    $lines = file("services-data.txt");
+
+    unset($lines[$selectedIndex]);
+
+    file_put_contents("services-data.txt", implode("", $lines));
+
+    header("Location: manage-services.php");
+    exit();
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -87,6 +117,7 @@ $allServices = getAllServices();
                         <th>ID</th>
                         <th>Service Name</th>
                         <th>Description</th>
+                        <th>Action</th>
                     </tr>
 
                     <?php
@@ -96,6 +127,7 @@ $allServices = getAllServices();
                         echo "<td>".$allServices[$i]["Id"]."</td>";
                         echo "<td>".$allServices[$i]["Name"]."</td>";
                         echo "<td>".$allServices[$i]["Description"]."</td>";
+                        echo "<td><a href='?select=".$i."'>Select</a></td>";
                         echo "</tr>";
                         }
                     ?>
@@ -103,6 +135,38 @@ $allServices = getAllServices();
 
                 <hr>
 
+                <h2>Manage Service</h2>
+
+                <form method="post">
+
+                    ID<br>
+                    <input type="text" name="id"
+                    value="<?php echo $selectedService ? $selectedService["Id"] : ""; ?>">
+                    <br><br>
+
+                    Service Name<br>
+                    <input type="text" name="name"
+                    value="<?php echo $selectedService ? $selectedService["Name"] : ""; ?>">
+                    <br><br>
+
+                    Description<br>
+                    <textarea name="description"><?php echo $selectedService ? $selectedService["Description"] : ""; ?></textarea>
+                    <br><br>
+
+                    <?php if($selectedService){ ?>
+
+                    <input type="hidden" name="selectedIndex"
+                    value="<?php echo $selectedIndex; ?>">
+
+                    <input type="submit" name="delete" value="Delete">
+
+                    <?php } else { ?>
+
+                    <input type="submit" name="add" value="Add">
+
+                    <?php } ?>
+
+            </form>
                 
 
             </main>
