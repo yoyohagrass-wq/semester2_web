@@ -6,196 +6,37 @@ if(!isset($_SESSION["admin_logged_in"])){
     exit();
 }
 
-$fileName = "services-data.txt";
-$message = "";
-
-$selectedId = "";
-$SelectedName = "";
-$SelectedDesc = "";
-
-function ListAllServices($fileName)
+function getAllServices()
 {
-    $Result=array();
+    $allServices = array();
 
-    if (!file_exists($fileName))
+    $fileHandler = fopen("services-data.txt", "r");
+
+    while(!feof($fileHandler))
     {
-        return $Result;
-    }
+        $line = trim(fgets($fileHandler));
 
-    $myfile = fopen($fileName, "r");
-    $i=0;
-
-    while(!feof($myfile))
-    {
-        $line = fgets($myfile);
-
-        if($line!="")
+        if($line != "")
         {
-            $Result[$i]=$line;
-            $i++;
+            $lineSplitted = explode("~", $line);
+
+            $serviceData = array(
+                "Id" => $lineSplitted[0],
+                "Name" => $lineSplitted[1],
+                "Description" => $lineSplitted[2]
+            );
+
+            $allServices[] = $serviceData;
         }
     }
 
-    fclose($myfile);
+    fclose($fileHandler);
 
-    return $Result;
+    return $allServices;
 }
 
-function getLastId($fileName,$Separator)
-{
-    if (!file_exists($fileName))
-    {
-        return 0;
-    }
+$allServices = getAllServices();
 
-    $myfile = fopen($fileName,"r");
-    $LastId=0;
-
-    while(!feof($myfile))
-    {
-        $line=fgets($myfile);
-        $ArrayLine=explode($Separator,$line);
-
-        if($ArrayLine[0]!="")
-        {
-            $LastId=(int)trim($ArrayLine[0]);
-        }
-    }
-
-    fclose($myfile);
-
-    return $LastId;
-}
-
-function getServiceById($fileName,$id)
-{
-    if (!file_exists($fileName))
-    {
-        return FALSE;
-    }
-
-    $myfile=fopen($fileName,"r");
-
-    while(!feof($myfile))
-    {
-        $line=fgets($myfile);
-        $ArrayLine=explode("~",$line);
-
-        if($ArrayLine[0]==$id)
-        {
-            fclose($myfile);
-            return $line;
-        }
-    }
-
-    fclose($myfile);
-    return FALSE;
-}
-
-function StoreRecord($fileName,$record)
-{
-    $myfile=fopen($fileName,"a+");
-    fwrite($myfile,$record."\r\n");
-    fclose($myfile);
-}
-
-function DeleteRecord($fileName,$record)
-{
-    $contents=file_get_contents($fileName);
-    $contents=str_replace($record,'',$contents);
-    file_put_contents($fileName,$contents);
-}
-
-function UpdateRecord($fileName,$NewRecord,$OldRecord)
-{
-    $contents=file_get_contents($fileName);
-    $contents=str_replace($OldRecord,$NewRecord,$contents);
-    file_put_contents($fileName,$contents);
-}
-
-if(isset($_GET["selected"]))
-{
-    $selectedId=$_GET["selected"];
-
-    $SelectedRecord=getServiceById($fileName,$selectedId);
-
-    if($SelectedRecord!=FALSE)
-    {
-        $Arr=explode("~",$SelectedRecord);
-
-        $SelectedName=trim($Arr[1]);
-        $SelectedDesc=trim($Arr[2]);
-    }
-}
-else
-{
-    $selectedId=0;
-}
-
-if($_SERVER["REQUEST_METHOD"]=="POST")
-{
-    $action=$_POST["action"];
-
-    if(isset($_POST["selected_id"]))
-    {
-        $selectedId=$_POST["selected_id"];
-    }
-    else
-    {
-        $selectedId=0;
-    }
-
-    if($action=="add" || $action=="edit")
-    {
-        $name=trim($_POST["serviceName"]);
-        $desc=trim($_POST["serviceDesc"]);
-    }
-
-    if($action=="add")
-    {
-        if($name=="" || $desc=="")
-        {
-            $message="Please fill all fields";
-        }
-        else
-        {
-            $id=getLastId($fileName,"~")+1;
-            $record=$id."~".$name."~".$desc;
-
-            StoreRecord($fileName,$record);
-
-            $message="Service Added";
-        }
-    }
-
-    if($action=="edit")
-    {
-        if($selectedId!=0)
-        {
-            $OldRecord=getServiceById($fileName,$selectedId);
-            $NewRecord=$selectedId."~".$name."~".$desc."\r\n";
-
-            UpdateRecord($fileName,$NewRecord,$OldRecord);
-
-            $message="Service Updated";
-        }
-    }
-
-    if($action=="delete")
-    {
-        $record=getServiceById($fileName,$selectedId);
-
-        DeleteRecord($fileName,$record);
-
-        $selectedId=0;
-        $SelectedName="";
-        $SelectedDesc="";
-
-        $message="Service Deleted";
-    }
-}
-
-$AllServices=ListAllServices($fileName);
 ?>
 
 <!DOCTYPE html>
@@ -238,74 +79,31 @@ $AllServices=ListAllServices($fileName);
             <main class="col-md-9 col-lg-10 px-4 py-4">
                 <h2>Manage Services</h2>
 
-                <font color="red">
-                    <?php echo $message; ?>
-                </font>
 
                 <br><br>
 
                 <table class="table table-bordered">
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>Service Name</th>
                         <th>Description</th>
-                        <th>Select</th>
-                        <th>Delete</th>
                     </tr>
 
                     <?php
-                    for($i=0;$i<count($AllServices);$i++)
-                    {
-                        $Row=explode("~",$AllServices[$i]);
-
-                        if(count($Row)>2)
+                        for($i = 0; $i < count($allServices); $i++)
                         {
-                            echo "<tr>";
-
-                            echo "<td>".$Row[0]."</td>";
-                            echo "<td>".$Row[1]."</td>";
-                            echo "<td>".$Row[2]."</td>";
-
-                            echo "<td>
-                            <a class='btn btn-info btn-sm' href=manage-services.php?selected=".$Row[0].">
-                            Select
-                            </a>
-                            </td>";
-
-                            echo "<td>
-                            <form method=post action=manage-services.php>
-                            <input type=hidden name=action value=delete>
-                            <input type=hidden name=selected_id value=".$Row[0].">
-                            <input type=submit value=Delete class='btn btn-danger btn-sm'>
-                            </form>
-                            </td>";
-
-                            echo "</tr>";
+                        echo "<tr>";
+                        echo "<td>".$allServices[$i]["Id"]."</td>";
+                        echo "<td>".$allServices[$i]["Name"]."</td>";
+                        echo "<td>".$allServices[$i]["Description"]."</td>";
+                        echo "</tr>";
                         }
-                    }
                     ?>
                 </table>
 
                 <hr>
 
-                <form method="post" action="manage-services.php" class="bg-white p-4 rounded shadow-sm mb-4">
-
-                    <input type="hidden" name="selected_id" value="<?php echo $selectedId; ?>">
-
-                    <div class="mb-3">
-                        <label class="form-label">Service Name</label>
-                        <input type="text" name="serviceName" class="form-control" value="<?php echo $SelectedName; ?>">
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Description</label>
-                        <textarea name="serviceDesc" class="form-control" rows="3"><?php echo $SelectedDesc; ?></textarea>
-                    </div>
-
-                    <button type="submit" name="action" value="add" class="btn btn-success">Add</button>
-                    <button type="submit" name="action" value="edit" class="btn btn-primary">Edit</button>
-
-                </form>
+                
 
             </main>
         </div>
