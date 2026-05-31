@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost","root","","volunteer_db");
+$conn = mysqli_connect("localhost","root","","volunteer_db",3307);
 
 $name = $_POST["name"];
 $email = $_POST["email"];
