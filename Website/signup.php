@@ -3,49 +3,46 @@ session_start();
 
 $error = "";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+$username = trim($_REQUEST["username"]);
+$password = sha1(trim($_REQUEST["password"]));
+$email = trim($_REQUEST["email"]);
 
-    $username = trim($_REQUEST["username"]);
-    $password = sha1(trim($_REQUEST["password"]));
-    $email = trim($_REQUEST["email"]);
+if($username == "" || $password == "" || $email == ""){
+    $error = "All fields are required";
+}
+else {
 
-    if($username == "" || $password == "" || $email == ""){
-        $error = "All fields are required";
+    $FileHandler = fopen("userdata.txt", "a+") or die("error opening file!");
+
+    rewind($FileHandler);
+
+    $emailExists = false;
+
+    while(!feof($FileHandler)){
+
+        $line = fgets($FileHandler);
+        $data = explode("~", $line);
+
+        if(isset($data[2]) && trim($data[2]) == trim($email)){
+            $emailExists = true;
+            break;
+        }
+    }
+
+    if($emailExists){
+        $error = "Email already exists";
     }
     else {
 
-        $FileHandler = fopen("userdata.txt", "a+") or die("error opening file!");
+        $newdata = $username . "~" . $password . "~" . $email . "\n";
 
-        rewind($FileHandler);
+        fwrite($FileHandler, $newdata);
+        fclose($FileHandler);
 
-        $emailExists = false;
+        $_SESSION['username'] = $username;
 
-        while(!feof($FileHandler)){
-
-            $line = fgets($FileHandler);
-            $data = explode("~", $line);
-
-            if(isset($data[2]) && trim($data[2]) == trim($email)){
-                $emailExists = true;
-                break;
-            }
-        }
-
-        if($emailExists){
-            $error = "Email already exists";
-        }
-        else {
-
-            $newdata = $username . "~" . $password . "~" . $email . "\n";
-
-            fwrite($FileHandler, $newdata);
-            fclose($FileHandler);
-
-            $_SESSION['username'] = $username;
-
-            header("Location: index.php");
-            exit();
-        }
+        header("Location: index.php");
+        exit();
     }
 }
 ?>

@@ -3,25 +3,22 @@ session_start();
 
 $error = "";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+$username = trim($_REQUEST["name"]);
+$email = trim($_REQUEST["email"]);
+$donationAmount = trim($_REQUEST["donation-amount"]);
+$donorMessage = trim($_REQUEST["donorMessage"]);
 
-    $username = trim($_REQUEST["name"]);
-    $email = trim($_REQUEST["email"]);
-    $donationAmount = trim($_REQUEST["donation-amount"]);
-    $donorMessage = trim($_REQUEST["donorMessage"]);
-
-    if($username == "" || $email == "" || $donationAmount == "" || !is_numeric($donationAmount) || $donationAmount <= 0 ){
-        $error = "Please fill all fields correctly";
+if($username == "" || $email == "" || $donationAmount == "" || !is_numeric($donationAmount) || $donationAmount <= 0 ){
+    $error = "Please fill all fields correctly";
     }
-    else {
+else {
 
-        $FileHandler = fopen("../Admin/donations.txt", "a+") or die("error opening file!");
-        $newdata = $username . "~" . $email . "~" . $donationAmount . "~" . $donorMessage . "\n";
+    $FileHandler = fopen("../Admin/donations.txt", "a+") or die("error opening file!");
+    $newdata = $username . "~" . $email . "~" . $donationAmount . "~" . $donorMessage . "\n";
 
-        fwrite($FileHandler, $newdata);
-        fclose($FileHandler);
+    fwrite($FileHandler, $newdata);
+    fclose($FileHandler);
     }
-}
 ?>
 
 <!DOCTYPE html>
