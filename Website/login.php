@@ -3,33 +3,47 @@ session_start();
 
 $error = "";
 
-$username = trim($_REQUEST["username"]);
-$password = sha1(trim($_REQUEST["password"]));
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = trim($_POST["username"] ?? "");
+    $passwordInput = trim($_POST["password"] ?? "");
 
-if($username == "" || $password == ""){
-    $error = "All fields are required";
-}
-else {
+    if ($username === "" || $passwordInput === "") {
+        $error = "All fields are required";
+    } else {
+        $password = sha1($passwordInput);
+        $userFile = __DIR__ . DIRECTORY_SEPARATOR . "userdata.txt";
+        $FileHandler = @fopen($userFile, "r");
 
-    $FileHandler = fopen("userdata.txt", "r") or die("error opening file!");
+        if ($FileHandler === false) {
+            $error = "error opening file!";
+        } else {
+            $found = false;
 
-    $found = false;
+            while (($line = fgets($FileHandler)) !== false) {
+                $line = trim($line);
+                if ($line === "") {
+                    continue;
+                }
 
-    while(!feof($FileHandler)){
-        $line = fgets($FileHandler);
-        $data = explode("~", $line);
+                $data = explode("~", $line);
+                if (count($data) < 2) {
+                    continue;
+                }
 
-        if(trim($data[0]) == trim($username) && trim($data[1]) == trim($password)){
+                if (trim($data[0]) === $username && trim($data[1]) === $password) {
+                    $found = true;
+                    break;
+                }
+            }
 
-            $_SESSION['username'] = $username;
-            $found = true;
+            fclose($FileHandler);
 
-                fclose($FileHandler);
+            if ($found) {
+                $_SESSION["username"] = $username;
                 header("Location: index.php");
                 exit();
             }
-        }
-        if(!$found){
+
             $error = "Invalid username or password";
         }
     }
