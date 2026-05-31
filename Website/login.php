@@ -30,6 +30,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 header("Location: index.php");
                 exit();
             }
+            else if(trim($data[0]) == $admin_username && trim($data[1]) == $admin_password){
+
+                $_SESSION["admin_logged_in"] = true;
+                $_SESSION["admin_username"] = $username;
+
+                fclose($FileHandler);
+                header("Location: ../Admin/admin-dashboard.php");
+                exit();
+            }
         }
         if(!$found){
             $error = "Invalid username or password";
