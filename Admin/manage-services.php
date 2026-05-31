@@ -49,9 +49,6 @@ if(isset($_GET["select"]))
     }
 }
 
-$allServices = getAllServices();
-
-
 if(isset($_POST["delete"]))
 {
     $selectedIndex = $_POST["selectedIndex"];
@@ -134,6 +131,7 @@ if(isset($_POST["delete"]))
                 </table>
 
                 <hr>
+
 
                 <form method="post">
 
