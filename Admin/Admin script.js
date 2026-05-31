@@ -31,6 +31,8 @@ function selectService(item) {
   document.getElementById("serviceName").value = item.textContent;
 }
 
+/* Add, Edit, Delete Services */
+
 function AddService() {
   let serviceName = document.getElementById("serviceName").value.trim();
   let serviceDesc = document.getElementById("serviceDesc").value.trim();
