@@ -110,3 +110,35 @@ table a:hover {
   color: white;
 }
 
+.volunteer-search-card {
+  border: 0;
+  border-radius: 1rem;
+}
+
+.volunteer-search-form .form-control {
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #ced8e3;
+}
+
+.volunteer-search-form .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.volunteer-results {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+  min-height: 80px;
+  line-height: 1.7;
+}
+
+.volunteer-results hr {
+  margin: 0.85rem 0;
+  border: 0;
+  border-top: 1px solid #dee2e6;
+}
+
