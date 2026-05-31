@@ -1,7 +1,5 @@
 <?php
 
-
-
 function ListAllUsers(){
 
     $allUsers=array();
