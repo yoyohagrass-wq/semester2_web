@@ -16,7 +16,7 @@ function showHint(str) {
 }
 </script>
 <form method="post" action="Myfile.php">
-    Product Name:
+    Username :
     <input type="text" id="name" name="name" onkeyup="showHint(this.value)"><br><br>
     <div id="Hint">Some Text</div>
     
