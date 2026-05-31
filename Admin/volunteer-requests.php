@@ -57,18 +57,16 @@
 
     <script>
     function showHint(str) {
-        var hintBox = document.getElementById("Hint");
+        myvar = document.getElementById("Hint");
         if (str.length > 0) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    hintBox.innerHTML = this.responseText || "No matching volunteer requests found.";
+                    myvar.innerHTML = this.responseText || "No matching volunteer requests found.";
                 }
             };
-            xhttp.open("GET", "search_db.php?name=" + encodeURIComponent(str), true);
+            xhttp.open("GET", "search_db.php?name=" + str , true);
             xhttp.send();
-        } else {
-            hintBox.innerHTML = "Start typing to search volunteer requests.";
         }
     }
     </script>
