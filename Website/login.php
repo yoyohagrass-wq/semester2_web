@@ -33,6 +33,7 @@ else {
             $error = "Invalid username or password";
         }
     }
+}
 ?>
 
 <!DOCTYPE html>
