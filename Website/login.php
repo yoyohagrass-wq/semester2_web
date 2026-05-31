@@ -24,14 +24,14 @@ else {
             $_SESSION['username'] = $username;
             $found = true;
 
-            fclose($FileHandler);
-            header("Location: index.php");
-            exit();
+                fclose($FileHandler);
+                header("Location: index.php");
+                exit();
+            }
         }
-    }
-
-    if(!$found){
-        $error = "Invalid username or password";
+        if(!$found){
+            $error = "Invalid username or password";
+        }
     }
 }
 ?>
