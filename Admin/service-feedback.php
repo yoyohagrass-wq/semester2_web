@@ -38,24 +38,6 @@ function ListAllFeedBacks(){
 }
 $allFeedbacks=ListAllFeedBacks();
 
-if(isset($_GET["delete"])){
-
-    $deleteIndex=$_GET["delete"];
-
-    $lines=file("feedback.txt");
-
-    unset($lines[$deleteIndex]);
-
-    file_put_contents("feedback.txt",implode("",$lines));
-
-    header("Location: ".$_SERVER['PHP_SELF']);
-
-    exit();
-}
-
-$AllFeedbacks=ListAllFeedBacks();
-
-
 if(isset($_POST["newOption"])){
 
     $option = trim($_POST["newOption"]);
@@ -120,7 +102,6 @@ if(isset($_POST["newOption"])){
                                     <th>Phone</th>
                                     <th>Selected Option</th>
                                     <th>Message</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -133,7 +114,6 @@ if(isset($_POST["newOption"])){
                                     echo "<td>".$allFeedbacks[$i]["phone"]."</td>";
                                     echo "<td>".$allFeedbacks[$i]["mycombobox"]."</td>";
                                     echo "<td>".$allFeedbacks[$i]["message"]."</td>";
-                                    echo "<td><a href='?delete=".$i."' class='btn btn-sm btn-danger' onclick=\"return confirm('Are you sure you want to delete this feedback?')\">Delete</a></td>";
                                     echo "</tr>";
                                     }
                                 ?>
