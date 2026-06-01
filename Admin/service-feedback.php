@@ -61,7 +61,7 @@ if(isset($_POST["newOption"])){
 
     if($option != ""){
 
-        $fileHandler = fopen("feedbackoptions.txt", "a");
+        $fileHandler = fopen("feedbackoptions.txt", "a+");
 
         fwrite($fileHandler, $option . "\n");
 
