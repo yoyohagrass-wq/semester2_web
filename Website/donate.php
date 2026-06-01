@@ -25,9 +25,6 @@ headerSection();
             <textarea id="donorMessage" name="donorMessage" class="donation-textarea" rows="4" placeholder="Add a message..."></textarea>
             <button type="submit" class="donation-btn">Donate Now</button>
         </form>
-        <h3 class="donation-prog-title">Donation Progress</h3>
-        <div class="progress-container"><div id="progressBar"></div></div>
-        <p id="progressText"></p>
     </div>
 </div>
 
