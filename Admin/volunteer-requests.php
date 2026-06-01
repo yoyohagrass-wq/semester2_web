@@ -43,7 +43,7 @@
                         <p class="text-muted mb-4">Search by volunteer name to view matching request details.</p>
 
                         <form method="post" action="Myfile.php" class="volunteer-search-form">
-                            <label for="name" class="form-label">Username</label>
+                            <label for="name" class="form-label">Name:</label>
                             <input type="text" id="name" name="name" class="form-control" onkeyup="showHint(this.value)" placeholder="Type a volunteer name">
                         </form>
                     </div>
