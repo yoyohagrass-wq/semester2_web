@@ -1,10 +1,11 @@
 <?php
-$error = signup();
+
 session_start();
 
 include_once "functions.php";
 
-signup();
+$error = signup();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="auth-html">
