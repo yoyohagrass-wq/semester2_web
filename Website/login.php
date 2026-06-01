@@ -1,4 +1,5 @@
 <?php
+$error = login();
 session_start();
 
 include_once "functions.php";
@@ -23,7 +24,9 @@ login();
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
-
+                <?php if($error): ?>
+                    <div class="error-message"><?php echo $error; ?></div>
+                <?php endif; ?>
         </form>
 
         <div class="signup-link">
