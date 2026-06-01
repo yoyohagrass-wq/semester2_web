@@ -60,8 +60,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="error-message"><?php echo $error; ?></div>
                 <?php endif; ?>
         </form>
-
-        <div class="signup-link">
+        <div class="login-link">
+            Are you an admin?
+            <button type="button" onclick="window.location.href='../Admin/admin-login.php'">
+                Admin Login
+            </button><br><br>
             Don't have an account?
             <button type="button" onclick="window.location.href='signup.php'">
                 Sign Up
