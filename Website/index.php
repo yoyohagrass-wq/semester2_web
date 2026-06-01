@@ -230,48 +230,7 @@ headerSection();
         </div>
     </div>
 </section>
-        <section class="inquiry-section py-5">
-            <div class="container">
-                <div class="row g-4 align-items-stretch">
-                    <div class="col-lg-7 mx-auto">
-                        <div class="form-panel h-100 fade-in delay-2">
-                            <form id="inquireForm" action="feedback-confirmation.php" method="get" onsubmit="return validateInquireForm();">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="inquireName" name="inquireName" placeholder="Your Name" required>
-                                            <label for="inquireName">Your Name</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control" id="inquireEmail" name="inquireEmail" placeholder="Your Email" required>
-                                            <label for="inquireEmail">Your Email</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="inquirePhone" name="inquirePhone" placeholder="Your Phone" required>
-                                            <label for="inquirePhone">Your Phone</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control inquiry-textarea" id="inquireMessage" name="inquireMessage" placeholder="Your Message" required></textarea>
-                                            <label for="inquireMessage">Your Message</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 pt-2">
-                                        <p class="small text-muted mb-0">Our team will respond as soon as possible.</p>
-                                        <button type="submit" class="btn btn-dark px-4">Send inquiry</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+       
     </main>
 
 <?php
