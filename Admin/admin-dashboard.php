@@ -179,7 +179,7 @@ $totalDonations = getTotalDonations();
                                     You have <strong>5</strong> new feedback messages.
                                 </p>
 
-                                <a href="feedback.php" class="btn btn-sm btn-info mt-3">
+                                <a href="service-feedback.php" class="btn btn-sm btn-info mt-3">
                                     View Feedback
                                 </a>
 
