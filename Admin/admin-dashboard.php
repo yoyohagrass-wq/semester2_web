@@ -110,7 +110,7 @@ $totalDonations = getTotalDonations();
                         </li>
 
                         <li class="nav-item mt-4">
-                            <a class="nav-link text-danger" href="admin-dashboard.php?logout=1">
+                            <a class="nav-link text-danger" href="admin-dashboard.php?logout=1" onclick="return confirm('Are you sure you want to logout?');">
                                 <i class="fas fa-sign-out-alt me-2"></i>Logout
                             </a>
                         </li>
