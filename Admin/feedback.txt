@@ -1,0 +1,15 @@
+Ahmed Mohamed~ahmed@gmail.com~Login issues~I am unable to log in even though my username and password are correct.
+Sara Ali~sara@gmail.com~Registration problems~The registration form shows an error when I try to create a new account.
+Omar Hassan~omar@gmail.com~Form not submitting~After filling all fields and clicking submit, nothing happens.
+Mariam Ibrahim~mariam@gmail.com~Page loading error~The volunteer page takes too long to load and sometimes shows a blank screen.
+Mostafa Adel~mostafa@gmail.com~Broken links~Several links on the homepage redirect to non-existing pages.
+Nour Mahmoud~nour@gmail.com~Slow website performance~The website becomes very slow during peak hours.
+Youssef Ahmed~youssef@gmail.com~Email not received~I did not receive the confirmation email after registration.
+Fatma Khaled~fatma@gmail.com~Password reset not working~The password reset link is not being sent to my email address.
+Ali Mahmoud~ali@gmail.com~Validation errors in form~The form rejects valid phone numbers and email addresses.
+Hana Mohamed~hana@gmail.com~Server error 500~A server error appears when trying to submit a donation request.
+Karim Hassan~karim@gmail.com~Database connection issue~The website displays a database connection error message.
+Aya Tarek~aya@gmail.com~UI not displaying correctly~The layout appears broken on some pages and elements overlap.
+Mahmoud Nabil~mahmoud@gmail.com~Mobile responsiveness issue~The navigation menu does not work properly on mobile devices.
+Reem Ahmed~reem@gmail.com~File upload not working~I cannot upload required documents through the application form.
+Mohamed Samir~mohamed@gmail.com~Dropdown not loading options~The service selection dropdown remains empty.

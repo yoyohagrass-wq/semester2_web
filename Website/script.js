@@ -48,6 +48,7 @@ function validateInquireForm() {
 function validateFeedbackForm() {
   const name = getValue("name");
   const email = getValue("email");
+  const phone = getValue("phone");
   const message = getValue("message");
 
   if (!name) {
@@ -60,6 +61,10 @@ function validateFeedbackForm() {
 
   if (!isValidEmail(email)) {
     return showError("Please enter a valid email.");
+  }
+
+  if (!phone) {
+    return showError("Please enter your phone number.");
   }
 
   if (!message) {

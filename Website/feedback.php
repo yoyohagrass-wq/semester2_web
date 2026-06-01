@@ -71,7 +71,7 @@ fclose($filehandler);
 
             <input type="text" id="name" name="name" class="donation-input" placeholder="Full Name">
             <input type="text" id="email" name="email" class="donation-input" placeholder="Email">
-            <input type="text" id="phone" name="phone" class="donation-input" placeholder="Phone Number (Optional)">
+            <input type="text" id="phone" name="phone" class="donation-input" placeholder="Phone Number">
 
             <select name="mycombobox" class="donation-input">
                 <?php
