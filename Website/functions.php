@@ -1,6 +1,36 @@
 <?php
 
 
+function getAllServices()
+{
+    $allServices = array();
+
+    $fileHandler = fopen("../Admin/services-data.txt", "r");
+
+    while(!feof($fileHandler))
+    {
+        $line = trim(fgets($fileHandler));
+
+        if($line != "")
+        {
+            $lineSplitted = explode("~", $line);
+
+            $serviceData = array(
+                "Id" => $lineSplitted[0],
+                "Name" => $lineSplitted[1],
+                "Description" => $lineSplitted[2]
+            );
+
+            $allServices[] = $serviceData;
+        }
+    }
+
+    fclose($fileHandler);
+
+    return $allServices;
+}
+
+
 function saveDonation() {
 
   $username = trim($_REQUEST["name"]);
