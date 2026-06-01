@@ -71,44 +71,6 @@ if(isset($_POST["newOption"])){
 
 ?>
 
-  <!-- Main Content -->
-            <main class="col-md-9 col-lg-10 px-4 py-4">
-                <h2 class="mb-4">Messages</h2>
-
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <div class="card shadow-sm border-0 mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-user me-2"></i>Ahmed Mahmoud</h5>
-                                <p class="card-text">Good evening, I'd like to volunteer for the upcoming food distribution event.</p>
-                                <small class="text-muted">Received: Oct 30, 2025</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="card shadow-sm border-0 mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-user me-2"></i>Fatma Ali</h5>
-                                <p class="card-text">What else can I donate instead of money?</p>
-                                <small class="text-muted">Received: Oct 28, 2025</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="card shadow-sm border-0">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-user me-2"></i>Omar Youssef</h5>
-                                <p class="card-text">Requesting information about Ramadan volunteering schedules in Alexandria.</p>
-                                <small class="text-muted">Received: Oct 25, 2025</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    </div>
 
     <form method="post">
     <input type="text" name="newOption" placeholder="New Feedback Option">
