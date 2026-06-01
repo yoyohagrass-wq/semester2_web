@@ -6,6 +6,20 @@ include "functions.php";
 saveDonation();
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donation Successful - Al Mesbah Al Modie Foundation</title>
+
+  <meta name="description" content="Donation confirmation for Al Mesbah Al Modie Foundation, a charity and humanitarian aid organization in Egypt.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
 <body class="bg-light">
 
 <div class="min-vh-100 d-flex align-items-center justify-content-center py-5">
@@ -65,3 +79,4 @@ saveDonation();
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>
