@@ -142,3 +142,105 @@ table a:not(.btn):hover {
   border-top: 1px solid #dee2e6;
 }
 
+/* Manage Services (manage-services.php) */
+main > hr + form {
+  max-width: 560px;
+  margin-top: 1rem;
+  padding: 1.25rem 1.25rem 1.4rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  color: #0f172a;
+  font-weight: 600;
+}
+
+main > hr + form input[type="text"],
+main > hr + form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.45rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #ced8e3;
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+main > hr + form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+main > hr + form input[type="text"]:focus,
+main > hr + form textarea:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+main > hr + form input[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.25rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: transform 0.05s ease-in-out, filter 0.2s;
+}
+
+main > hr + form input[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+main > hr + form input[type="submit"][name="add"] {
+  background: #0d6efd;
+  border-color: #0d6efd;
+  color: #fff;
+}
+
+main > hr + form input[type="submit"][name="delete"] {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+}
+
+main > hr + form input[type="submit"]:hover {
+  filter: brightness(0.95);
+}
+
+/* Fallback targeting for Manage Services form fields */
+main form input[name="id"],
+main form input[name="name"],
+main form textarea[name="description"] {
+  display: block;
+  width: 100% !important;
+  max-width: 560px;
+  margin-top: 0.45rem;
+  padding: 0.85rem 1rem !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid #ced8e3 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+main form textarea[name="description"] {
+  min-height: 140px;
+  resize: vertical;
+}
+
+main form input[name="id"]:focus,
+main form input[name="name"]:focus,
+main form textarea[name="description"]:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
