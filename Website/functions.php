@@ -1,8 +1,8 @@
 <?php
 
-function login(){
+function login() {
 
-    $error = "";
+    global $error;
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -10,37 +10,40 @@ function login(){
         $password = sha1(trim($_REQUEST["password"]));
 
         if($username == "" || $password == ""){
-            return "All fields are required";
+            $error = "All fields are required";
         }
+        else {
 
-        $FileHandler = fopen("userdata.txt", "r") or die("error opening file!");
+            $FileHandler = fopen("userdata.txt", "r") or die("error opening file!");
 
-        $found = false;
+            $found = false;
 
-        while(!feof($FileHandler)){
-            $line = fgets($FileHandler);
-            $data = explode("~", $line);
+            while(!feof($FileHandler)){
+                $line = fgets($FileHandler);
+                $data = explode("~", $line);
 
-            if(trim($data[0]) == trim($username) && trim($data[1]) == trim($password)){
+                if(trim($data[0]) == trim($username) && trim($data[1]) == trim($password)){
 
-                fclose($FileHandler);
-                header("Location: index.php");
-                exit();
+                    $_SESSION['username'] = $username;
+                    $found = true;
+
+                    fclose($FileHandler);
+                    header("Location: index.php");
+                    exit();
+                }
+            }
+
+            if(!$found){
+                $error = "Invalid username or password";
             }
         }
-
-        fclose($FileHandler);
-
-        return "Invalid username or password";
     }
-
-    return "";
 }
 
 
 function signup(){
 
-    $error = "";
+    global $error;
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -49,40 +52,42 @@ function signup(){
         $email = trim($_REQUEST["email"]);
 
         if($username == "" || $password == "" || $email == ""){
-            return "All fields are required";
+            $error = "All fields are required";
         }
+        else {
 
-        $FileHandler = fopen("userdata.txt", "a+") or die("error opening file!");
+            $FileHandler = fopen("userdata.txt", "a+") or die("error opening file!");
 
-        rewind($FileHandler);
+            rewind($FileHandler);
 
-        $emailExists = false;
+            $emailExists = false;
 
-        while(!feof($FileHandler)){
+            while(!feof($FileHandler)){
 
-            $line = fgets($FileHandler);
-            $data = explode("~", $line);
+                $line = fgets($FileHandler);
+                $data = explode("~", $line);
 
-            if(isset($data[2]) && trim($data[2]) == trim($email)){
-                $emailExists = true;
-                break;
+                if(isset($data[2]) && trim($data[2]) == trim($email)){
+                    $emailExists = true;
+                    break;
+                }
+            }
+
+            if($emailExists){
+                $error = "Email already exists";
+            }
+            else {
+
+                $newdata = $username . "~" . $password . "~" . $email . "\n";
+
+                fwrite($FileHandler, $newdata);
+                fclose($FileHandler);
+
+                header("Location: index.php");
+                exit();
             }
         }
-
-        if($emailExists){
-            return "Email already exists";
-        }
-
-        $newdata = $username . "~" . $password . "~" . $email . "\n";
-
-        fwrite($FileHandler, $newdata);
-        fclose($FileHandler);
-
-        header("Location: index.php");
-        exit();
     }
-
-    return "";
 }
 
 

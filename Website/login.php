@@ -1,11 +1,11 @@
 <?php
 
 session_start();
+$error = "";
 
 include_once "functions.php";
 
-$error = login();
-
+login();
 ?>
 
 <!DOCTYPE html>

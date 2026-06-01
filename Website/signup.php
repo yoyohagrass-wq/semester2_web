@@ -1,10 +1,11 @@
 <?php
 
 session_start();
+$error = "";
 
 include_once "functions.php";
 
-$error = signup();
+signup();
 
 ?>
 <!DOCTYPE html>
