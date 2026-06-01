@@ -95,11 +95,7 @@ $totalDonations = getTotalDonations();
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="messages.php">
-                                <i class="fas fa-envelope me-2"></i>Messages
-                            </a>
-                        </li>
+                        
 
                         <li class="nav-item">
                             <a class="nav-link text-white" href="volunteer-requests.php">
@@ -169,22 +165,22 @@ $totalDonations = getTotalDonations();
                         </div>
                     </div>
 
-                    <!-- Messages -->
+                    <!-- Feedback Messages -->
                     <div class="col-md-6">
                         <div class="card shadow-sm border-0">
                             <div class="card-body">
 
                                 <h5 class="card-title">
                                     <i class="fas fa-envelope text-info me-2"></i>
-                                    New Messages
+                                    New Feedback Messages
                                 </h5>
 
                                 <p class="mb-0">
-                                    You have <strong>5</strong> new messages.
+                                    You have <strong>5</strong> new feedback messages.
                                 </p>
 
-                                <a href="messages.php" class="btn btn-sm btn-info mt-3">
-                                    View Messages
+                                <a href="feedback.php" class="btn btn-sm btn-info mt-3">
+                                    View Feedback
                                 </a>
 
                             </div>
