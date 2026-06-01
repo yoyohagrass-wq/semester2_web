@@ -63,6 +63,23 @@ if(isset($_POST["delete"]))
     exit();
 }
 
+if(isset($_POST["add"]))
+{
+    $id = trim($_POST["id"]);
+    $name = trim($_POST["name"]);
+    $description = trim($_POST["description"]);
+
+    $FileHandler = fopen("services-data.txt", "a") or die("error opening file!");
+
+    $serviceData = $id . "~" . $name . "~" . $description . PHP_EOL;
+
+    fwrite($FileHandler, $serviceData);
+
+    fclose($FileHandler);
+
+    header("Location: manage-services.php");
+    exit();
+}
 
 ?>
 
