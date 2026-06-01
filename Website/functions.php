@@ -1,5 +1,29 @@
 <?php
 
+
+function saveDonation() {
+
+  $error = "";
+
+  $username = trim($_REQUEST["name"]);
+  $email = trim($_REQUEST["email"]);
+  $donationAmount = trim($_REQUEST["donation-amount"]);
+  $donorMessage = trim($_REQUEST["donorMessage"]);
+
+  if($username == "" || $email == "" || $donationAmount == "" || !is_numeric($donationAmount) || $donationAmount <= 0 ){
+      echo "Please fill all fields correctly";
+  }
+  else {
+
+      $FileHandler = fopen("../Admin/donations.txt", "a+") or die("error opening file!");
+      $newdata = $username . "~" . $email . "~" . $donationAmount . "~" . $donorMessage . "\n";
+
+      fwrite($FileHandler, $newdata);
+      fclose($FileHandler);
+  }
+
+}
+
 function pageHead($title, $description, $keywords)
 {
 ?>
