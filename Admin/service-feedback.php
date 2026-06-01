@@ -24,7 +24,8 @@ function ListAllFeedBacks(){
                 "name"=>$data[0],
                 "email"=>$data[1],
                 "phone"=>$data[2],
-                "message"=>$data[3]
+                "mycombobox"=>$data[3],
+                "message"=>$data[4]
             );
 
             $allFeedbacks[]=$feedback;

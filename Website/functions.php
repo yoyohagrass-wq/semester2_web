@@ -5,15 +5,16 @@ function saveFeedback() {
   $username = trim($_REQUEST["name"]);
   $email = trim($_REQUEST["email"]);
   $phone = trim($_REQUEST["phone"]);
+  $feedbackType = trim($_REQUEST["mycombobox"]);
   $feedbackMessage = trim($_REQUEST["message"]);
 
-  if($username == "" || $email == "" || $phone == "" || $feedbackMessage == ""){
+  if($username == "" || $email == "" || $phone == "" || $feedbackType == "" || $feedbackMessage == ""){
       echo "Please fill all fields correctly";
   }
   else {
 
       $FileHandler = fopen("../Admin/feedback.txt", "a+") or die("error opening file!");
-      $newdata = $username . "~" . $email . "~" . $phone . "~" . $feedbackMessage . "\n";
+      $newdata = $username . "~" . $email . "~" . $phone . "~" . $feedbackType . "~" . $feedbackMessage . "\n";
 
       fwrite($FileHandler, $newdata);
       fclose($FileHandler);
