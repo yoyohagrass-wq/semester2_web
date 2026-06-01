@@ -1,0 +1,15 @@
+Login issues
+Registration problems
+Form not submitting
+Page loading error
+Broken links
+Slow website performance
+Email not received
+Password reset not working
+Validation errors in form
+Server error 500
+Database connection issue
+UI not displaying correctly
+Mobile responsiveness issue
+File upload not working
+Dropdown not loading options

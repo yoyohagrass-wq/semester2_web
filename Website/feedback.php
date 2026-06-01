@@ -1,11 +1,16 @@
 <?php
-require_once 'functions.php';
-pageHead(
-    'Feedback - Al Mesbah Al Modie Foundation',
-    'Share your feedback and suggestions to help Al Mesbah Al Modie Foundation improve its services and activities.',
-    'feedback Egypt, suggestions, nonprofit feedback, Al Mesbah Al Modie Foundation'
-);
-headerSection();
+$filehandler = fopen("../Admin/feedbackoptions.txt", "r");
+$data = array();
+
+while (!feof($filehandler)) {
+    $line = fgets($filehandler);
+    $line = trim($line);
+    if(!empty($line)) {
+        $data[] = $line;
+    }
+}
+
+fclose($filehandler);
 ?>
 
 <div class="donation-container">
@@ -16,13 +21,18 @@ headerSection();
             <input type="text" id="name" name="name" class="donation-input" placeholder="Full Name">
             <input type="text" id="email" name="email" class="donation-input" placeholder="Email">
             <input type="text" id="phone" name="phone" class="donation-input" placeholder="Phone Number (Optional)">
+
+            <select name="mycombobox" class="donation-input">
+                <?php
+                foreach ($data as $value) {
+                    echo "<option value='$value'>$value</option>";
+                }
+                ?>
+            </select>
+
             <textarea id="message" name="message" class="donation-textarea" rows="4" placeholder="Write your feedback here..."></textarea>
+
             <button type="submit" class="donation-btn">Submit Feedback</button>
         </form>
     </div>
 </div>
-
-<?php
-pageFooter();
-pageClose();
-?>
