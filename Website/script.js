@@ -66,11 +66,6 @@ function validateFeedbackForm() {
     return showError("Please enter your feedback message.");
   }
 
-  alert(
-    "Thank you for helping Al Mesbah Al Modie Foundation improve, " +
-      name +
-      "!",
-  );
   return true;
 }
 
