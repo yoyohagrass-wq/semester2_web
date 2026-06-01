@@ -1,41 +1,9 @@
 <?php
 session_start();
 
-$error = "";
+include_once "functions.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    $username = trim($_REQUEST["username"]);
-    $password = sha1(trim($_REQUEST["password"]));
-
-    if($username == "" || $password == ""){
-        $error = "All fields are required";
-    }
-    else {
-
-        $FileHandler = fopen("userdata.txt", "r") or die("error opening file!");
-
-        $found = false;
-
-        while(!feof($FileHandler)){
-            $line = fgets($FileHandler);
-            $data = explode("~", $line);
-
-            if(trim($data[0]) == trim($username) && trim($data[1]) == trim($password)){
-
-                $_SESSION['username'] = $username;
-                $found = true;
-
-                fclose($FileHandler);
-                header("Location: index.php");
-                exit();
-            }
-        }
-        if(!$found){
-            $error = "Invalid username or password";
-        }
-    }
-}
+login();
 ?>
 
 <!DOCTYPE html>
@@ -55,10 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
-            
-            <?php if($error): ?>
-                <div class="error-message"><?php echo $error; ?></div>
-            <?php endif; ?>
+
         </form>
 
         <div class="signup-link">

@@ -1,55 +1,10 @@
 <?php
 session_start();
 
-$error = "";
+include_once "functions.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    $username = trim($_REQUEST["username"]);
-    $password = sha1(trim($_REQUEST["password"]));
-    $email = trim($_REQUEST["email"]);
-
-    if($username == "" || $password == "" || $email == ""){
-        $error = "All fields are required";
-    }
-    else {
-
-        $FileHandler = fopen("userdata.txt", "a+") or die("error opening file!");
-
-        rewind($FileHandler);
-
-        $emailExists = false;
-
-        while(!feof($FileHandler)){
-
-            $line = fgets($FileHandler);
-            $data = explode("~", $line);
-
-            if(isset($data[2]) && trim($data[2]) == trim($email)){
-                $emailExists = true;
-                break;
-            }
-        }
-
-        if($emailExists){
-            $error = "Email already exists";
-        }
-        else {
-
-            $newdata = $username . "~" . $password . "~" . $email . "\n";
-
-            fwrite($FileHandler, $newdata);
-            fclose($FileHandler);
-
-            $_SESSION['username'] = $username;
-
-            header("Location: index.php");
-            exit();
-        }
-    }
-}
+signup();
 ?>
-
 <!DOCTYPE html>
 <html lang="en" class="auth-html">
 <head>
@@ -68,10 +23,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Sign Up">
-            
-            <?php if($error): ?>
-                <div class="error-message"><?php echo $error; ?></div>
-            <?php endif; ?>
         </form>
 
         <div class="login-link">
