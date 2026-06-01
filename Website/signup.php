@@ -1,13 +1,52 @@
 <?php
-
 session_start();
+
 $error = "";
 
-include_once "functions.php";
+$username = trim($_REQUEST["username"]);
+$password = sha1(trim($_REQUEST["password"]));
+$email = trim($_REQUEST["email"]);
 
-signup();
+if($username == "" || $password == "" || $email == ""){
+    $error = "All fields are required";
+}
+else {
 
+    $FileHandler = fopen("userdata.txt", "a+") or die("error opening file!");
+
+    rewind($FileHandler);
+
+    $emailExists = false;
+
+    while(!feof($FileHandler)){
+
+        $line = fgets($FileHandler);
+        $data = explode("~", $line);
+
+        if(isset($data[2]) && trim($data[2]) == trim($email)){
+            $emailExists = true;
+            break;
+        }
+    }
+
+    if($emailExists){
+        $error = "Email already exists";
+    }
+    else {
+
+        $newdata = $username . "~" . $password . "~" . $email . "\n";
+
+        fwrite($FileHandler, $newdata);
+        fclose($FileHandler);
+
+        $_SESSION['username'] = $username;
+
+        header("Location: index.php");
+        exit();
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en" class="auth-html">
 <head>
