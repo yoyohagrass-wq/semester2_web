@@ -2,88 +2,91 @@
 
 function login(){
 
-    $username = trim($_REQUEST["username"]);
-    $password = sha1(trim($_REQUEST["password"]));
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    if($username == "" || $password == ""){
-        echo "All fields are required";
+        $username = trim($_REQUEST["username"]);
+        $password = sha1(trim($_REQUEST["password"]));
+
+        if($username == "" || $password == ""){
+            echo "All fields are required";
+        }
+        else {
+
+            $FileHandler = fopen("userdata.txt", "r") or die("error opening file!");
+
+            $found = false;
+
+            while(!feof($FileHandler)){
+                $line = fgets($FileHandler);
+                $data = explode("~", $line);
+
+                if(trim($data[0]) == trim($username) && trim($data[1]) == trim($password)){
+
+                    $_SESSION['username'] = $username;
+                    $found = true;
+
+                    fclose($FileHandler);
+                    header("Location: index.php");
+                    exit();
+                }
+            }
+
+            fclose($FileHandler);
+
+            if(!$found){
+                echo "Invalid username or password";
+            }
+        }
     }
-    else {
+}
 
-        $FileHandler = fopen("userdata.txt", "r") or die("error opening file!");
+function signup(){
 
-        $found = false;
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-        while(!feof($FileHandler)){
-            $line = fgets($FileHandler);
-            $data = explode("~", $line);
+        $username = trim($_REQUEST["username"]);
+        $password = sha1(trim($_REQUEST["password"]));
+        $email = trim($_REQUEST["email"]);
 
-            if(trim($data[0]) == trim($username) && trim($data[1]) == trim($password)){
+        if($username == "" || $password == "" || $email == ""){
+            echo "All fields are required";
+        }
+        else {
 
-                $_SESSION['username'] = $username;
-                $found = true;
+            $FileHandler = fopen("userdata.txt", "a+") or die("error opening file!");
 
+            rewind($FileHandler);
+
+            $emailExists = false;
+
+            while(!feof($FileHandler)){
+
+                $line = fgets($FileHandler);
+                $data = explode("~", $line);
+
+                if(isset($data[2]) && trim($data[2]) == trim($email)){
+                    $emailExists = true;
+                    break;
+                }
+            }
+
+            if($emailExists){
+                echo "Email already exists";
+            }
+            else {
+
+                $newdata = $username . "~" . $password . "~" . $email . "\n";
+
+                fwrite($FileHandler, $newdata);
                 fclose($FileHandler);
+
+
                 header("Location: index.php");
                 exit();
             }
         }
-
-        fclose($FileHandler);
-
-        if(!$found){
-            echo "Invalid username or password";
-        }
     }
 }
-
-
-function signup(){
-
-    $username = trim($_REQUEST["username"]);
-    $password = sha1(trim($_REQUEST["password"]));
-    $email = trim($_REQUEST["email"]);
-
-    if($username == "" || $password == "" || $email == ""){
-        echo "All fields are required";
-    }
-    else {
-
-        $FileHandler = fopen("userdata.txt", "a+") or die("error opening file!");
-
-        rewind($FileHandler);
-
-        $emailExists = false;
-
-        while(!feof($FileHandler)){
-
-            $line = fgets($FileHandler);
-            $data = explode("~", $line);
-
-            if(isset($data[2]) && trim($data[2]) == trim($email)){
-                $emailExists = true;
-                break;
-            }
-        }
-
-        if($emailExists){
-            echo "Email already exists";
-        }
-        else {
-
-            $newdata = $username . "~" . $password . "~" . $email . "\n";
-
-            fwrite($FileHandler, $newdata);
-            fclose($FileHandler);
-
-            $_SESSION['username'] = $username;
-
-            header("Location: index.php");
-            exit();
-        }
-    }
-}
-
 
 
 
