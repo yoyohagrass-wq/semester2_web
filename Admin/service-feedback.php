@@ -54,6 +54,21 @@ if(isset($_GET["delete"])){
 
 $AllFeedbacks=ListAllFeedBacks();
 
+
+if(isset($_POST["newOption"])){
+
+    $option = trim($_POST["newOption"]);
+
+    if($option != ""){
+
+        $fileHandler = fopen("feedbackoptions.txt", "a");
+
+        fwrite($fileHandler, $option . "\n");
+
+        fclose($fileHandler);
+    }
+}
+
 ?>
 
   <!-- Main Content -->
@@ -94,3 +109,8 @@ $AllFeedbacks=ListAllFeedBacks();
             </main>
         </div>
     </div>
+
+    <form method="post">
+    <input type="text" name="newOption" placeholder="New Feedback Option">
+    <button type="submit">Add Option</button>
+    </form>
