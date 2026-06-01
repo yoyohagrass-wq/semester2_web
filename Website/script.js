@@ -111,9 +111,6 @@ function validateVolunteerForm() {
     return showError("Please enter a valid phone number.");
   }
 
-  alert(
-    "Your volunteer request for Al Mesbah Al Modie Foundation has been submitted successfully.",
-  );
   return true;
 }
 
