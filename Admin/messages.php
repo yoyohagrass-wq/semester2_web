@@ -45,7 +45,6 @@
                                 <h5 class="card-title"><i class="fas fa-user me-2"></i>Ahmed Mahmoud</h5>
                                 <p class="card-text">Good evening, I'd like to volunteer for the upcoming food distribution event.</p>
                                 <small class="text-muted">Received: Oct 30, 2025</small>
-                                <button class="btn btn-sm btn-primary mt-3 w-100"><i class="fas fa-reply me-2"></i>Reply</button>
                             </div>
                         </div>
                     </div>
@@ -56,7 +55,6 @@
                                 <h5 class="card-title"><i class="fas fa-user me-2"></i>Fatma Ali</h5>
                                 <p class="card-text">What else can I donate instead of money?</p>
                                 <small class="text-muted">Received: Oct 28, 2025</small>
-                                <button class="btn btn-sm btn-primary mt-3 w-100"><i class="fas fa-reply me-2"></i>Reply</button>
                             </div>
                         </div>
                     </div>
@@ -67,7 +65,6 @@
                                 <h5 class="card-title"><i class="fas fa-user me-2"></i>Omar Youssef</h5>
                                 <p class="card-text">Requesting information about Ramadan volunteering schedules in Alexandria.</p>
                                 <small class="text-muted">Received: Oct 25, 2025</small>
-                                <button class="btn btn-sm btn-primary mt-3 w-100"><i class="fas fa-reply me-2"></i>Reply</button>
                             </div>
                         </div>
                     </div>

@@ -37,7 +37,6 @@ function getAllServices()
 
 $allServices = getAllServices();
 
-$selectedIndex = null;
 $selectedService = null;
 
 if(isset($_GET["select"]))
@@ -49,9 +48,6 @@ if(isset($_GET["select"]))
         $selectedService = $allServices[$selectedIndex];
     }
 }
-
-$allServices = getAllServices();
-
 
 if(isset($_POST["delete"]))
 {
@@ -108,76 +104,65 @@ if(isset($_POST["delete"]))
             </nav>
 
             <main class="col-md-9 col-lg-10 px-4 py-4">
-                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
-                    <h2 class="mb-0">Manage Services</h2>
-                    <?php if ($selectedService) { ?>
-                        <a href="manage-services.php" class="btn btn-outline-secondary btn-sm">Clear selection</a>
+                <h2>Manage Services</h2>
+
+
+                <br><br>
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>ID</th>
+                        <th>Service Name</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+
+                    <?php
+                        for($i = 0; $i < count($allServices); $i++)
+                        {
+                        echo "<tr>";
+                        echo "<td>".$allServices[$i]["Id"]."</td>";
+                        echo "<td>".$allServices[$i]["Name"]."</td>";
+                        echo "<td>".$allServices[$i]["Description"]."</td>";
+                        echo "<td><a href='?select=".$i."'>Select</a></td>";
+                        echo "</tr>";
+                        }
+                    ?>
+                </table>
+
+                <hr>
+
+
+                <form method="post">
+
+                    ID<br>
+                    <input type="text" name="id"
+                    value="<?php echo $selectedService ? $selectedService["Id"] : ""; ?>">
+                    <br><br>
+
+                    Service Name<br>
+                    <input type="text" name="name"
+                    value="<?php echo $selectedService ? $selectedService["Name"] : ""; ?>">
+                    <br><br>
+
+                    Description<br>
+                    <textarea name="description"><?php echo $selectedService ? $selectedService["Description"] : ""; ?></textarea>
+                    <br><br>
+
+                    <?php if($selectedService){ ?>
+
+                    <input type="hidden" name="selectedIndex"
+                    value="<?php echo $selectedIndex; ?>">
+
+                    <input type="submit" name="delete" value="Delete">
+
+                    <?php } else { ?>
+
+                    <input type="submit" name="add" value="Add">
+
                     <?php } ?>
-                </div>
 
-                <div class="row g-4">
-                    <div class="col-xl-8">
-                        <div class="card shadow-sm">
-                            <div class="card-body p-0">
-                                <table class="table table-hover mb-0">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Service Name</th>
-                                        <th>Description</th>
-                                        <th style="width: 1%;">Action</th>
-                                    </tr>
-
-                                    <?php
-                                        for($i = 0; $i < count($allServices); $i++)
-                                        {
-                                            $isSelected = ($selectedIndex !== null && (string)$selectedIndex === (string)$i);
-                                            echo "<tr".($isSelected ? " class='table-primary'" : "").">";
-                                            echo "<td>".$allServices[$i]["Id"]."</td>";
-                                            echo "<td>".$allServices[$i]["Name"]."</td>";
-                                            echo "<td>".$allServices[$i]["Description"]."</td>";
-                                            echo "<td><a href='?select=".$i."' class='btn btn-sm btn-outline-primary'>Select</a></td>";
-                                            echo "</tr>";
-                                        }
-                                    ?>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title mb-3"><?php echo $selectedService ? "Selected Service" : "Add Service"; ?></h5>
-
-                                <form method="post" class="service-form">
-                                    <div class="mb-3">
-                                        <label for="serviceId" class="form-label">ID</label>
-                                        <input id="serviceId" type="text" name="id" class="form-control"
-                                            value="<?php echo $selectedService ? $selectedService["Id"] : ""; ?>">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="serviceName" class="form-label">Service Name</label>
-                                        <input id="serviceName" type="text" name="name" class="form-control"
-                                            value="<?php echo $selectedService ? $selectedService["Name"] : ""; ?>">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="serviceDescription" class="form-label">Description</label>
-                                        <textarea id="serviceDescription" name="description" class="form-control" rows="4"><?php echo $selectedService ? $selectedService["Description"] : ""; ?></textarea>
-                                    </div>
-
-                                    <?php if($selectedService){ ?>
-                                        <input type="hidden" name="selectedIndex" value="<?php echo $selectedIndex; ?>">
-                                        <button type="submit" name="delete" value="1" class="btn btn-danger w-100">Delete</button>
-                                    <?php } else { ?>
-                                        <button type="submit" name="add" value="1" class="btn btn-primary w-100">Add</button>
-                                    <?php } ?>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </form>
                 
 
             </main>
