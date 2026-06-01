@@ -81,11 +81,7 @@ fclose($filehandler);
                 ?>
             </select>
 
-            <textarea id="message"
-                      name="message"
-                      class="donation-textarea"
-                      rows="4"
-                      placeholder="Write your feedback here..."></textarea>
+            <textarea id="message" name="message" class="donation-textarea" rows="4" placeholder="Write your feedback here..."></textarea>
 
             <button type="submit" class="donation-btn">
                 Submit Feedback
