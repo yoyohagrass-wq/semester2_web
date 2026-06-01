@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+include_once "functions.php";
+
+saveFeedback();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
