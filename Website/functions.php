@@ -5,7 +5,7 @@ function saveFeedback() {
   $username = trim($_REQUEST["name"]);
   $email = trim($_REQUEST["email"]);
   $phone = trim($_REQUEST["phone"]);
-  $feedbackMessage = trim($_REQUEST["feedbackMessage"]);
+  $feedbackMessage = trim($_REQUEST["message"]);
 
   if($username == "" || $email == "" || $phone == "" || $feedbackMessage == ""){
       echo "Please fill all fields correctly";
