@@ -123,7 +123,7 @@ $totalDonations = getTotalDonations();
             <main class="col-md-9 col-lg-10 px-4 py-4">
 
                 <h2 class="mb-4">
-                    Welcome, <?php echo htmlspecialchars($_SESSION['admin_username'] ?? 'Admin'); ?>
+                    Welcome
                 </h2>
 
                 <div class="row g-4">
